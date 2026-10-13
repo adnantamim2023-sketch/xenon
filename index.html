@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
+    <title>Xenon | Tools</title>
+    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles2.css?v=6">
+    <link rel="stylesheet" href="xetex.css?v=2">
+
+</head>
+<body>
+
+<nav class="nav-container">
+    <div class="menu-wrapper" id="menuWrapper">
+        <div class="btn-circle hamburger-button" onclick="toggleMenu()">
+            <span class="line-top"></span><span class="line-bottom"></span>
+        </div>
+        <div class="spoke spoke-1" onclick="toggleDarkMode()">
+            <span class="icon icon-moon" id="themeIcon"></span>
+        </div>
+        <div class="spoke spoke-2" onclick="toggleSidebar()"><span class="icon icon-history"></span></div>
+        <div class="spoke spoke-3" onclick="toggleAbout()"><span class="icon icon-info-circle"></span></div>
+    </div>
+    <h1 class="logo-text">Xenon</h1>
+    <div class="btn-circle" onclick="startNewChat()"><span class="icon icon-new-chat" style="width:24px;height:24px;"></span></div>
+</nav>
+
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-scroll">
+        <h2>History</h2>
+        <div class="history-list" id="historyList"></div>
+    </div>
+    <button class="sidebar-empty-trash" onclick="clearAllHistory()">
+        Empty Trash
+    </button>
+</div>
+<div class="overlay" id="overlay" onclick="closeAll()"></div>
+
+<!-- About Modal -->
+<div class="modal" id="aboutModal">
+    <div class="modal-card">
+        <span class="icon icon-bot" style="width:50px;height:50px; color: #3b82f6; margin:0 auto;"></span>
+        <h2 style="margin: 15px 0;">About Xenon</h2>
+        <p>A toolbox of math, logic, physics, code, writing and graphing tools. Send <b>/tools</b> to list them.</p>
+        <button onclick="toggleAbout()">Close</button>
+    </div>
+</div>
+
+<!-- Select Text Modal: shows a message's text on its own, plain,
+     freshly-rendered page so a long-press is a genuine first touch —
+     this is what makes the OS's native Copy/Share/Select-all toolbar
+     appear immediately, instead of needing an extra tap like it does
+     on a selection that was set programmatically inside the bubble. -->
+<div class="modal" id="selectTextModal">
+    <div class="modal-card select-text-card">
+        <div class="select-text-header">
+            <h3>Select Text</h3>
+            <button type="button" onclick="toggleSelectTextModal()">Done</button>
+        </div>
+        <div class="select-text-body" id="selectTextBody"></div>
+    </div>
+</div>
+
+<!-- Logic Circuit Modal: full-screen pan/zoom view of a tapped circuit
+     diagram, so it's never stuck squished to bubble width. Reuses the
+     Select Text modal's own-full-page card style, plus the graph
+     modal's zoom-control buttons. -->
+<div class="modal" id="logicCircuitModal">
+    <div class="modal-card select-text-card logic-circuit-card">
+        <div class="select-text-header">
+            <h3>Logic Circuit</h3>
+            <button type="button" onclick="toggleLogicCircuitModal()">Done</button>
+        </div>
+        <div class="logic-circuit-viewport" id="logicCircuitViewport"
+             onmousedown="lcDragStart(event)" ontouchstart="lcDragStart(event)"
+             onmousemove="lcDragMove(event)" ontouchmove="lcDragMove(event)"
+             onmouseup="lcDragStop()" ontouchend="lcDragStop()"
+             onmouseleave="lcDragStop()"
+             onwheel="lcWheelZoom(event)">
+            <div class="logic-circuit-inner" id="logicCircuitInner"></div>
+            <div class="graph-zoom-ctrl">
+                <button class="graph-z-btn" onclick="lcResetView()" title="Reset View"
+                        onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px;"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12h2a8 8 0 1 0 1.865-5.135L8 9H2V3l2.447 2.446A9.98 9.98 0 0 1 12 2z"/></svg>
+                </button>
+                <button class="graph-z-btn"
+                        onmousedown="event.stopPropagation(); lcStartZoomIn(event)"
+                        ontouchstart="event.stopPropagation(); lcStartZoomIn(event)"
+                        onmouseup="lcStopZoom()" onmouseleave="lcStopZoom()"
+                        ontouchend="lcStopZoom()" ontouchcancel="lcStopZoom()">
+                    <span style="font-size:20px;">+</span>
+                </button>
+                <button class="graph-z-btn"
+                        onmousedown="event.stopPropagation(); lcStartZoomOut(event)"
+                        ontouchstart="event.stopPropagation(); lcStartZoomOut(event)"
+                        onmouseup="lcStopZoom()" onmouseleave="lcStopZoom()"
+                        ontouchend="lcStopZoom()" ontouchcancel="lcStopZoom()">
+                    <span style="font-size:20px;">−</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart Modal -->
+<div class="modal" id="graphModal">
+    <div class="modal-card" id="graphModalCard">
+        <!-- Header -->
+        <!-- Header — mirrors Backup & Storage -->
+        <div class="chart-modal-header">
+            <div class="chart-header-main">
+                <button class="chart-back-btn" type="button" onclick="toggleGraphModal()" aria-label="Back">
+                    <span class="icon icon-chevron-right"></span>
+                </button>
+                <div>
+                    
+                    <h2 class="chart-title">Chart Generator</h2>
+                </div>
+            </div>
+            <div class="chart-header-mark">
+                <span class="icon icon-stats"></span>
+            </div>
+        </div>
+
+        <!-- Canvas -->
+        <div class="graph-canvas-container chart-animate">
+            <div class="graph-viewport" id="ggViewport"
+                 onmousedown="ggDragStart(event)" ontouchstart="ggDragStart(event)"
+                 onmousemove="ggDragMove(event)" ontouchmove="ggDragMove(event)"
+                 onmouseup="ggDragStop()" ontouchend="ggDragStop()"
+                 onmouseleave="ggDragStop()">
+                <canvas id="tChart" class="chart-canvas"></canvas>
+                <div class="chart-tooltip" id="chartTooltip"></div>
+                <div class="graph-coord-tag" id="ggCoordTag">pan to explore</div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="graph-controls">
+            <div class="gg-controls-row">
+                <button class="graph-z-btn" data-keep-keyboard onclick="ggResetView()" title="Reset View" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12h2a8 8 0 1 0 1.865-5.135L8 9H2V3l2.447 2.446A9.98 9.98 0 0 1 12 2z"/></svg>
+                </button>
+                <button class="graph-z-btn" onmousedown="event.stopPropagation(); ggStartZoomIn(event)" ontouchstart="event.stopPropagation(); ggStartZoomIn(event)" onmouseup="ggStopZoom()" onmouseleave="ggStopZoom()" ontouchend="ggStopZoom()" ontouchcancel="ggStopZoom()">
+                    <span>+</span>
+                </button>
+                <button class="graph-z-btn" onmousedown="event.stopPropagation(); ggStartZoomOut(event)" ontouchstart="event.stopPropagation(); ggStartZoomOut(event)" onmouseup="ggStopZoom()" onmouseleave="ggStopZoom()" ontouchend="ggStopZoom()" ontouchcancel="ggStopZoom()">
+                    <span>−</span>
+                </button>
+                <button id="ggSettingsBtn" class="gg-settings-pill-btn" onclick="ggOpenSettingsModal()" aria-label="Settings" title="Settings">
+                    <span class="icon icon-settings" aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="gg-input-row">
+                <div class="graph-input-pill gg-data-pill">
+                    <span class="icon icon-data" style="width:16px;height:16px;flex-shrink:0;"></span>
+                    <input id="gData" placeholder="Numbers: 23, 45, 12, 67…" value="23, 45, 12, 67, 34, 89, 56, 12, 34, 45, 67, 23, 78, 45, 90" oninput="updateGraphDebounced()">
+                </div>
+            </div>
+            <select id="gType" style="display:none;"></select>
+        </div>
+    </div>
+</div>
+
+<!-- Graph Settings Modal -->
+<div class="modal gg-settings-modal" id="ggSettingsModal">
+    <div class="modal-card gg-settings-card">
+        <div class="gg-settings-header">
+            <div class="gg-settings-title">
+                <svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;color:var(--accent);">
+                    <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.92c.04-.36.07-.73.07-1.08s-.03-.73-.07-1.08l2.32-1.81c.21-.16.27-.45.14-.68l-2.2-3.81a.52.52 0 0 0-.64-.22l-2.74 1.1c-.57-.44-1.18-.81-1.85-1.08L14 2.42A.52.52 0 0 0 13.5 2h-3c-.24 0-.45.17-.49.42l-.41 2.52c-.67.27-1.28.64-1.85 1.08L5.01 4.93a.52.52 0 0 0-.64.22L2.17 8.96a.51.51 0 0 0 .14.68l2.32 1.81C4.59 11.27 4.5 11.64 4.5 12s.09.73.13 1.08L2.31 14.9a.51.51 0 0 0-.14.68l2.2 3.81c.13.23.41.31.64.22l2.74-1.1c.57.44 1.18.81 1.85 1.08l.41 2.52c.04.25.25.42.49.42h3c.24 0 .46-.17.49-.42l.41-2.52c.67-.27 1.28-.64 1.85-1.08l2.74 1.1c.23.09.51 0 .64-.22l2.2-3.81a.51.51 0 0 0-.14-.68l-2.32-1.81z"/>
+                </svg>
+                <span>Graph Settings</span>
+            </div>
+            <button class="chart-close-btn" onclick="ggCloseSettingsModal()">
+                <span class="icon icon-x" style="width:16px;height:16px;"></span>
+            </button>
+        </div>
+        <div class="gg-settings-body" id="ggSettingsBody"></div>
+    </div>
+</div>
+
+<!-- Xenon-graph Pro Modal -->
+<div class="modal" id="tgraphModal">
+    <div class="modal-card">
+        <div class="graph-modal-header">
+            <div class="graph-header-main">
+                <button class="graph-back-btn" type="button" onclick="toggleTgraphModal()" aria-label="Back">
+                    <span class="icon icon-chevron-right"></span>
+                </button>
+                <div>
+                   
+                    <h2 class="graph-title">Xenon Graph</h2>
+                </div>
+            </div>
+            <div class="graph-header-mark">
+                <span class="icon icon-graph"></span>
+            </div>
+        </div>
+
+        <div class="graph-canvas-container" style="min-height: 200px; max-height:300px; padding: 0; position: relative;">
+            <div class="graph-viewport" id="tgraphViewport">
+                <svg id="tgraphCanvas" style="width: 100%; height: 100%; display: block; position: relative;"></svg>
+                <div class="graph-crosshair" id="tgraphCrosshair"></div>
+                <div class="graph-coord-tag" id="tgraphCoords">0.0, 0.0</div>
+                <div class="graph-zoom-ctrl">
+                    <button class="graph-z-btn" data-keep-keyboard onclick="emergencyReset();" title="Refresh Xenon Graph" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px;"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12h2a8 8 0 1 0 1.865-5.135L8 9H2V3l2.447 2.446A9.98 9.98 0 0 1 12 2z"/></svg>
+                    </button>
+                    <button class="graph-z-btn" onmousedown="event.stopPropagation(); startZoomIn(event)" ontouchstart="event.stopPropagation(); startZoomIn(event)" onmouseup="stopZoom()" onmouseleave="stopZoom()" ontouchend="stopZoom()" ontouchcancel="stopZoom()"><span style="font-size:20px;">+</span></button>
+                    <button class="graph-z-btn" onmousedown="event.stopPropagation(); startZoomOut(event)" ontouchstart="event.stopPropagation(); startZoomOut(event)" onmouseup="stopZoom()" onmouseleave="stopZoom()" ontouchend="stopZoom()" ontouchcancel="stopZoom()"><span style="font-size:20px;">−</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="graph-equation-hint">
+            <span><span class="function-tag" style="background: #4f87ff;"></span> f₁(x,y)=0</span>
+            <span><span class="function-tag" style="background: #ff5f5f;"></span> f₂(x,y)=0</span>
+            <span><span class="function-tag" style="background: #00e0a4;"></span> f₃(x,y)=0</span>
+            <span style="color: var(--text-muted);">use ; to separate</span>
+        </div>
+
+        <div class="graph-controls">
+            <div class="graph-input-pill">
+                <span style="color:var(--accent); font-weight:800; font-size:13px; flex-shrink:0;">f(x,y)=0</span>
+                <textarea id="tgraphEquation" rows="1" oninput="tgraphExpandPill(this);" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();compileEquations();tgraphRender();}" placeholder="x²+y²-9; (0,0) (3,0) (use ; for multiple)" style="flex:1;border:none;background:transparent;outline:none;font-size:13px;color:var(--text-main);font-family:inherit;resize:none;overflow:hidden;line-height:1.4;caret-color:var(--accent);padding:2px 0;">x²+y²-9; (0,0) (3,0)</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Settings Modal -->
+<div class="modal xenon-settings-modal" id="settingsModal">
+    <div class="modal-card xenon-settings-card">
+        <div class="xenon-settings-header">
+            <div class="xenon-settings-heading">
+                <div class="xenon-settings-icon"><span class="icon icon-settings"></span></div>
+                <div>
+                  
+                    <h2>Settings</h2>
+                </div>
+            </div>
+            <button class="chart-close-btn xenon-settings-close" onclick="toggleSettingsModal()" aria-label="Close">
+                <span class="icon icon-x"></span>
+            </button>
+        </div>
+
+        <div class="xenon-settings-body">
+            <div class="xenon-settings-section-label">PREFERENCES</div>
+
+            <section class="xenon-setting-card">
+                <div class="xenon-setting-row">
+                    <div class="xenon-setting-icon-tile">
+                        <span class="icon icon-bot"></span>
+                    </div>
+                    <div class="xenon-setting-copy">
+                        <h3>Math Suggestions</h3>
+                        <p>Show function suggestions while typing.</p>
+                    </div>
+                    <label class="checkbox-custom xenon-settings-check">
+                        <input type="checkbox" id="suggestionToggle" checked>
+                        <span class="checkbox-box"><span class="icon icon-check"></span></span>
+                    </label>
+                </div>
+            </section>
+
+            <div class="xenon-settings-section-label">DATA &amp; STORAGE</div>
+
+            <section class="xenon-setting-card xenon-navigation-card"
+                     onclick="xenonOpenSettingsSubpage('backupModal', toggleBackupModal);">
+                <div class="xenon-setting-row">
+                    <div class="xenon-setting-icon-tile">
+                        <span class="icon icon-data"></span>
+                    </div>
+                    <div class="xenon-setting-copy">
+                        <h3>Backup &amp; Storage</h3>
+                        <p>Export, restore, inspect storage or reset Xenon.</p>
+                    </div>
+                    <div class="xenon-setting-arrow">
+                        <span class="icon icon-arrow-thick"></span>
+                    </div>
+                </div>
+                <div class="xenon-setting-status">
+                    <span class="xenon-status-dot"></span>
+                    Local data &amp; backups
+                </div>
+            </section>
+
+            <div class="xenon-settings-spacer"></div>
+            <div class="xenon-settings-footnote">
+                <span class="icon icon-lock"></span>
+                Your preferences are stored locally on this device.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Backup Modal -->
+<div class="modal" id="backupModal">
+    <div class="modal-card backup-modal-card">
+        <div class="backup-header">
+            <div class="backup-header-main">
+                <button class="backup-back-btn" type="button" onclick="backFromBackupModal()" aria-label="Back">
+                    <span class="icon icon-chevron-right"></span>
+                </button>
+                <div>
+                   
+                    <h2 class="backup-title">Backup &amp; Storage</h2>
+                </div>
+            </div>
+            <div class="backup-header-mark">
+                <span class="icon icon-settings"></span>
+            </div>
+        </div>
+
+        <div class="backup-body">
+            <section class="backup-storage-card">
+                <div class="backup-storage-top">
+                    <div>
+                        <div class="backup-section-kicker">STORAGE</div>
+                        <div class="backup-total" id="storageTotalValue">—</div>
+                        <div class="backup-total-label">used by Xenon</div>
+                    </div>
+                    <div class="backup-storage-orb" aria-hidden="true">
+                        <div class="backup-orb-inner">
+                            <span class="icon icon-data"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="backup-meter">
+                    <span id="storageMeterFill"></span>
+                </div>
+
+                <div class="backup-breakdown" id="storageBreakdown">
+                    <div class="backup-breakdown-item"><span class="backup-dot"></span><span>Model</span><strong id="storageModelValue">—</strong></div>
+                    <div class="backup-breakdown-item"><span class="backup-dot"></span><span>Updates</span><strong id="storageUpdatesValue">—</strong></div>
+                    <div class="backup-breakdown-item"><span class="backup-dot"></span><span>Memory</span><strong id="storageMemoryValue">—</strong></div>
+                    <div class="backup-breakdown-item"><span class="backup-dot"></span><span>Conversations</span><strong id="storageConversationsValue">—</strong></div>
+                </div>
+            </section>
+
+            <section class="backup-action-card">
+                <div class="backup-card-heading">
+                    <div class="backup-icon-tile"><span class="icon icon-data"></span></div>
+                    <div>
+                        <h3>Export a backup</h3>
+                        <p>Create a portable Xenon snapshot.</p>
+                    </div>
+                </div>
+                <label class="backup-option-row">
+                    <div>
+                        <strong>Include conversations</strong>
+                        <span>Add your chat history to the backup</span>
+                    </div>
+                    <label class="switch backup-switch">
+                        <input type="checkbox" id="includeConversationsToggle">
+                        <span class="slider"></span>
+                    </label>
+                </label>
+                <button id="exportBackupBtn" class="backup-primary-btn">
+                    <span class="icon icon-send"></span>
+                    <span>Export Backup</span>
+                </button>
+            </section>
+
+            <section class="backup-action-card backup-import-card">
+                <div class="backup-card-heading">
+                    <div class="backup-icon-tile"><span class="icon icon-tag"></span></div>
+                    <div>
+                        <h3>Restore from backup</h3>
+                        <p>Bring a <b>.xbackup</b> snapshot back into Xenon.</p>
+                    </div>
+                </div>
+                <label class="backup-import-btn" for="importBackupInput">
+                    <span class="icon icon-data"></span>
+                    <span>Choose Backup File</span>
+                    <input type="file" id="importBackupInput" accept=".xbackup">
+                </label>
+            </section>
+
+            <section class="backup-danger-card">
+                <div>
+                    <div class="backup-danger-title"><span class="icon icon-trash"></span>Factory Reset</div>
+                    <p>Remove Xenon's stored data and return it to a clean state.</p>
+                </div>
+                <button id="factoryResetBtn" class="backup-danger-btn">Reset</button>
+            </section>
+
+            <div id="backupMessage" class="backup-message" aria-live="polite"></div>
+            <div class="backup-footer-note">Your backup stays on your device until you choose to share it.</div>
+        </div>
+    </div>
+</div>
+
+<!-- Confirm/Delete Modal -->
+<div class="modal" id="confirmModal">
+    <div class="modal-card" style="max-width: 320px;">
+        <div class="icon icon-trash" style="width:40px; height:40px; color: var(--red-cancel); margin-bottom: 15px;"></div>
+        <h3 id="confirmTitle">Delete Message?</h3>
+        <p id="confirmDesc" style="font-size: 14px; opacity: 0.8; margin-top: 8px;">This action cannot be undone.</p>
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button id="confirmCancelBtn" style="background: var(--bg-input); color: var(--text-main); margin: 0;">Cancel</button>
+            <button id="confirmDeleteBtn" style="background: var(--red-cancel); margin: 0;">Delete</button>
+        </div>
+    </div>
+</div>
+
+<main class="chat-feed" id="chatFeed"></main>
+
+<div id="suggestionBox" class="suggestions-container"></div>
+
+<div class="input-container">
+    <div class="input-bar">
+        <textarea id="userInput" placeholder="Ask Xenon" rows="1" oninput="autoExpand(this)"></textarea>
+        <div class="input-controls-row">
+            <div class="input-controls-left">
+                <span class="icon icon-plus-circle toggle-icon" id="plusIcon" onmousedown="event.preventDefault()" ontouchstart="event.preventDefault()" ontouchend="event.preventDefault(); toggleInputMenu();" onclick="toggleInputMenu()"></span>
+                <!-- Static label. The pointer/touch handlers only stop a tap from dismissing the keyboard. -->
+                <span class="model-cycle-btn is-static" data-mode="fast" onmousedown="event.preventDefault()" ontouchstart="event.preventDefault()" ontouchend="event.preventDefault()">Fast</span>
+            </div>
+            <div class="input-controls-right">
+                <!-- Placeholder — read-aloud toggle. Round blue background with
+                     a white speaker glyph, matching the send button's styling.
+                     While active the two sound-wave arcs animate outward on a
+                     loop to suggest audio playing. No real text-to-speech is
+                     wired up yet. -->
+                <span class="voice-btn-wrap" id="voiceBtnWrap" onmousedown="event.preventDefault()" ontouchstart="event.preventDefault()" ontouchend="event.preventDefault(); toggleVoiceInput();" onclick="toggleVoiceInput()"><svg class="voice-btn" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path class="voice-speaker-cone" d="M4 9v6h4l5 5V4L8 9H4z"/><path class="voice-wave voice-wave-1" d="M15.5 9a4.2 4.2 0 0 1 0 6"/><path class="voice-wave voice-wave-2" d="M18 6.5a7.8 7.8 0 0 1 0 11"/></svg></span>
+                <span class="send-btn-wrap" id="sendBtnWrap" onmousedown="event.preventDefault()" ontouchstart="event.preventDefault()" ontouchend="event.preventDefault(); sendMessage();" onclick="sendMessage()"><span class="icon icon-send send-btn"></span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toggle menu — sits directly BELOW the input bar as a row of three
+         tiles (opened by the + button). Each tile = icon chip + label.
+         Tap handling (keeps the keyboard up) lives in settings.js. -->
+    <div class="input-menu" id="inputMenu">
+        <div class="menu-item" data-action="TGraph">
+            <span class="menu-item-icon"><span class="icon icon-graph"></span></span>
+            <span class="menu-item-label">Xenon Graph</span>
+        </div>
+        <div class="menu-item" data-action="Graph">
+            <span class="menu-item-icon"><span class="icon icon-stats"></span></span>
+            <span class="menu-item-label">Chart</span>
+        </div>
+        <div class="menu-item" data-action="Settings">
+            <span class="menu-item-icon"><span class="icon icon-settings"></span></span>
+            <span class="menu-item-label">Settings</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function tgraphExpandPill(el) {
+        el.style.height = 'auto';
+        var lineH = parseFloat(getComputedStyle(el).lineHeight) || 18;
+        var maxH = lineH * 2 + 4;
+        el.style.height = Math.min(el.scrollHeight, maxH) + 'px';
+        el.style.overflowY = el.scrollHeight > maxH ? 'auto' : 'hidden';
+    }
+
+    // --- MIUI / HyperOS safe-area fix ---
+    // Some MIUI/HyperOS WebViews (Poco, Redmi China ROM) resolve
+    // env(safe-area-inset-*) as exactly 0px, even when there's a real
+    // notch/status bar. This probe ONLY supplies a fallback when the
+    // measured value is truly 0 — if env() already returns a real
+    // number (however small), we use that as-is and add nothing.
+    function applySafeAreaFallback() {
+        var probe = document.getElementById('__safeAreaProbe');
+        if (!probe) {
+            probe = document.createElement('div');
+            probe.id = '__safeAreaProbe';
+            probe.style.position = 'fixed';
+            probe.style.top = '0';
+            probe.style.left = '0';
+            probe.style.width = '1px';
+            probe.style.height = 'env(safe-area-inset-top, 0px)';
+            probe.style.pointerEvents = 'none';
+            probe.style.opacity = '0';
+            document.body.appendChild(probe);
+        }
+        var measured = probe.getBoundingClientRect().height;
+
+        // Only override when env() gave us EXACTLY 0 (the broken-MIUI
+        // case). Any nonzero measurement — even 3px — is trusted as
+        // real and left untouched, so working phones never get extra
+        // padding added on top of a value that already works.
+        if (measured === 0) {
+            document.documentElement.style.setProperty('--safe-top-resolved', '28px');
+        } else {
+            document.documentElement.style.setProperty('--safe-top-resolved', '0px');
+        }
+        // Orientation/safe-area changes can shift the bar's position too.
+        if (typeof _fingerWake === 'function') _fingerWake(400);
+    }
+    window.addEventListener('load', applySafeAreaFallback);
+    window.addEventListener('orientationchange', applySafeAreaFallback);
+
+    // --- Keyboard handling ---
+    // Measures the actual on-screen keyboard inset via visualViewport and
+    // exposes it as --keyboard-height, so .input-container and .chat-feed
+    // can both react to it in CSS. Falls back to 0px if visualViewport
+    // isn't supported (--keyboard-height already defaults to 0px in CSS).
+    //
+    // This file no longer touches the feed's scroll position itself — the
+    // "finger" tracker in chat.js watches the input bar's actual rendered
+    // top edge every animation frame and moves the feed to match, however
+    // that edge came to move. So this only ever sets the CSS variable.
+    function applyKeyboardInset() {
+        if (!window.visualViewport) return;
+        const inset = Math.max(0, window.innerHeight - window.visualViewport.height - window.visualViewport.offsetTop);
+        document.documentElement.style.setProperty('--keyboard-height', inset + 'px');
+        // .input-container/.chat-feed both transition 'bottom' over 0.25s
+        // in response to this — wake the finger tracker to follow that move.
+        if (typeof _fingerWake === 'function') _fingerWake(400);
+        // Flag this as a keyboard-driven move (not a real scroll gesture)
+        // so the edge-haptic/bounce detector in chat2.js ignores it.
+        if (typeof _suppressScrollHaptics === 'function') _suppressScrollHaptics(400);
+    }
+    if (window.visualViewport) {
+        window.visualViewport.addEventListener('resize', applyKeyboardInset);
+        window.visualViewport.addEventListener('scroll', applyKeyboardInset);
+        applyKeyboardInset();
+    } else {
+        document.documentElement.style.setProperty('--keyboard-height', '0px');
+    }
+
+    // --- Input bar height tracking ---
+    // Keeps --input-bar-height in sync with the actual rendered height of
+    // .input-bar (which grows/shrinks as the textarea auto-expands with
+    // multi-line text), purely for CSS layout (the feed's bottom padding
+    // is bound to this variable). The feed's scroll position itself is
+    // handled independently by the "finger" tracker in chat.js, which
+    // reacts to the input bar's real on-screen position directly — it
+    // doesn't need this function to tell it anything.
+    function initInputBarHeightTracking() {
+        const inputBar = document.querySelector('.input-bar');
+        if (!inputBar) return;
+
+        function updateInputBarHeight() {
+            const height = inputBar.getBoundingClientRect().height;
+            document.documentElement.style.setProperty('--input-bar-height', height + 'px');
+        }
+
+        if (window.ResizeObserver) {
+            const ro = new ResizeObserver(updateInputBarHeight);
+            ro.observe(inputBar);
+        } else {
+            // Fallback for environments without ResizeObserver: track via
+            // the textarea's own input events (autoExpand already runs on
+            // input, so re-measuring right after covers the same cases).
+            const textarea = document.getElementById('userInput');
+            if (textarea) textarea.addEventListener('input', () => requestAnimationFrame(updateInputBarHeight));
+        }
+        updateInputBarHeight();
+
+        // The toggle menu (Xenon Graph / Chart / Settings) sits below the bar
+        // inside .input-container. It can open/close from several places
+        // (+ button, tap-outside, closeAll), so rather than wiring each one,
+        // wake the finger tracker whenever the whole input area resizes.
+        const container = document.querySelector('.input-container');
+        if (window.ResizeObserver && container) {
+            new ResizeObserver(function () {
+                if (typeof _fingerWake === 'function') _fingerWake(400);
+                if (typeof _suppressScrollHaptics === 'function') _suppressScrollHaptics(400);
+            }).observe(container);
+        }
+    }
+    initInputBarHeightTracking();
+</script>
+
+<!-- Scripts — load order matters -->
+<script src="chart-engine.js?v=3"></script>
+<script src="tgraph.js?v=3"></script>
+<script src="suggestions.js?v=2"></script>
+<script src="math-basic.js?v=9"></script>
+<script src="math-integration.js?v=7"></script>
+<script src="math-physics.js"></script>       <!-- NEW -->
+<script src="math-algebra.js?v=2"></script>
+<script src="logic.js"></script>
+<script src="coding.js"></script>
+<script src="base.js"></script>
+<script src="writing.js"></script>
+<script src="assist.js"></script>
+<script src="reasoning.js"></script>
+<script src="topics-hsc.js"></script>
+<script src="humanize.js?v=1"></script>
+<script src="paragraph.js?v=8"></script>
+<script src="shapes.js"></script>
+<script src="tools.js?v=1"></script>
+<script src="converse-data.js?v=1"></script>
+<script src="xenon.js?v=2"></script>
+<script src="converse.js?v=1"></script>
+<script src="chat.js?v=2"></script>
+<script src="chat2.js?v=3"></script>
+<script src="message-actions.js?v=2"></script>
+<script src="settings.js?v=4"></script>
+<script src="backup.js"></script>
+
+</body>
+</html>

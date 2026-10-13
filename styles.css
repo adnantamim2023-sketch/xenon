@@ -1,0 +1,2614 @@
+/* Icon system using inline SVGs */
+        .icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-color: currentColor;
+            mask-size: contain;
+            -webkit-mask-size: contain;
+            mask-repeat: no-repeat;
+            -webkit-mask-repeat: no-repeat;
+            mask-position: center;
+            -webkit-mask-position: center;
+        }
+        
+        .icon-moon { 
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313-12.454z"/></svg>'); 
+        }
+        .icon-sun { 
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM3.515 4.929l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zm12.728 12.728l1.414-1.414 2.121 2.121-1.414 1.414-2.121-2.121zM1 11h3v2H1v-2zm19 0h3v2h-3v-2zM5.05 19.071l-1.414-1.414 2.121-2.121 1.414 1.414-2.121 2.121zm12.728-12.728l-1.414-1.414 2.121-2.121 1.414 1.414-2.121 2.121z"/></svg>'); 
+        }
+        .icon-history { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12h2a8 8 0 1 0 1.865-5.135L8 9H2V3l2.447 2.446A9.98 9.98 0 0 1 12 2zm1 5v4.585l3.243 3.243-1.415 1.415L11 12.413V7h2z"/></svg>'); }
+        .icon-info-circle { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z"/></svg>'); }
+        .icon-plus { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2h6z"/></svg>'); }
+        .icon-stats { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h4v8H3v-8zm6-6h4v14H9V7zm6 4h4v10h-4V11z"/></svg>'); }
+        .icon-copy { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .552-.448 1-1 1H4a1 1 0 0 1-1-1V7c0-.552.448-1 1-1h3zm2 0h6V4H9v2zM5 8v12h10V8H5z"/></svg>'); }
+        .icon-check { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"/></svg>'); }
+        .icon-x { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z"/></svg>'); }
+        .icon-arrow-thick { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4 11h13.17l-4.88-4.88 1.41-1.41L21 12l-7.29 7.29-1.41-1.41L17.17 13H4z"/></svg>'); }
+        .icon-trash { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4V2h10v2h5v2h-2v15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6H2V4h5zM6 6v14h12V6H6zm3 3h2v8H9V9zm4 0h2v8h-2V9z"/></svg>'); }
+        .icon-data { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 4h14v2H5V4zm0 4h14v2H5V8zm0 4h14v2H5v-2zm0 4h14v2H5v-2z"/></svg>'); }
+        .icon-tag { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4h14v2H7V4zm0 4h14v2H7V8zm0 4h14v2H7v-2zm0 4h14v2H7v-2zM3 4h2v2H3V4zm0 4h2v2H3V8zm0 4h2v2H3v-2zm0 4h2v2H3v-2z"/></svg>'); }
+        .icon-send { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20V4l19 8-19 8zm2-3l11.85-5L5 7v4l6 2-6 2v4z"/></svg>'); }
+        .icon-stop { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>'); -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="5" width="14" height="14" rx="2"/></svg>'); }
+        .icon-plus-circle { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-9H8v2h3v3h2v-3h3v-2h-3V8h-2v3z"/></svg>'); }
+        .icon-bot { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18 3v2h2v4h-2v2h-2V7h-4V5h4V3h2zM8 9h6v2H8V9zm0 4h6v2H8v-2zm0 4h6v2H8v-2zM4 3h6v2H6v14h12v-6h2v8H4V3z"/></svg>'); }
+        .icon-chevron-right { mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>'); }
+
+
+/* Add this class or wrap it in your dark theme parent selector.
+   Stops are in px (fixed 80px band from the top), not %, so the
+   sheen keeps its density instead of stretching thin as the bar
+   grows taller with multi-line input. */
+body.dark-mode .input-bar,
+[data-theme="dark"] .input-bar {
+    background: linear-gradient(180deg, #2a2c30 0px, #1e2023 80px);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 
+        inset 0 1px 1px rgba(255, 255, 255, 0.1),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.4),
+        0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+.icon-graph { 
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20H20"/><path d="M7 19C8 17 9 10 13 10C16 10 17 14 19 5"/></svg>');
+}
+
+
+:root {
+    --bg-main: #ffffff;
+    --bg-input: #ffffff;
+    --bg-ai-msg: #ffffff;
+    
+    /* Softened Slate Typography & Icon Tones */
+    --text-main: #2d3139;
+    --text-muted: #6c727f;
+    --icon-color: #4b5262;
+    
+    --border-color: rgba(0, 0, 0, 0.08);
+    --accent: #3b82f6;
+
+    /* Circular Menu Buttons: Precise 3D orb surface */
+    --btn-grad: radial-gradient(circle at 35% 35%, #ffffff 0%, #f0f2f5 65%, #e2e6eb 100%);
+    --shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+
+    --red-cancel: #ff5e5e;
+    --green-success: #10b981;
+    --safe-top: 0px;    /* set by Kotlin: WindowInsetsCompat statusBars() top */
+    --safe-bottom: 0px; /* set by Kotlin: max(navigationBars, systemGestures) bottom */
+    --safe-left: 0px;   /* set by Kotlin: navigationBars/gestures left */
+    --safe-right: 0px;  /* set by Kotlin: navigationBars/gestures right */
+    --keyboard-height: 0px; /* live IME inset, measured via visualViewport in index.html */
+    --input-bar-height: 76px; /* live .input-bar height, measured via ResizeObserver in index.html */
+            
+    /* Matte plastic input surface — soft depth without a metallic sheen. */
+    --input-grad: linear-gradient(180deg, #f8f9fb 0%, #f0f2f5 100%);
+    --input-border: var(--border-color);
+    --input-shadow-inner-top: rgba(255, 255, 255, 0.72);
+    --input-shadow-inner-bottom: rgba(0, 0, 0, 0.045);
+    --input-shadow-drop: 0 8px 20px -5px rgba(0, 0, 0, 0.09), 0 2px 6px -2px rgba(0, 0, 0, 0.035);
+
+    /* Graph themes - Light mode defaults */
+    --graph-bg: #f5f7fa;
+    --graph-card-bg: #ffffff;
+    --graph-border: #e2e8f0;
+    --graph-text: #1e293b;
+    --graph-grid: #cbd5e1;
+    --graph-axis: #94a3b8;
+    --graph-canvas-bg: #ffffff;
+}
+
+
+html.dark-mode,
+body.dark-mode {
+    /* Soft dark gray foundation (Discord/Twitter-style) — renders
+       consistently across OLED and LCD panels, unlike pure black
+       which depends on per-pixel shutoff and looks different
+       (grayish/bluish/crushed) depending on the screen. */
+    --bg-main: #1e2023;
+
+    /* Slightly lighter layer for cards/messages, so surfaces read as
+       distinct from the base background without needing a border. */
+    --bg-input: #28292d;
+    --bg-ai-msg: #232427;
+
+    /* Soft off-white text — enough contrast to read easily without the
+       harshness of pure white on a dark surface. */
+    --text-main: #e6e7e9;
+    --text-muted: #9d9fa3;
+
+    /* Visible but soft borders — layered gray needs a touch more border
+       presence than pure black did, since surfaces are closer in tone. */
+    --border-color: #38393d;
+
+    /* The "Premium" button: soft charcoal gradient, matching the new base */
+    --btn-grad: linear-gradient(180deg, #2f3034 0%, #1e2023 100%);
+
+    /* Matte plastic input surface — restrained contrast for dark mode. */
+    --input-grad: linear-gradient(180deg, #2a2c30 0%, #25272b 100%);
+    --input-border: var(--border-color);
+    --input-shadow-inner-top: rgba(255, 255, 255, 0.045);
+    --input-shadow-inner-bottom: rgba(0, 0, 0, 0.28);
+    --input-shadow-drop: 0 8px 20px rgba(0, 0, 0, 0.34);
+
+    /* Softer shadow — pure-black shadows read as harsh voids against a
+       lighter base, so this is toned down to match. */
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+    /* Graph themes - Dark mode */
+    --graph-bg: #1e2023;
+    --graph-card-bg: #232427;
+    --graph-border: #38393d;
+    --graph-text: #e6e7e9;
+    --graph-grid: #2f3034;
+    --graph-axis: #58595d;
+    --graph-canvas-bg: #1e2023;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+
+        /* 🔒 Disable text selection app-wide by default. Selection is
+           re-enabled only inside individual message bubbles (see .message,
+           .text-node below) so a long-press can never span across the
+           header, multiple bubbles, or other UI chrome. */
+        html, body, * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+        input, textarea, [contenteditable], [contenteditable] * {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+        
+        
+        
+        
+        
+        /* Prevent white flash during orientation change */
+@media (orientation: portrait), (orientation: landscape) {
+    html {
+        background-color: var(--bg-main);
+    }
+}
+        
+        
+
+       html, body {
+    height: 100%; 
+    width: 100%; 
+    overflow: hidden; 
+    position: fixed;
+    overscroll-behavior: none;
+    background-color: var(--bg-main); 
+    color: var(--text-main);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0s !important;
+}
+
+* {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+    display: none;
+}
+
+/* 🔒 Prevents the background chat feed from scrolling/responding to touch
+   while a modal, the sidebar, or the overlay is open. Toggled by JS. */
+body.scroll-locked .chat-feed {
+    overflow: hidden !important;
+    touch-action: none !important;
+    pointer-events: none !important;
+}
+
+        @keyframes popIn {
+            0% { transform: scale(0.9); opacity: 0; }
+            70% { transform: scale(1.02); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes clickPress {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes modalSlideIn {
+            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(var(--safe-top) + 8px) 16px 8px;
+    min-height: 56px;
+    height: auto;
+    z-index: 1000;
+}
+
+/* Background plate behind the nav — solid, no fade mask. */
+.nav-container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--bg-main);
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+        .btn-circle {
+            width: 50px; height: 50px; border-radius: 50%;
+            background: var(--btn-grad); border: 1px solid var(--border-color);
+            box-shadow: 2px 4px 12px var(--shadow);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 100; color: var(--text-main);
+            transition: transform 0.1s;
+        }
+        .btn-circle:active { animation: clickPress 0.2s forwards; }
+
+        .hamburger-button { flex-direction: column; gap: 4px; }
+        .hamburger-button span { display: block; height: 2px; background: var(--text-main); border-radius: 1px; transition: 0.3s; }
+        .line-top { width: 18px; } .line-bottom { width: 12px; margin-right: 6px; }
+
+        .menu-wrapper.active .line-top { transform: translateY(3px) rotate(45deg); width: 20px; }
+        .menu-wrapper.active .line-bottom { transform: translateY(-3px) rotate(-45deg); width: 20px; margin-right: 0; }
+
+        .menu-wrapper { position: relative; }
+        .spoke {
+            position: absolute; top: 4px; left: 4px; width: 42px; height: 42px;
+            background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1001; color: var(--text-main); font-size: 18px;
+        }
+        .menu-wrapper.active .spoke-1 { opacity: 1; pointer-events: auto; transform: translate(65px, 0); }
+        .menu-wrapper.active .spoke-2 { opacity: 1; pointer-events: auto; transform: translate(45px, 45px); }
+        .menu-wrapper.active .spoke-3 { opacity: 1; pointer-events: auto; transform: translate(0, 65px); }
+
+
+        .message-container { position: relative; display: flex; flex-direction: column; width: 100%; margin: 14px 0;}
+        .message { padding: 12px 14px; font-size: 0.95rem; line-height: 1.55;  position: relative; }
+        /* Re-enable selection only inside a single message bubble's text,
+           so long-press selection can't extend beyond that one bubble. */
+        .message .text-node, .message .text-node * {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+            -webkit-touch-callout: default;
+        }
+        .message.ai {
+    align-self: flex-start;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-width: min(100%, 480px);
+    box-shadow: none;
+    font-size: 1rem;
+    font-weight: 400;
+}
+        .message.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #4c8cf5, #3b82f6);
+    color: white;
+    border-radius: 18px 18px 5px 18px;
+    box-shadow: 
+        inset 0 1px 1px rgba(255, 255, 255, 0.35), /* Sharp top highlight matching 3D theme */
+        0 4px 12px rgba(59, 130, 246, 0.25);
+    max-width: 90%;
+    transition: transform 0.15 ease, box-shadow 0.2s ease;
+}
+
+        .message-time { display: none; font-size: 11px; margin-top: 6px; opacity: 0.6; font-weight: 500; }
+        .message.user .message-time { text-align: right; color: rgba(255,255,255,0.8); }
+
+        .sidebar {
+            position: fixed; top: 0; left: -280px; width: 280px; height: 100%;
+            background: var(--bg-main); z-index: 3000; transition: 0.3s ease;
+            border-right: 1px solid var(--border-color);
+            display: flex; flex-direction: column;
+            padding: 0;
+        }
+        .sidebar.open { transform: translateX(280px); }
+        .sidebar-scroll {
+            flex: 1;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            padding: calc(var(--safe-top) + 30px) 20px 20px;
+        }
+        .history-list { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
+        .history-item {
+            padding: 12px; border-radius: 12px; border: 1px solid var(--border-color); cursor: pointer;
+            font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            transition: 0.2s; display: flex; align-items: center; justify-content: space-between;
+        }
+        .history-item.active { border-color: var(--accent); background: rgba(59, 130, 246, 0.05); font-weight: 600; }
+        .sidebar-empty-trash {
+            flex-shrink: 0;
+            margin: 0 20px calc(var(--safe-bottom) + 20px);
+            background: none; border: 1px solid var(--red-cancel); color: var(--red-cancel);
+            padding: 10px; border-radius: 12px; cursor: pointer; font-size: 13px;
+        }
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); display: none; z-index: 2500; backdrop-filter: blur(4px); }
+        .overlay.show { display: block; }
+
+.input-container {
+    position: fixed;
+    bottom: var(--keyboard-height, 0px);
+    left: 0;
+    width: 100%;
+    padding: 0 12px calc(var(--safe-bottom) + 12px);
+    z-index: 2000;
+    pointer-events: none;
+    transition: bottom 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.input-container > * {
+    pointer-events: auto;
+}
+
+/* Background plate behind the input bar — solid, no fade mask. */
+.input-container::before {
+    content: "";
+    position: absolute;
+    top: 60px;      /* ← how far DOWN the plate starts, measured from the container's top */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bg-main);
+    z-index: -1;
+    pointer-events: none;
+}
+.input-bar {
+    width: 100%;
+    min-height: 76px;
+    /* Matte, softly layered surface. The restrained gradient gives the
+       bar physical depth without the previous reflective/metallic look. */
+    background: var(--input-grad);
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 16px 10px;
+    gap: 6px;
+    box-shadow: 
+        inset 0 1px 1px var(--input-shadow-inner-top),
+        inset 0 -2px 4px var(--input-shadow-inner-bottom),
+        0 8px 20px var(--input-shadow-drop);
+    transition: background 0.3s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+/* Bottom row of the input bar: everything here is a control
+   (attach/menu toggle on the left, send/stop button on the right).
+   No text entry ever lives in this row — typing happens in the
+   textarea above, at the top of the pill. */
+.input-controls-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.input-controls-left,
+.input-controls-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.input-bar:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+}
+
+body.dark-mode .input-bar:focus-within {
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.18);
+}
+
+.chat-feed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: var(--keyboard-height, 0px);
+    overflow-y: auto;
+    overscroll-behavior: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: var(--bg-main);
+    padding: 0 20px calc(var(--input-bar-height, 76px) + var(--chat-feed-bottom-pad, 70vh));
+    transition: bottom 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                padding-bottom 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    padding-top: calc(var(--safe-top) + 56px + 20px);
+}
+
+        #userInput { width: 100%; border: none; background: transparent; outline: none; color: var(--text-main); font-size: 16px; resize: none; max-height: 150px; overflow-y: auto; line-height: 24px; padding: 2px 2px 4px; font-family: inherit;
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+            -webkit-touch-callout: default;
+            will-change: height; /* hints the browser to prep for frequent height changes */
+            /* Height is animated frame-by-frame in JS (chat2.js
+               autoExpand), not via CSS transition — see that file for
+               why the transition approach doesn't work here. */
+        }
+        #userInput::placeholder { color: var(--text-muted); }
+        /* Brief flash to confirm a long-press copy succeeded */
+        #userInput.copy-flash { background: rgba(59, 130, 246, 0.12); transition: background 0.15s ease; }
+        .toggle-icon { font-size: 30px; color: var(--text-muted); cursor: pointer; margin: 0; transition: transform 0.4s, color 0.2s; width: 28px; height: 28px; flex-shrink: 0; }
+        .toggle-icon.active { color: var(--red-cancel); transform: rotate(135deg); }
+
+        /* Placeholder model-mode button — tap cycles Fast → Thinking → Max.
+           Color just tags the current mode; nothing is wired up yet. */
+        .model-cycle-btn {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            cursor: pointer;
+            user-select: none;
+            flex-shrink: 0;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+        }
+        .model-cycle-btn[data-mode="fast"] {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+        .model-cycle-btn[data-mode="thinking"] {
+            color: #b45309;
+            border-color: #b45309;
+        }
+        .model-cycle-btn[data-mode="max"] {
+            color: var(--red-cancel);
+            border-color: var(--red-cancel);
+        }
+        .send-btn-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            margin: 0;
+            transition: transform 0.1s, opacity 0.2s;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.35);
+            flex-shrink: 0;
+        }
+        .send-btn-wrap:active { transform: scale(0.85); }
+        .send-btn-wrap .send-btn {
+            color: #fff;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            cursor: pointer;
+            transition: width 0.18s ease, height 0.18s ease;
+        }
+        .send-btn-wrap.stop-mode {
+            background: var(--accent);
+            box-shadow: 0 2px 8px rgba(59,130,246,0.35);
+        }
+        .send-btn-wrap.stop-mode .send-btn {
+            color: #fff;
+            width: 13px;
+            height: 13px;
+        }
+        /* Send ⇄ stop morph: sendMessage() swaps the mode instantly (no
+           more waiting on a delay timer) and triggers this class via
+           morphSendIcon() in chat2.js. The old glyph spins/shrinks away
+           and the new one spins back in, with the icon-send/icon-stop
+           class swap landing exactly at the invisible midpoint so the
+           shape-change itself is never seen — only the morph is. */
+        .send-btn-wrap .send-btn.icon-morphing {
+            animation: sendIconMorph 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        @keyframes sendIconMorph {
+            0%   { transform: scale(1) rotate(0deg); opacity: 1; }
+            45%  { transform: scale(0.3) rotate(90deg); opacity: 0; }
+            55%  { transform: scale(0.3) rotate(-90deg); opacity: 0; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        /* Speaker/read-aloud toggle — placeholder UI, no audio wired up
+           yet. Styled as a match to .send-btn-wrap (round, solid blue,
+           white glyph) rather than only turning blue once active.
+           Active state animates the two sound-wave arcs outward on a
+           loop to suggest audio playing; idle keeps them faint/still. */
+        .voice-btn-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px; height: 32px;
+            min-width: 32px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            cursor: pointer;
+            margin: 0;
+            transition: transform 0.1s, opacity 0.2s;
+            box-shadow: 0 2px 8px rgba(59,130,246,0.35);
+            flex-shrink: 0;
+        }
+        .voice-btn-wrap:active { transform: scale(0.85); }
+        .voice-btn-wrap .voice-btn {
+            width: 17px;
+            height: 17px;
+            margin: 0;
+            cursor: pointer;
+            overflow: visible;
+        }
+        .voice-btn-wrap .voice-speaker-cone { fill: #fff; }
+        .voice-btn-wrap .voice-wave {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2;
+            stroke-linecap: round;
+            opacity: 0.4;
+            transform-origin: 14px 12px;
+            transition: opacity 0.2s ease;
+        }
+        .voice-btn-wrap.active .voice-wave {
+            animation: voiceWavePulse 1.1s ease-in-out infinite;
+        }
+        .voice-btn-wrap.active .voice-wave-1 { animation-delay: 0s; }
+        .voice-btn-wrap.active .voice-wave-2 { animation-delay: 0.16s; }
+        @keyframes voiceWavePulse {
+            0%   { opacity: 0.4; transform: scale(0.85); }
+            40%  { opacity: 1;   transform: scale(1.08); }
+            100% { opacity: 0.4; transform: scale(0.85); }
+        }
+
+        /* Small centered confirmation dropped into the feed when the user
+           hits stop mid-generation — muted so it reads as a status note,
+           not another message bubble. */
+        .stopped-notice {
+            align-self: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-style: italic;
+            text-align: center;
+            padding: 2px 0 4px;
+        }
+
+
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: none;
+         align-items: center; justify-content: center; z-index: 4000; padding: 20px; }
+        .modal.active { display: flex; }
+        .modal-card {
+            width: 100%; max-width: 450px; background: var(--bg-main); color: var(--text-main);
+            border-radius: 30px; padding: 25px; text-align: center; border: 1px solid var(--border-color);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .modal-card button { margin-top: 15px; width: 100%; padding: 14px; background: var(--accent); border: none; border-radius: 15px; color: white; font-weight: bold; cursor: pointer; transition: transform 0.1s; border: none; font-size: 16px; }
+        .modal-card button:active { transform: scale(0.98); }
+
+        #settingsModal {
+            background: var(--bg-main) !important;
+            align-items: stretch !important;
+            justify-content: stretch !important;
+            padding: 0 !important;
+        }
+        #settingsModal .modal-card {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            height: 100dvh !important;
+            max-height: 100dvh !important;
+            border-radius: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            padding: 0 !important;
+            gap: 0 !important;
+            text-align: left !important;
+            animation: graphFullscreenIn 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow: hidden !important;
+        }
+        #settingsModal .chart-modal-header {
+            flex-shrink: 0;
+            width: 100%;
+            max-width: 640px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: calc(var(--safe-top) + 12px) 20px 12px;
+        }
+
+        /* Backup & Storage modal: same full-page layout as Settings. */
+        #backupModal {
+            background: var(--bg-main) !important;
+            align-items: stretch !important;
+            justify-content: stretch !important;
+            padding: 0 !important;
+        }
+        #backupModal .modal-card {
+            width: 100vw !important;
+            max-width: 100vw !important;
+            height: 100dvh !important;
+            max-height: 100dvh !important;
+            border-radius: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            padding: 0 !important;
+            gap: 0 !important;
+            text-align: left !important;
+            animation: graphFullscreenIn 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+            overflow: hidden !important;
+        }
+        #backupModal .chart-modal-header {
+            flex-shrink: 0;
+            width: 100%;
+            padding: calc(var(--safe-top) + 12px) 18px 12px;
+        }
+
+      .graph-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top:8px;
+    /* Remove any forced margin-top that might break landscape alignment */
+}
+
+        .graph-input-pill { display: flex; align-items: center; gap: 8px; background: var(--bg-input); padding: 8px 12px; border-radius: 12px; border: 1px solid var(--border-color); }
+        .graph-input-pill input, .graph-input-pill select { flex: 1; border: none; background: transparent; outline: none; font-size: 13px; color: var(--text-main); font-family: inherit; }
+        .graph-canvas-container { background: var(--graph-card-bg); border-radius: 16px; padding: 10px; height: 270px; margin-top: 10px; position: relative; overflow: hidden; border: 1px solid var(--graph-border); }
+
+        .graph-viewport {
+            width: 100%;
+            height: 100%;
+            background: var(--graph-canvas-bg);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+            touch-action: none;
+            border: 1px solid var(--graph-border);
+        }
+        .graph-viewport:active { cursor: grabbing; }
+
+
+.graph-crosshair {
+    position: absolute; top: 50%; left: 50%;
+    width: 20px; height: 20px;
+    transform: translate(-50%, -50%);
+    pointer-events: none; z-index: 15;
+    background:
+        linear-gradient(var(--red-cancel), var(--red-cancel)) center/1.5px 100%,
+        linear-gradient(var(--red-cancel), var(--red-cancel)) center/100% 1.5px;
+    background-repeat: no-repeat;
+    clip-path: polygon(
+        50% 0%,
+        53% 47%,
+        100% 50%,
+        53% 53%,
+        50% 100%,
+        47% 53%,
+        0% 50%,
+        47% 47%
+    );
+    opacity: 0.85;
+}
+
+.graph-crosshair::before,
+.graph-crosshair::after { content: none; }
+
+        .graph-coord-tag {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 10px;
+            color: white;
+            background: rgba(59, 130, 246, 0.95);
+            font-family: monospace;
+            padding: 4px 10px;
+            border-radius: 20px;
+            pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 10;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            transition: all 0.2s ease;
+        }
+
+        .graph-zoom-ctrl {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 20;
+        }
+        .graph-z-btn {
+            width: 30px;
+            height: 30px;
+            background: var(--accent);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            z-index: 20;
+            pointer-events: auto;
+            transition: transform 0.1s, background 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border: none;
+        }
+        .graph-z-btn:active { transform: scale(0.95); background: #2563eb; }
+
+        .chart-canvas { width: 100% !important; height: 100% !important; }
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TOGGLE MENU — a row of three tiles that sits directly BELOW the input bar.
+   It lives inside .input-container (in normal flow), so opening it pushes
+   the bar up and closing it lets the bar settle back down.
+   Open/close is a height reveal driven by the .show / .closing classes that
+   toggleInputMenu() already sets (300ms close timer — keep anims <= 280ms).
+   ═══════════════════════════════════════════════════════════════════════ */
+.input-menu {
+    display: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    /* Padding gives the tiles' soft shadow room inside the clipped box; the
+       negative margins cancel that padding so layout is unchanged. The 8px
+       top padding doubles as the gap between the bar and the tiles. */
+    padding: 8px 4px 6px;
+    margin: 0 -4px -6px;
+    overflow: hidden;
+}
+
+.input-menu.show {
+    display: grid;
+    animation: menuReveal 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.input-menu.closing {
+    animation: menuHide 0.24s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+@keyframes menuReveal {
+    from { max-height: 0;     opacity: 0; padding-top: 0;   padding-bottom: 0; margin-bottom: 0; }
+    to   { max-height: 140px; opacity: 1; padding-top: 8px; padding-bottom: 6px; margin-bottom: -6px; }
+}
+@keyframes menuHide {
+    from { max-height: 140px; opacity: 1; padding-top: 8px; padding-bottom: 6px; margin-bottom: -6px; }
+    to   { max-height: 0;     opacity: 0; padding-top: 0;   padding-bottom: 0; margin-bottom: 0; }
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 6px 10px;
+    min-width: 0;
+    background: var(--input-grad);
+    border: 1px solid var(--input-border);
+    border-radius: 20px;
+    box-shadow:
+        0 2px 10px -4px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+    color: var(--text-main);
+    -webkit-user-select: none;
+    user-select: none;
+    transition: transform 0.1s, background 0.15s, border-color 0.15s;
+}
+
+/* Round chip holding the glyph — same blue chip palette as the Fast pill */
+.menu-item-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    transition: background 0.15s;
+}
+
+.menu-item-icon .icon {
+    width: 19px;
+    height: 19px;
+}
+
+.menu-item-label {
+    max-width: 100%;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Very narrow phones (~320px): keep "Xenon Graph" on one line */
+@media (max-width: 350px) {
+    .menu-item { padding-left: 3px; padding-right: 3px; }
+    .menu-item-label { font-size: 11.5px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .input-menu.show,
+    .input-menu.closing {
+        animation-duration: 0.01s;
+    }
+}
+
+
+        /* ---- Chart Modal Redesign ---- */
+        #graphModal .modal-card {
+            padding: 0;
+            overflow: hidden;
+            border-radius: 22px;
+            gap: 0;
+        }
+        .chart-modal-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+.chart-close-btn {
+    all: unset;
+    cursor: pointer;
+    width: auto !important;  /* Let it size to content */
+    min-width: 32px !important;  /* Minimum width for pill shape */
+    height: 32px !important;
+    padding: 0 14px !important;  /* Horizontal padding for pill shape */
+    border-radius: 30px !important;  /* Pill shape */
+    background: var(--bg-input);
+    border: 1px solid var(--border-color) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;  /* Space between icon and text if any */
+    color: var(--text-muted);
+    transition: background 0.15s, color 0.15s;
+    margin-top: 0 !important;
+    flex-shrink: 0;
+    font-size: 12px;  /* For any text label */
+}
+
+.chart-close-btn:active { transform: scale(0.92) !important; background: var(--red-cancel) !important; }
+        .chart-close-btn .icon { width: 12px !important; height: 12px !important; }
+        #graphModal .graph-canvas-container {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Chart viewport — mirrors graph-viewport from tgraph */
+        #ggViewport {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: grab;
+            touch-action: none;
+            border-radius: 0;
+        }
+        #ggViewport:active { cursor: grabbing; }
+
+        /* Chart coord/zoom badge */
+        #ggCoordTag {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-size: 10px;
+            font-weight: 600;
+            color: white;
+            background: rgba(59,130,246,0.88);
+            padding: 3px 10px;
+            border-radius: 20px;
+            pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.2);
+            z-index: 10;
+            letter-spacing: 0.4px;
+            backdrop-filter: blur(3px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+            transition: all 0.2s;
+        }
+
+        /* Canvas inside viewport: don't stretch with width:100% when zoomed */
+        #ggViewport #tChart {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            transform-origin: center center;
+            transition: transform 0s; /* no CSS transition — JS does it */
+        }
+
+        #graphModal .graph-canvas-container {
+            border-radius: 0;
+            margin: 0;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+        }
+        #graphModal .graph-controls {
+            padding: 12px 14px 14px;
+            gap: 10px;
+        }
+        .chart-animate {
+            animation: chartFadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes chartFadeIn {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Line chart tooltip */
+        .chart-tooltip {
+            position: absolute;
+            background: var(--text-main);
+            color: var(--bg-main);
+            font-size: 12px;
+            font-weight: 700;
+            font-family: inherit;
+            padding: 5px 10px;
+            border-radius: 8px;
+            pointer-events: none;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            transform: translate(-50%, -100%);
+            margin-top: -10px;
+            z-index: 10;
+        }
+        .chart-tooltip.visible { opacity: 1; }
+        .chart-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: var(--text-main);
+        }
+        .graph-equation-hint {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-align: left;
+            padding: 4px 8px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .graph-equation-hint span {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .switch { position: relative; display: inline-block; width: 46px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--border-color); border-radius: 24px; transition: .2s; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; border-radius: 50%; transition: .2s; }
+        input:checked + .slider { background-color: var(--green-success); }
+        input:checked + .slider:before { transform: translateX(22px); }
+
+        .checkbox-custom { position: relative; display: inline-flex; width: 24px; height: 24px; flex-shrink: 0; cursor: pointer; }
+        .checkbox-custom input { position: absolute; inset: 0; opacity: 0; margin: 0; width: 100%; height: 100%; cursor: pointer; }
+        .checkbox-box { position: absolute; inset: 0; border: 2px solid var(--border-color, #444); border-radius: 7px; background: transparent; transition: background .15s, border-color .15s; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+        .checkbox-custom input:checked + .checkbox-box { background: var(--accent); border-color: var(--accent); }
+        .checkbox-box .icon-check { width: 15px; height: 15px; background-color: #fff; opacity: 0; transform: scale(0.6); transition: opacity .15s, transform .15s; }
+        .checkbox-custom input:checked + .checkbox-box .icon-check { opacity: 1; transform: scale(1); }
+
+        .function-tag {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            margin-right: 4px;
+        }
+
+        .icon { background-color: currentColor; }
+        .text-node { word-break: break-word; }
+
+
+       /* --- RESPONSIVE MODAL FIX --- */
+
+/* Portrait Mode (Default) */
+.modal-card {
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 95%;
+}
+
+/* Landscape Mode / Split Screen */
+@media (orientation: landscape) {
+    .modal-card {
+        max-width: 85vw;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        align-items: start;
+        text-align: left;
+        padding: 20px;
+        max-height: 90vh;
+    }
+
+    /* Chart Generator and Xenon Graph are fullscreen-only (see styles2.css)
+       and are intentionally excluded from this generic landscape 2-column
+       card layout — there is no windowed/split-screen mode for them. */
+
+    /* Keep other modals centered */
+    #aboutModal .modal-card,
+    #confirmModal .modal-card {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+    }
+
+    /* Adjust the Close Button to fit the right column */
+    .modal-card button {
+        grid-column: 2;
+        margin-top: 10px;
+    }
+}
+/* Handle very short screens (iPhone notch landscape) */
+@media (max-height: 450px) {
+    .modal-card {
+        padding: 15px;
+        border-radius: 20px;
+    }
+    .graph-canvas-container {
+        height: 180px !important;
+    }
+}
+
+
+/* --- BULLETPROOF LANDSCAPE SPLIT-SCREEN --- */
+@media (orientation: landscape) and (max-height: 600px) {
+    .modal-card {
+        width: 95vw !important;
+        max-width: 900px !important;
+        max-height: 95vh !important;
+        display: grid !important;
+        /* Left side gets leftover space (1fr), Right side gets fixed width (260px) */
+        grid-template-columns: 1fr 260px !important;
+        grid-template-rows: auto auto 1fr auto !important;
+        gap: 10px 15px !important;
+        padding: 15px !important;
+        overflow: hidden !important; /* Stops the whole card from scrolling weirdly */
+    }
+
+    /* 1. Titles go across the top */
+    .modal-card h3, .modal-card .header {
+        grid-column: 1 / -1 !important;
+        grid-row: 1 !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    /* 2. Graph takes the left side and stretches to the bottom */
+    .graph-canvas-container {
+        grid-column: 1 !important;
+        grid-row: 2 / span 3 !important;
+        height: 100% !important;
+        min-height: 200px !important;
+        margin: 0 !important;
+    }
+
+    /* 3. Equation Hints (Xenon-graph) go to right column top */
+    .graph-equation-hint {
+        grid-column: 2 !important;
+        grid-row: 2 !important;
+        margin: 0 !important;
+    }
+
+    /* 4. Controls/Inputs go to right column middle and can scroll */
+    .graph-controls {
+        grid-column: 2 !important;
+        grid-row: 3 !important;
+        margin: 0 !important;
+        overflow-y: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        padding-right: 5px;
+    }
+
+    /* 5. Standard Close Button (Graph Modal) goes to right column bottom */
+    .modal-card > button {
+        grid-column: 2 !important;
+        grid-row: 4 !important;
+        margin: 0 !important;
+    }
+
+    /* --- FIX FOR THE MISSING 'CENTER' BUTTON --- */
+    /* This overrides your inline HTML grid so the buttons stack vertically */
+    .graph-controls div[style*="grid-template-columns"] {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 8px !important;
+        margin-top: auto !important;
+    }
+
+    .graph-controls div[style*="grid-template-columns"] button {
+        width: 100% !important;
+        min-height: 42px !important;
+    }
+}
+
+
+/* Rotate the Plus icon to an X */
+.toggle-icon {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.toggle-icon.active {
+    transform: rotate(135deg); /* Rotates the plus into an X */
+    color: var(--red-cancel) !important;
+}
+
+/* Modal Closing Animation */
+.modal {
+    transition: opacity 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity;
+}
+.modal.closing {
+    opacity: 0;
+    pointer-events: none;
+}
+.modal-card {
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+.modal.closing .modal-card {
+    transform: scale(0.92) translateY(16px) translateZ(0);
+    transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Horizontal Scrollable Autocomplete */
+.suggestions-container {
+    position: absolute;
+    bottom: 85px; /* Sits right above the input bar */
+    left: 20px;
+    right: 20px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    display: none; /* Flex via JS */
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    z-index: 3000;
+    box-shadow: 0 4px 15px var(--shadow);
+    padding: 8px;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -webkit-overflow-scrolling: touch;
+}
+
+.suggestions-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Chrome/Safari */
+}
+
+/* Landscape adjustment to prevent it being too wide */
+@media (orientation: landscape) {
+    .suggestions-container {
+        max-width: 60%;
+        left: 20px;
+        right: auto;
+    }
+}
+
+.logo-text {
+    font-weight: 800;
+    font-size: 1.5rem;
+
+    background: linear-gradient(
+        90deg,
+        #3b82f6,
+        #60a5fa,
+        #2563eb,
+        #3b82f6
+    );
+
+    background-size: 200% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Animating background-position repaints this text every frame — unlike
+       transform/opacity it isn't compositor-only, so `infinite` here meant
+       a real, constant repaint cost for as long as the app is open, on
+       every screen, regardless of any modal or engine being used. Playing
+       it a few times and settling (fill-mode: forwards holds the final
+       gradient position) keeps the flourish on load without paying for it
+       forever. */
+    animation: blueFlow 4s linear 3 forwards;
+}
+
+/* Smooth flowing gradient */
+@keyframes blueFlow {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+
+   /* About Modal — always single column, centered */
+#aboutModal .modal-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    max-width: 400px !important;
+    padding: 25px !important;
+    gap: 15px !important;
+}
+
+#aboutModal .modal-card h2 {
+    margin: 0 !important;
+}
+
+#aboutModal .modal-card p {
+    margin: 0 !important;
+    font-size: 14px !important;
+}
+
+#aboutModal .modal-card button {
+    width: 100% !important;
+    margin-top: 10px !important;
+}
+
+
+.icon-settings {
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>');
+}
+
+
+.icon-new-chat {
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zm-6-5h4v2h-4v-2zM6 7h12v2H6V7zm0 4h6v2H6v-2z"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zm-6-5h4v2h-4v-2zM6 7h12v2H6V7zm0 4h6v2H6v-2z"/></svg>');
+}
+
+
+/* =========================================================
+   XENON — BACKUP & STORAGE / VAULT REDESIGN
+   A more intentional, layered UI that follows Xenon's
+   soft 3D surfaces, restrained borders and accent language.
+   ========================================================= */
+
+#backupModal {
+    background: var(--bg-main) !important;
+}
+
+#backupModal .backup-modal-card {
+    background:
+        radial-gradient(700px 260px at 50% -80px, rgba(59,130,246,.08), transparent 68%),
+        var(--bg-main) !important;
+}
+
+#backupModal .backup-header {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: calc(var(--safe-top) + 14px) 20px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.backup-header-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.backup-back-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 13px !important;
+    background: var(--btn-grad) !important;
+    color: var(--icon-color) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.backup-back-btn .icon {
+    width: 18px;
+    height: 18px;
+    transform: rotate(180deg);
+}
+
+.backup-title {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.1;
+    letter-spacing: -.35px;
+    font-weight: 750;
+}
+
+.backup-header-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, var(--bg-input));
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border-color));
+}
+
+.backup-header-mark .icon {
+    width: 19px;
+    height: 19px;
+}
+
+#backupModal .backup-body {
+    flex: 1;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 18px 20px calc(var(--safe-bottom) + 28px);
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    text-align: left;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.backup-storage-card,
+.backup-action-card,
+.backup-danger-card {
+    border: 1px solid var(--border-color);
+    background: var(--bg-input);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+}
+
+.backup-storage-card {
+    padding: 18px;
+    overflow: hidden;
+    position: relative;
+}
+
+.backup-storage-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.backup-section-kicker {
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    margin-bottom: 3px;
+}
+
+.backup-total {
+    font-size: 29px;
+    line-height: 1.05;
+    font-weight: 780;
+    letter-spacing: -.8px;
+}
+
+.backup-total-label {
+    margin-top: 4px;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.backup-storage-orb {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 5px;
+    background: conic-gradient(from 215deg, var(--accent), color-mix(in srgb, var(--accent) 20%, transparent), var(--accent));
+    box-shadow: 0 7px 20px color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.backup-orb-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+}
+
+.backup-orb-inner .icon {
+    width: 22px;
+    height: 22px;
+}
+
+.backup-meter {
+    height: 7px;
+    margin-top: 18px;
+    border-radius: 99px;
+    overflow: hidden;
+    background: color-mix(in srgb, var(--text-muted) 12%, transparent);
+}
+
+.backup-meter span {
+    display: block;
+    height: 100%;
+    width: 3%;
+    border-radius: inherit;
+    background: var(--accent);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 35%, transparent);
+    transition: width .35s ease;
+}
+
+.backup-breakdown {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 16px;
+    margin-top: 16px;
+}
+
+.backup-breakdown-item {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 7px minmax(0,1fr) auto;
+    gap: 7px;
+    align-items: center;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.backup-breakdown-item strong {
+    color: var(--text-main);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.backup-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+}
+
+.backup-action-card {
+    padding: 16px;
+}
+
+.backup-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.backup-icon-tile {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, var(--bg-main));
+    border: 1px solid color-mix(in srgb, var(--accent) 15%, var(--border-color));
+}
+
+.backup-icon-tile .icon {
+    width: 19px;
+    height: 19px;
+}
+
+.backup-card-heading h3 {
+    font-size: 14px;
+    margin: 0;
+    font-weight: 750;
+}
+
+.backup-card-heading p {
+    margin: 3px 0 0;
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.35;
+}
+
+.backup-card-heading b {
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+.backup-option-row {
+    margin-top: 13px;
+    padding: 12px 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    border-radius: 14px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+}
+
+.backup-option-row strong,
+.backup-option-row span {
+    display: block;
+}
+
+.backup-option-row strong {
+    font-size: 12px;
+}
+
+.backup-option-row > div > span {
+    margin-top: 3px;
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+.backup-switch {
+    flex: 0 0 auto;
+}
+
+.backup-primary-btn,
+.backup-import-btn {
+    min-height: 46px;
+    margin-top: 11px !important;
+    border-radius: 14px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 13px !important;
+    font-weight: 750 !important;
+}
+
+.backup-primary-btn .icon,
+.backup-import-btn .icon {
+    width: 17px;
+    height: 17px;
+}
+
+.backup-import-card {
+    padding-bottom: 15px;
+}
+
+.backup-import-btn {
+    width: 100%;
+    cursor: pointer;
+    color: var(--text-main);
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    transition: transform .15s ease, border-color .2s ease, background .2s ease;
+}
+
+.backup-import-btn:active {
+    transform: scale(.985);
+}
+
+.backup-import-btn:hover {
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border-color));
+}
+
+.backup-import-btn input {
+    display: none;
+}
+
+.backup-danger-card {
+    padding: 14px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    border-color: color-mix(in srgb, var(--red-cancel) 25%, var(--border-color));
+    background: color-mix(in srgb, var(--red-cancel) 4%, var(--bg-input));
+}
+
+.backup-danger-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.backup-danger-title .icon {
+    width: 15px;
+    height: 15px;
+    color: var(--red-cancel);
+}
+
+.backup-danger-card p {
+    margin-top: 4px;
+    color: var(--text-muted);
+    font-size: 10px;
+    line-height: 1.35;
+    max-width: 430px;
+}
+
+.backup-danger-btn {
+    width: auto !important;
+    min-width: 70px;
+    margin: 0 !important;
+    padding: 9px 13px !important;
+    border-radius: 11px !important;
+    font-size: 11px !important;
+    background: transparent !important;
+    color: var(--red-cancel) !important;
+    border: 1px solid color-mix(in srgb, var(--red-cancel) 38%, transparent) !important;
+}
+
+.backup-message {
+    display: none;
+    padding: 12px 13px;
+    border-radius: 14px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    font-size: 11px;
+    line-height: 1.45;
+    word-break: break-word;
+}
+
+.backup-footer-note {
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 9px;
+    line-height: 1.4;
+    padding: 1px 10px 0;
+}
+
+.backup-unavailable {
+    grid-column: 1 / -1;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+@media (min-width: 700px) {
+    #backupModal .backup-body {
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 22px;
+    }
+
+    .backup-storage-card {
+        padding: 21px;
+    }
+
+    .backup-breakdown {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 420px) {
+    #backupModal .backup-header {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    #backupModal .backup-body {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .backup-breakdown {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .backup-total {
+        font-size: 26px;
+    }
+
+    .backup-danger-card {
+        align-items: flex-start;
+    }
+}
+
+
+/* Backup storage card: compact safely on short landscape/small screens */
+#backupModal .backup-body {
+    min-height: 0;
+    box-sizing: border-box;
+}
+
+#backupModal .backup-storage-card {
+    flex: 0 0 auto;
+    min-height: 0;
+}
+
+#backupModal .backup-storage-top {
+    min-height: 0;
+}
+
+#backupModal .backup-breakdown {
+    min-height: 0;
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+    #backupModal .backup-header {
+        padding-top: calc(var(--safe-top) + 7px);
+        padding-bottom: 8px;
+    }
+
+    #backupModal .backup-body {
+        padding-top: 10px;
+        padding-bottom: calc(var(--safe-bottom) + 14px);
+        gap: 9px;
+    }
+
+    #backupModal .backup-storage-card {
+        padding: 12px 14px;
+    }
+
+    #backupModal .backup-storage-orb {
+        width: 42px;
+        height: 42px;
+        padding: 4px;
+    }
+
+    #backupModal .backup-total {
+        font-size: 22px;
+    }
+
+    #backupModal .backup-meter {
+        margin-top: 10px;
+        height: 5px;
+    }
+
+    #backupModal .backup-breakdown {
+        margin-top: 9px;
+        gap: 5px 12px;
+    }
+
+    #backupModal .backup-action-card {
+        padding: 11px 13px;
+    }
+
+    #backupModal .backup-card-heading p {
+        margin-top: 2px;
+    }
+
+    #backupModal .backup-primary-btn,
+    #backupModal .backup-import-btn {
+        min-height: 38px;
+        margin-top: 7px !important;
+    }
+}
+
+/* Very short portrait screens */
+@media (max-height: 620px) and (orientation: portrait) {
+    #backupModal .backup-storage-card {
+        padding: 13px 14px;
+    }
+
+    #backupModal .backup-storage-orb {
+        width: 48px;
+        height: 48px;
+    }
+
+    #backupModal .backup-total {
+        font-size: 24px;
+    }
+
+    #backupModal .backup-meter {
+        margin-top: 11px;
+    }
+
+    #backupModal .backup-breakdown {
+        margin-top: 10px;
+    }
+}
+
+
+/* =========================================================
+   XENON — SETTINGS / CONTROL CENTER
+   ========================================================= */
+#settingsModal {
+    background: var(--bg-main) !important;
+}
+
+#settingsModal .xenon-settings-card {
+    background:
+        radial-gradient(700px 260px at 50% -90px, color-mix(in srgb, var(--accent) 8%, transparent), transparent 70%),
+        var(--bg-main) !important;
+}
+
+.xenon-settings-header {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: calc(var(--safe-top) + 14px) 20px 16px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.xenon-settings-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.xenon-settings-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, var(--bg-input));
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border-color));
+    box-shadow: var(--shadow);
+}
+
+.xenon-settings-icon .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.xenon-settings-heading h2 {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.1;
+    letter-spacing: -.4px;
+    font-weight: 780;
+}
+
+.xenon-settings-close {
+    margin: 0 !important;
+}
+
+#settingsModal .xenon-settings-body {
+    flex: 1;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 19px 20px calc(var(--safe-bottom) + 26px);
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    text-align: left;
+}
+
+.xenon-settings-section-label {
+    margin: 4px 4px 2px;
+    color: var(--text-muted);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.45px;
+}
+
+.xenon-setting-card {
+    border: 1px solid var(--border-color);
+    border-radius: 19px;
+    background: var(--bg-input);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.xenon-setting-row {
+    min-height: 70px;
+    padding: 13px 14px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.xenon-setting-icon-tile {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 9%, var(--bg-main));
+    border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border-color));
+}
+
+.xenon-setting-icon-tile .icon {
+    width: 19px;
+    height: 19px;
+}
+
+.xenon-setting-copy {
+    min-width: 0;
+    flex: 1;
+}
+
+.xenon-setting-copy h3 {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 750;
+}
+
+.xenon-setting-copy p {
+    margin: 4px 0 0;
+    color: var(--text-muted);
+    font-size: 10.5px;
+    line-height: 1.35;
+}
+
+.xenon-settings-check {
+    flex: 0 0 auto;
+    margin-left: 5px;
+}
+
+.xenon-navigation-card {
+    cursor: pointer;
+    transition: transform .15s ease, border-color .2s ease, background .2s ease;
+}
+
+.xenon-navigation-card:hover {
+    border-color: color-mix(in srgb, var(--accent) 38%, var(--border-color));
+}
+
+.xenon-navigation-card:active {
+    transform: scale(.992);
+}
+
+.xenon-setting-arrow {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, var(--bg-main));
+    border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--border-color));
+}
+
+.xenon-setting-arrow .icon {
+    width: 17px;
+    height: 17px;
+}
+
+.xenon-setting-status {
+    padding: 9px 14px 10px 68px;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 9.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.xenon-status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.xenon-settings-spacer {
+    flex: 1;
+    min-height: 16px;
+}
+
+.xenon-settings-footnote {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 9px;
+    line-height: 1.4;
+    text-align: center;
+    padding: 3px 10px 0;
+}
+
+.xenon-settings-footnote .icon {
+    width: 12px;
+    height: 12px;
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+    .xenon-settings-header {
+        padding-top: calc(var(--safe-top) + 7px);
+        padding-bottom: 8px;
+    }
+
+    #settingsModal .xenon-settings-body {
+        padding-top: 10px;
+        padding-bottom: calc(var(--safe-bottom) + 14px);
+        gap: 7px;
+    }
+
+    .xenon-settings-section-label {
+        margin-top: 2px;
+    }
+
+    .xenon-setting-row {
+        min-height: 56px;
+        padding: 8px 12px;
+    }
+
+    .xenon-setting-icon-tile {
+        width: 34px;
+        height: 34px;
+        flex-basis: 34px;
+        border-radius: 10px;
+    }
+
+    .xenon-setting-status {
+        padding: 7px 12px 8px 58px;
+    }
+
+    .xenon-settings-spacer {
+        min-height: 5px;
+    }
+}
+
+@media (max-width: 420px) {
+    .xenon-settings-header {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    #settingsModal .xenon-settings-body {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+}
+
+
+/* Chart Generator header — same visual language as Backup & Storage. */
+#graphModal .chart-modal-header {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: calc(var(--safe-top) + 14px) 20px 16px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.chart-header-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    text-align: left;
+}
+
+.chart-header-main > div {
+    text-align: left;
+}
+
+.chart-back-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 13px !important;
+    background: var(--btn-grad) !important;
+    color: var(--icon-color) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chart-back-btn .icon {
+    width: 18px;
+    height: 18px;
+    transform: rotate(180deg);
+}
+
+.chart-title {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.1;
+    letter-spacing: -.35px;
+    font-weight: 750;
+}
+
+.chart-header-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, var(--bg-input));
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border-color));
+    flex-shrink: 0;
+}
+
+.chart-header-mark .icon {
+    width: 19px;
+    height: 19px;
+}
+
+/* Xenon Graph header — same visual language as Backup & Storage. */
+#tgraphModal .graph-modal-header {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: calc(var(--safe-top) + 14px) 20px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+    box-sizing: border-box;
+    text-align: left !important;
+}
+.graph-header-main {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    text-align: left !important;
+}
+#tgraphModal .graph-header-main > div {
+    text-align: left !important;
+}
+.graph-title {
+    margin: 0;
+    font-size: 21px;
+    line-height: 1.1;
+    letter-spacing: -.35px;
+    font-weight: 750;
+    text-align: left !important;
+}
+.graph-back-btn {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 13px !important;
+    background: var(--btn-grad) !important;
+    color: var(--icon-color) !important;
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.graph-back-btn .icon {
+    width: 18px;
+    height: 18px;
+    transform: rotate(180deg);
+}
+.graph-header-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 13px;
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 10%, var(--bg-input));
+    border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--border-color));
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LIGHT MODE REFRESH — flat, rounded, chip-accented
+   Matches the new input design language: soft off-white base, flat white
+   surfaces, generous radius, subtle shadows, blue chip accents.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+    /* Slightly warmer, softer base than the old #f4f6f8 */
+    --bg-main: #fefeff;
+    --bg-input: #ffffff;
+    --bg-ai-msg: #ffffff;
+
+    /* Softer hairlines */
+    --border-color: rgba(0, 0, 0, 0.06);
+
+    /* Flat white surfaces instead of the old 3D orbs */
+    --btn-grad: #ffffff;
+
+    /* Input bar loses its gradient stack — flat white like the design */
+    --input-grad: #ffffff;
+    --input-border: rgba(0, 0, 0, 0.05);
+    --input-shadow-inner-top: rgba(0, 0, 0, 0);
+    --input-shadow-inner-bottom: rgba(0, 0, 0, 0);
+    --input-shadow-drop:
+        0 4px 18px -6px rgba(0, 0, 0, 0.08),
+        0 1px 3px rgba(0, 0, 0, 0.03);
+
+    /* Chip palette — matches the "Think" / "Search" pills */
+    --chip-bg: #e8efff;
+    --chip-text: #2563eb;
+    --chip-border: rgba(37, 99, 235, 0.08);
+    --chip-bg-active: #d8e3ff;
+}
+
+/* ── Input bar ──────────────────────────────────────────────────────── */
+.input-bar {
+    background: var(--input-grad);
+    border: 1px solid var(--input-border);
+    border-radius: 28px;
+    padding: 14px 20px 12px;
+    box-shadow: var(--input-shadow-drop);
+    transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-bar:focus-within {
+    border-color: rgba(37, 99, 235, 0.35);
+    box-shadow: var(--input-shadow-drop), 0 0 0 3px rgba(37, 99, 235, 0.09);
+}
+
+/* ── Nav circular buttons (menu + new chat) ─────────────────────────── */
+.btn-circle {
+    background: var(--btn-grad);
+    border: 1px solid var(--border-color);
+    box-shadow:
+        0 2px 8px -2px rgba(0, 0, 0, 0.06),
+        0 1px 2px rgba(0, 0, 0, 0.02);
+    color: #1a1a1a;
+    transition: transform 0.1s, background 0.15s, box-shadow 0.15s;
+}
+
+.btn-circle:hover {
+    box-shadow:
+        0 3px 12px -2px rgba(0, 0, 0, 0.09),
+        0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.btn-circle:active {
+    transform: scale(0.96);
+}
+
+/* ── Chips (model cycle + input menu items) ─────────────────────────── */
+.model-cycle-btn {
+    background: var(--chip-bg);
+    border: 1px solid var(--chip-border);
+    color: var(--chip-text);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: background 0.15s, color 0.15s, transform 0.1s;
+}
+
+.model-cycle-btn:active {
+    transform: scale(0.96);
+    background: var(--chip-bg-active);
+}
+
+/* Keep the mode-color variants but tint them into the chip palette */
+.model-cycle-btn[data-mode="fast"] {
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    border-color: var(--chip-border);
+}
+.model-cycle-btn[data-mode="thinking"] {
+    background: #fef3e2;
+    color: #b45309;
+    border-color: rgba(180, 83, 9, 0.1);
+}
+.model-cycle-btn[data-mode="max"] {
+    background: #fdecec;
+    color: #d04949;
+    border-color: rgba(208, 73, 73, 0.1);
+}
+
+/* ── Input menu tiles — press / hover states ───────────────────────── */
+.menu-item:hover {
+    border-color: color-mix(in srgb, var(--chip-text) 28%, transparent);
+}
+.menu-item:active,
+.menu-item.pressed {
+    transform: scale(0.96);
+    background: var(--chip-bg);
+}
+.menu-item .icon {
+    color: currentColor;
+}
+
+/* ── Send + voice buttons — flatter, matching the design's solid circles ─ */
+.send-btn-wrap,
+.voice-btn-wrap {
+    box-shadow: 0 2px 8px -2px rgba(37, 99, 235, 0.28);
+}
+
+/* ── Dark mode — scope overrides so dark-mode keeps its own look ────── */
+body.dark-mode,
+html.dark-mode {
+    --chip-bg: rgba(37, 99, 235, 0.14);
+    --chip-text: #93b4fb;
+    --chip-border: rgba(37, 99, 235, 0.18);
+    --chip-bg-active: rgba(37, 99, 235, 0.22);
+}
+
+body.dark-mode .model-cycle-btn[data-mode="thinking"] {
+    background: rgba(180, 83, 9, 0.18);
+    color: #e5a35a;
+    border-color: rgba(180, 83, 9, 0.25);
+}
+body.dark-mode .model-cycle-btn[data-mode="max"] {
+    background: rgba(208, 73, 73, 0.18);
+    color: #f08a8a;
+    border-color: rgba(208, 73, 73, 0.25);
+}
+body.dark-mode .btn-circle {
+    color: var(--text-main);
+    box-shadow:
+        0 2px 8px -2px rgba(0, 0, 0, 0.3),
+        0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CODE CARD DEPTH — separates code/output cards from the chat feed
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.code-card {
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.04),
+        0 4px 14px -4px rgba(0, 0, 0, 0.08);
+}
+
+/* Header band stays subtle but distinct from the body */
+.code-card-header {
+    background: #fafbfc;
+}
+
+/* Preserve depth on the code body — remove any inner fill that
+   would flatten it against the header */
+.code-card > pre.cparse-code,
+.code-card > pre.write-body {
+    background: #ffffff;
+}
+
+/* Dark mode keeps the existing look — just deepen the shadow slightly */
+body.dark-mode .code-card {
+    background: var(--bg-input);
+    border-color: var(--border-color);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.3),
+        0 6px 20px -6px rgba(0, 0, 0, 0.45);
+}
+body.dark-mode .code-card-header {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   USER MESSAGE — chips palette, dark text, flat surface
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.message.user {
+    background: #e8efff;
+    color: #1a2c4e;
+    border: 1px solid rgba(37, 99, 235, 0.08);
+    border-radius: 20px 20px 6px 20px;
+    box-shadow:
+        0 1px 2px rgba(37, 99, 235, 0.05),
+        0 2px 8px -3px rgba(37, 99, 235, 0.12);
+    max-width: 90%;
+}
+
+/* Time stamp needs a dark variant now that the bubble is light */
+.message.user .message-time {
+    color: rgba(26, 44, 78, 0.55);
+}
+
+/* Copy flash stays subtle */
+.message.user.copy-flash {
+    animation: msgCopyFlash 0.4s ease;
+}
+
+/* Edit mode — textarea was styled for a dark bubble; retune for light */
+.message.user.editing {
+    background: #eef4ff;
+}
+
+.edit-textarea {
+    background: rgba(255, 255, 255, 0.7);
+    color: #1a2c4e;
+    border: 1px solid rgba(37, 99, 235, 0.15);
+}
+
+.edit-textarea:focus {
+    outline: 2px solid rgba(37, 99, 235, 0.35);
+}
+
+.edit-cancel-btn {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+}
+
+.edit-save-btn {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+/* ── Dark mode keeps the original blue bubble ───────────────────────── */
+/* ── Dark mode — chip-style, matching the light-mode design ─────────── */
+body.dark-mode .message.user {
+    background: #1e3459;
+    color: #d9e4ff;
+    border: 1px solid rgba(147, 180, 251, 0.12);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.25),
+        0 2px 10px -4px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .message.user .message-time {
+    color: rgba(217, 228, 255, 0.5);
+}
+
+body.dark-mode .message.user.copy-flash {
+    animation: msgCopyFlash 0.4s ease;
+}
+
+body.dark-mode .message.user.editing {
+    background: #234070;
+}
+
+body.dark-mode .edit-textarea {
+    background: rgba(255, 255, 255, 0.05);
+    color: #d9e4ff;
+    border: 1px solid rgba(147, 180, 251, 0.15);
+}
+
+body.dark-mode .edit-textarea:focus {
+    outline: 2px solid rgba(147, 180, 251, 0.4);
+}
+
+body.dark-mode .edit-cancel-btn {
+    background: rgba(147, 180, 251, 0.12);
+    color: #d9e4ff;
+}
+
+body.dark-mode .edit-save-btn {
+    background: #4c8cf5;
+    color: #ffffff;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DARK MODE REFRESH — flat surfaces, soft shadows, matching the light
+   ═══════════════════════════════════════════════════════════════════════ */
+
+html.dark-mode,
+body.dark-mode {
+    /* Flat input surface — no gradient, no inset highlights */
+    --input-grad: #282a2f;
+    --input-border: rgba(255, 255, 255, 0.06);
+    --input-shadow-inner-top: rgba(0, 0, 0, 0);
+    --input-shadow-inner-bottom: rgba(0, 0, 0, 0);
+    --input-shadow-drop:
+        0 4px 20px -8px rgba(0, 0, 0, 0.6),
+        0 1px 3px rgba(0, 0, 0, 0.35);
+
+    /* Flat nav orb background */
+    --btn-grad: #282a2f;
+}
+
+/* ── Input bar ──────────────────────────────────────────────────────── */
+body.dark-mode .input-bar {
+    background: var(--input-grad);
+    border-color: var(--input-border);
+    border-radius: 28px;
+    box-shadow: var(--input-shadow-drop);
+}
+
+body.dark-mode .input-bar:focus-within {
+    border-color: rgba(96, 165, 250, 0.35);
+    box-shadow: var(--input-shadow-drop), 0 0 0 3px rgba(96, 165, 250, 0.12);
+}
+
+/* ── Nav buttons ────────────────────────────────────────────────────── */
+body.dark-mode .btn-circle {
+    background: var(--btn-grad);
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow:
+        0 2px 8px -2px rgba(0, 0, 0, 0.5),
+        0 1px 2px rgba(0, 0, 0, 0.3);
+    color: var(--text-main);
+}
+
+body.dark-mode .btn-circle:active {
+    transform: scale(0.96);
+}
+
+/* ── Model chip ────────────────────────────────────────────────────── */
+body.dark-mode .model-cycle-btn {
+    background: rgba(96, 165, 250, 0.14);
+    border-color: rgba(96, 165, 250, 0.18);
+    color: #93b4fb;
+}
+
+body.dark-mode .model-cycle-btn[data-mode="thinking"] {
+    background: rgba(245, 158, 11, 0.16);
+    color: #f0b46a;
+    border-color: rgba(245, 158, 11, 0.22);
+}
+
+body.dark-mode .model-cycle-btn[data-mode="max"] {
+    background: rgba(239, 68, 68, 0.16);
+    color: #f08a8a;
+    border-color: rgba(239, 68, 68, 0.22);
+}
+
+/* ── Input menu tiles (Xenon Graph / Chart / Settings) ────────────── */
+body.dark-mode .menu-item {
+    color: var(--text-main);
+    box-shadow:
+        0 2px 10px -4px rgba(0, 0, 0, 0.6),
+        0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .menu-item:hover {
+    border-color: rgba(147, 180, 251, 0.3);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   NAV FADE MASK — tight, no midpoint, no visible band
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.nav-container::before {
+    bottom: -6px;
+    background: linear-gradient(
+        to bottom,
+        var(--bg-main) 0px,
+        var(--bg-main) calc(100% - 6px),
+        transparent 100%
+    );
+    border-bottom: none;
+}
+
+.nav-container::after {
+    content: none;
+}
+
+/* "Fast" is a plain label now -- no mode cycling -- so it shouldn't react to presses. */
+.model-cycle-btn.is-static { cursor: default; user-select: none; -webkit-user-select: none; }
+.model-cycle-btn.is-static:active { transform: none; background: var(--chip-bg); }

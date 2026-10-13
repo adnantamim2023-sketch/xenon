@@ -1,0 +1,1483 @@
+/* =====================================================
+   XeTex.css — Math Output Styling for Xenon
+   ===================================================== */
+
+.xetex-output {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-main);
+    padding: 18px 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+}
+
+.xetex-equation {
+    font-size: 19px;
+    font-weight: 600;
+    padding: 14px 18px;
+    margin: 8px 0 20px 0;
+    background: rgba(59, 130, 246, 0.06);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+}
+
+.xetex-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 8px 0;
+    margin-top: 16px;
+}
+
+.xetex-step-num {
+    width: 28px;
+    height: 28px;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.xetex-step-body {
+    flex: 1;
+    font-size: 16px;
+    font-weight: 500;   /* → 400 */
+}
+
+.xetex-indent {
+    padding-left: 40px;
+    font-size: 16px;
+    font-weight: 500;   /* → 400 */
+    color: var(--text-main);
+    margin: 5px 0;
+    line-height: 1.7;
+}
+
+.xetex-split {
+    display: flex;
+    gap: 0;
+    margin: 16px 0 10px 0;
+    padding-left: 40px;
+}
+
+.xetex-split-left,
+.xetex-split-right {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.7;
+}
+
+.xetex-split-left {
+    text-align: right;
+    padding-right: 22px;
+}
+
+.xetex-split-right {
+    padding-left: 22px;
+    border-left: 2px solid var(--border-color);
+}
+
+.xetex-divider {
+    margin: 10px 0 10px 40px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+    border-radius: 2px;
+    opacity: 0.5;
+}
+
+.xetex-answer {
+    margin: 20px 0 8px 0;
+    padding: 16px 20px;
+    background: rgba(59, 130, 246, 0.08);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 10px;
+    line-height: 1.7;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.xetex-answer-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    background: rgba(59, 130, 246, 0.1);
+    padding: 3px 8px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    margin-top: 3px;
+}
+
+.xetex-answer-val {
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    background: rgba(59, 130, 246, 0.06);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 16px;
+}
+
+.xetex-note {
+    padding-left: 40px;
+    font-size: 14px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 6px 0;
+}
+
+.xetex-error {
+    padding: 14px 18px;
+    background: rgba(255, 94, 94, 0.08);
+    border: 1px solid rgba(255, 94, 94, 0.3);
+    border-radius: 10px;
+    color: var(--red-cancel);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* ── Logic gate-style question card ──────────────────────────────────
+   Shown when a logic expression is detected but the person hasn't said
+   which gate style to build the circuit from — tapping an option
+   re-sends the same expression with that style appended. */
+.xetex-logic-question {
+    padding: 16px 18px;
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.xetex-logic-question-prompt {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.xetex-logic-question-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.xetex-logic-option-btn {
+    appearance: none;
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    background: var(--bg-input, rgba(59, 130, 246, 0.1));
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 9px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+    font-family: inherit;
+}
+
+.xetex-logic-option-btn:hover {
+    background: rgba(59, 130, 246, 0.18);
+}
+
+.xetex-logic-option-btn:active {
+    transform: scale(0.96);
+}
+
+.xetex-logic-option-sub {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-top: 1px;
+}
+
+.xetex-highlight {
+    display: inline-block;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 16px;
+}
+
+/* ── Inline Fraction ── */
+.xetex-frac {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
+    line-height: 1;
+    margin: 0 2px;
+    font-size: inherit;
+}
+
+.xetex-frac-num {
+    display: block;
+    padding: 0 3px 1px;
+    font-size: inherit;
+    line-height: 1.1;
+}
+
+.xetex-frac-den {
+    display: block;
+    padding: 1px 3px 0;
+    font-size: inherit;
+    line-height: 1.1;
+    border-top: 1.5px solid currentColor;
+}
+
+/* Fraction inside text keeps same size */
+.xetex-indent .xetex-frac,
+.xetex-split-left .xetex-frac,
+.xetex-split-right .xetex-frac,
+.xetex-step-body .xetex-frac {
+    font-size: inherit;
+}
+
+.xetex-answer .xetex-frac {
+    font-size: inherit;
+}
+
+/* ── Fractional Exponent (e.g. x^(5/2)) ── */
+.xetex-exp {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: super;
+    line-height: 1;
+    font-size: 0.65em;
+    margin-left: 1px;
+}
+
+.xetex-exp-num {
+    display: inline-block;
+}
+
+.xetex-exp-den {
+    display: inline-block;
+}
+
+.xetex-exp-num::after {
+    content: "/";
+    margin: 0 1px;
+}
+/* ── AI-generated tables (e.g. /tableR:C) ─────────────────────────── */
+.xetex-table-wrap {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 10px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+
+.xetex-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: max-content;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.xetex-table th,
+.xetex-table td {
+    padding: 9px 14px;
+    text-align: left;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.xetex-table th:not(:last-child),
+.xetex-table td:not(:last-child) {
+    border-right: 1px solid var(--border-color);
+}
+
+.xetex-table thead th {
+    background: rgba(59, 130, 246, 0.08);
+    color: var(--accent);
+    font-weight: 700;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.25);
+}
+
+.xetex-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.xetex-table tbody tr:nth-child(even) {
+    background: rgba(127, 127, 127, 0.05);
+}
+
+/* ── Geometric shape diagrams (/triangle, /square, /box, /circle) ──── */
+.xetex-shape-wrap {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    padding: 6px;
+}
+
+.xetex-shape-svg {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    display: block;
+}
+
+.xetex-shape-fill {
+    fill: none;
+}
+
+.xetex-shape-line {
+    stroke: var(--accent);
+    stroke-width: 2;
+    fill: none;
+}
+
+.xetex-shape-vertex {
+    fill: var(--accent);
+}
+
+.xetex-shape-vlabel {
+    font-size: 13px;
+    font-weight: 700;
+    fill: var(--text-main);
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.xetex-shape-slabel {
+    font-size: 11px;
+    font-weight: 600;
+    fill: var(--text-muted);
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.xetex-shape-error {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    padding: 10px 2px;
+}
+
+.xetex-shape-error code {
+    background: rgba(127, 127, 127, 0.12);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-style: normal;
+}
+
+/* ── Logic circuit solver: truth table + gate diagram ──────────────── */
+.xetex-logic-table-container {
+    margin: 6px 0 4px 0;
+}
+
+/* Truth table fills the full bubble width rather than sitting as a
+   narrow centered block — columns stretch evenly to use the space.
+   Only applies up to 4 columns (3 vars + Output); wider tables use the
+   scrollable variant below instead so columns stay readable. */
+.xetex-logic-table-container .xetex-table-wrap {
+    width: 100%;
+    max-width: 100%;
+}
+
+.xetex-logic-table-container .xetex-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+/* 4+ variables (5+ columns + Output): forcing these to fit the bubble
+   width would squeeze each column unreadably thin, so instead give each
+   column a comfortable minimum width and let the table grow past the
+   bubble — the wrap's overflow-x:auto (inherited from .xetex-table-wrap)
+   then makes it horizontally scrollable instead of clipping. */
+.xetex-logic-table-wrap-scroll {
+    width: 100%;
+    max-width: 100%;
+}
+
+.xetex-logic-table-container .xetex-logic-table-wrap-scroll .xetex-table {
+    width: auto;
+    min-width: 100%;
+    table-layout: auto;
+}
+
+.xetex-logic-table-container .xetex-logic-table-wrap-scroll .xetex-table th,
+.xetex-logic-table-container .xetex-logic-table-wrap-scroll .xetex-table td {
+    min-width: 56px;
+    white-space: nowrap;
+}
+
+.xetex-logic-table th,
+.xetex-logic-table td {
+    text-align: center;
+    font-weight: 600;
+}
+
+.xetex-logic-out-1 {
+    color: var(--accent);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.xetex-logic-out-0 {
+    color: var(--text-muted);
+}
+
+.xetex-logic-circuit-wrap {
+    width: 100%;
+    margin: 6px 0 10px 0;
+    display: flex;
+    justify-content: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+}
+
+.xetex-logic-circuit-svg {
+    /* Render at a decent, readable size (gates/wires/labels stay legible)
+       instead of shrinking to fit the bubble — if the circuit is wider
+       than the bubble, the wrap above scrolls horizontally rather than
+       squashing the diagram. */
+    width: max(100%, 340px);
+    max-width: none;
+    height: auto;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.xetex-logic-circuit-svg .xetex-shape-fill {
+    fill: rgba(59, 130, 246, 0.06);
+}
+
+.xetex-logic-gate-label {
+    font-size: 8px;
+    letter-spacing: 0.2px;
+}
+
+.xetex-logic-overline {
+    /* Deliberately NOT text-decoration:overline — Chromium's default
+       text-decoration-skip-ink:auto carves small gaps out of the line
+       wherever a tall glyph (A, B, C...) pokes up into it, which reads
+       as a dashed/broken bar. A border-top is a literal box-model line,
+       not a text decoration, so it can't be ink-skipped and stays solid
+       no matter what letters sit underneath it. */
+    display: inline-block;
+    border-top: 1.5px solid currentColor;
+    padding: 0 1px;
+    line-height: 1.35;
+}
+
+/* When a bar is nested directly inside another bar (double-complement,
+   e.g. Y = ((ABC)')' ), the two border-tops sit close together and read
+   as a clean double line — matching the textbook convention — instead
+   of visually merging into one. */
+.xetex-logic-overline .xetex-logic-overline {
+    padding-top: 1px;
+}
+
+
+/* ── C syntax checker output ─────────────────────────────────────── */
+.cparse-code {
+    margin: 10px 0;
+    padding: 14px 16px;
+    background: var(--bg-input, #f5f5f5);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-main);
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: pre;
+    tab-size: 4;
+    max-height: 480px;
+    overflow-y: auto;
+}
+
+body.dark-mode .cparse-code {
+    background: #16181b;
+    border-color: #2a2d31;
+}
+
+.cparse-output .xetex-step.cparse-err .xetex-step-num {
+    background: rgba(255, 94, 94, 0.12);
+    border-color: rgba(255, 94, 94, 0.35);
+    color: var(--red-cancel);
+}
+
+.cparse-output .xetex-step.cparse-warn .xetex-step-num {
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.35);
+    color: #f59e0b;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   XENON RESPONSE TYPOGRAPHY — unified scale + weights
+   ─────────────────────────────────────────────────────────────────
+   Loaded last (see index.html), so these win over every earlier
+   per-feature rule. Every AI response path flows through this scale:
+   plain text, math steps, logic output, coding reports, chart specs.
+
+   Rules:
+     - Body text is ALWAYS 16px / weight 400.
+     - Emphasis (600) is intentional — headers, labels, answer values.
+     - Only the answer value uses weight 700.
+     - Notes and hints drop to 14px to visually recede.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+    --xn-text-xl: 18px;
+    --xn-text-lg: 16px;
+    --xn-text-md: 14px;
+    --xn-text-sm: 13px;
+    --xn-text-xs: 11px;
+
+    --xn-w-normal: 400;
+    --xn-w-bold: 600;
+    --xn-w-heavy: 700;
+
+    --xn-lh-tight: 1.35;
+    --xn-lh-normal: 1.55;
+    --xn-lh-loose: 1.75;
+}
+
+/* ── 1. AI message root — baseline for everything inside ── */
+.message.ai,
+.message.ai .text-node {
+    font-size: var(--xn-text-lg);
+    font-weight: var(--xn-w-normal);
+    line-height: var(--xn-lh-normal);
+}
+
+/* ── 2. Structured response rendering (chat.js renderResponseHTML) ── */
+.resp-block,
+.resp-steps,
+.resp-line,
+.resp-bullet,
+.resp-indent,
+.resp-sub-line,
+.resp-step-text {
+    font-size: var(--xn-text-lg);
+    font-weight: var(--xn-w-normal);
+    line-height: var(--xn-lh-normal);
+}
+
+.resp-title {
+    font-size: var(--xn-text-xl);
+    font-weight: var(--xn-w-bold);
+    line-height: var(--xn-lh-tight);
+}
+
+.resp-step-num {
+    font-size: var(--xn-text-sm);
+    font-weight: var(--xn-w-heavy);
+}
+
+.resp-arrow,
+.resp-bullet-dot {
+    font-weight: var(--xn-w-bold);
+}
+
+.resp-note {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-normal);
+    color: var(--text-muted);
+}
+
+.resp-answer,
+.resp-result-line .resp-answer {
+    font-size: var(--xn-text-lg);
+    font-weight: var(--xn-w-bold);
+}
+
+.resp-result-line .resp-plain {
+    font-weight: var(--xn-w-normal);
+}
+
+.resp-code {
+    font-size: 0.95em;
+}
+
+/* ── 3. Math output (xetex.css own rules) ── */
+.xetex-output {
+    font-size: var(--xn-text-lg);
+    font-weight: var(--xn-w-normal);
+    line-height: var(--xn-lh-loose);
+}
+
+.xetex-equation {
+    font-size: var(--xn-text-xl);
+    font-weight: var(--xn-w-bold);
+    line-height: var(--xn-lh-tight);
+}
+
+.xetex-step-body,
+.xetex-indent,
+.xetex-split-left,
+.xetex-split-right {
+    font-size: var(--xn-text-lg);
+    font-weight: var(--xn-w-normal);
+}
+
+.xetex-indent {
+    line-height: var(--xn-lh-loose);
+}
+
+.xetex-step-num {
+    font-size: var(--xn-text-xs);
+    font-weight: var(--xn-w-heavy);
+}
+
+.xetex-answer {
+    font-size: var(--xn-text-lg);
+    font-weight: var(--xn-w-bold);
+}
+
+.xetex-answer-label {
+    font-size: var(--xn-text-xs);
+    font-weight: var(--xn-w-heavy);
+}
+
+.xetex-answer-val {
+    font-size: var(--xn-text-lg);
+}
+
+.xetex-note {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-normal);
+}
+
+.xetex-highlight {
+    font-size: var(--xn-text-lg);
+    font-weight: var(--xn-w-bold);
+}
+
+.xetex-error {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-bold);
+}
+
+/* Fractions and stacked exponents inherit their surrounding size. */
+.xetex-frac,
+.xetex-frac-num,
+.xetex-frac-den,
+.xetex-exp,
+.xetex-exp-num,
+.xetex-exp-den {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+/* ── 3b. Logic gate-style question card ── */
+.xetex-logic-question,
+.xetex-logic-question-prompt {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-normal);
+}
+
+.xetex-logic-question-prompt strong {
+    font-weight: var(--xn-w-bold);
+}
+
+.xetex-logic-option-btn {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-bold);
+}
+
+.xetex-logic-option-sub {
+    font-size: var(--xn-text-xs);
+    font-weight: var(--xn-w-normal);
+}
+
+/* ── 3c. Tables and shape labels ── */
+.xetex-table th,
+.xetex-table td {
+    font-size: var(--xn-text-md);
+}
+
+.xetex-logic-table th,
+.xetex-logic-table td {
+    font-weight: var(--xn-w-bold);
+}
+
+.xetex-shape-vlabel {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-heavy);
+}
+
+.xetex-shape-slabel {
+    font-size: var(--xn-text-xs);
+    font-weight: var(--xn-w-bold);
+}
+
+/* Gate "AND"/"OR"/"NOT" labels sit inside tiny SVG cells — leave
+   deliberately small, but keep the weight consistent. */
+.xetex-logic-gate-label {
+    font-size: 8px;
+    font-weight: var(--xn-w-bold);
+}
+
+/* ── 4. Chart / inline graph spec blocks (styles2.css originals) ── */
+.graph-spec-label {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-bold);
+}
+
+.graph-spec-item {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-normal);
+}
+
+.graph-spec-num {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-normal);
+    color: var(--text-muted);
+}
+
+.graph-tally-line {
+    font-size: var(--xn-text-md);
+    font-weight: var(--xn-w-normal);
+}
+
+.graph-tally-note {
+    font-size: var(--xn-text-sm);
+    font-weight: var(--xn-w-normal);
+    color: var(--text-muted);
+}
+
+/* ── 5. Coding engine output (C validator / generator / reference) ── */
+.cparse-output .xetex-step-body,
+.cparse-output .xetex-indent {
+    font-size: var(--xn-text-lg);
+    font-weight: var(--xn-w-normal);
+}
+
+.cparse-code {
+    font-size: var(--xn-text-sm);
+    font-weight: var(--xn-w-normal);
+    line-height: 1.55;
+}
+
+/* ── 6. Emphasis inside any AI response ── */
+.message.ai strong,
+.xetex-output strong,
+.cparse-output strong,
+.resp-block strong {
+    font-weight: var(--xn-w-bold);
+}
+
+.message.ai em,
+.xetex-output em,
+.resp-block em {
+    font-style: italic;
+    font-weight: var(--xn-w-normal);
+}
+
+/* ── Application & Email writer output ───────────────────────────── */
+.write-body {
+    margin: 10px 0;
+    padding: 16px 18px;
+    background: var(--bg-input, #f8f8f8);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-x: auto;
+    max-height: 560px;
+    overflow-y: auto;
+}
+body.dark-mode .write-body {
+    background: #1a1c1e;
+    border-color: #2a2d31;
+    color: #e6e7e9;
+}
+/* ── Paragraph / Essay writer output ─────────────────────────────── */
+.para-output {
+    font-size: var(--xn-text-lg);
+    line-height: 1.65;
+    color: var(--text-main);
+}
+
+.para-intro {
+    font-size: var(--xn-text-lg);
+    color: var(--text-muted);
+    margin: 8px 0 16px;
+}
+
+.para-body {
+    margin: 8px 0 14px;
+}
+
+.para-line {
+    margin: 0 0 12px;
+    font-size: var(--xn-text-lg);
+    line-height: 1.7;
+    font-weight: 400;
+    color: var(--text-main);
+}
+
+.para-line:last-child {
+    margin-bottom: 0;
+}
+
+.para-keypoints-heading {
+    margin: 18px 0 8px;
+    font-size: var(--xn-text-md);
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.para-keypoints {
+    margin: 0 0 12px;
+    padding-left: 22px;
+    list-style-type: disc;
+}
+
+.para-keypoints li {
+    font-size: var(--xn-text-md);
+    line-height: 1.6;
+    margin: 4px 0;
+    color: var(--text-main);
+}
+
+.para-closing {
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+    font-size: var(--xn-text-lg);
+    color: var(--text-muted);
+}
+
+.para-explain {
+    margin: 10px 0;
+    padding: 12px 14px;
+    background: color-mix(in srgb, var(--accent) 6%, var(--bg-input, transparent));
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    font-size: var(--xn-text-md);
+    line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   CODE CARD — header (file type + copy button) above a <pre> block
+   Used by coding.js (C code) and writing.js (emails/applications/letters).
+   ═══════════════════════════════════════════════════════════════════ */
+
+.code-card {
+    margin: 12px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-input, #f8f8f8);
+}
+
+.code-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 10px 7px 14px;
+    background: transparent;
+    border-bottom: 1px solid var(--border-color);
+}
+.code-card-type {
+    font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    text-transform: lowercase;
+    color: var(--text-muted);
+}
+
+.code-card-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px 5px 8px;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: color 0.15s ease, border-color 0.15s ease,
+                background 0.15s ease, transform 0.12s ease;
+    margin: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    padding-right: 12px;
+}
+
+.code-card-copy:active { transform: scale(0.94); }
+
+.code-card-copy:hover {
+    color: var(--accent);
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border-color));
+    background: color-mix(in srgb, var(--accent) 6%, transparent);
+}
+
+.code-card-copy .icon {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+    background-color: currentColor;
+}
+
+.code-card-copy.copied {
+    color: var(--green-success, #10b981);
+    border-color: color-mix(in srgb, var(--green-success, #10b981) 45%, var(--border-color));
+    background: color-mix(in srgb, var(--green-success, #10b981) 8%, transparent);
+}
+
+/* The pre inside the card drops its own margin/border/radius —
+   the card provides them. */
+.code-card > pre.cparse-code,
+.code-card > pre.write-body {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    max-height: 480px;
+    overflow-y: auto;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   PLAIN RESPONSE — strip decorative chrome from AI response surfaces
+   ═══════════════════════════════════════════════════════════════════
+   Every response reads as plain, well-typeset text:
+     - no background fills on headers or answer blocks
+     - no left-accent borders on callouts
+     - no circular step-number badges (number stays, decoration goes)
+     - no bordered footer
+     - no bullet decorations on lists
+   Code cards are NOT touched — their header carries the file-type
+   label and copy button, which are functional, not decorative.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Response title ────────────────────────────────────────────── */
+.xetex-equation {
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 0 12px 0 !important;
+    color: var(--text-main) !important;
+}
+
+/* ── Numbered steps ─────────────────────────────────────────────── */
+.xetex-step {
+    gap: 6px !important;
+    padding: 0 !important;
+    margin-top: 10px !important;
+}
+
+.xetex-step-num {
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+    color: var(--text-main) !important;
+    font-weight: 600 !important;
+    font-size: inherit !important;
+}
+
+.xetex-step-num::after {
+    content: '.';
+}
+
+/* ── Indented / continuation lines ──────────────────────────────── */
+.xetex-indent {
+    padding-left: 0 !important;
+    margin: 4px 0 !important;
+}
+
+/* ── Side-by-side result split ──────────────────────────────────── */
+.xetex-split {
+    padding-left: 0 !important;
+    margin: 8px 0 !important;
+}
+
+.xetex-split-left,
+.xetex-split-right {
+    padding: 0 !important;
+    border: none !important;
+}
+
+.xetex-divider {
+    background: none !important;
+    height: 0 !important;
+    margin: 8px 0 !important;
+}
+
+/* ── Answer / result line ───────────────────────────────────────── */
+.xetex-answer {
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 12px 0 6px 0 !important;
+    color: var(--text-main) !important;
+    font-weight: 600 !important;
+    display: block !important;
+}
+
+.xetex-answer-label {
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 4px 0 0 !important;
+    color: var(--text-main) !important;
+    font-weight: 600 !important;
+    font-size: inherit !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    align-self: auto !important;
+    display: inline !important;
+}
+
+.xetex-answer-label::after {
+    content: ':';
+}
+
+.xetex-answer-val {
+    background: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    color: var(--text-main) !important;
+    font-size: inherit !important;
+    display: inline !important;
+}
+
+/* ── Notes / hints ──────────────────────────────────────────────── */
+.xetex-note {
+    padding-left: 0 !important;
+    color: var(--text-muted) !important;
+    font-style: normal !important;
+}
+
+/* ── Paragraph-engine surfaces ──────────────────────────────────── */
+.para-intro,
+.para-closing {
+    color: var(--text-main) !important;
+    font-style: normal !important;
+    font-size: var(--xn-text-lg) !important;
+    margin: 8px 0 !important;
+}
+
+.para-closing {
+    border-top: none !important;
+    padding-top: 0 !important;
+    margin-top: 12px !important;
+}
+
+.para-explain {
+    background: none !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 8px 0 !important;
+    color: var(--text-main) !important;
+    font-size: var(--xn-text-lg) !important;
+}
+
+.para-keypoints-heading {
+    color: var(--text-main) !important;
+    font-weight: 600 !important;
+    font-size: var(--xn-text-lg) !important;
+    margin: 12px 0 4px 0 !important;
+}
+
+
+
+
+
+/* ── Comparison table (two-column key-points side by side) ──────── */
+.xetex-compare-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.xetex-compare-table th {
+    text-align: left;
+    font-size: var(--xn-text-md);
+    font-weight: 700;
+    color: var(--text-main);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+}
+
+.xetex-compare-table td {
+    text-align: left;
+    font-size: var(--xn-text-md);
+    font-weight: 400;
+    color: var(--text-main);
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.xetex-compare-table tr:last-child td {
+    border-bottom: none;
+}
+
+.xetex-compare-table th + th,
+.xetex-compare-table td + td {
+    border-left: 1px solid var(--border-color);
+}
+
+/* On narrow screens, reduce cell padding so two columns fit */
+@media (max-width: 480px) {
+    .xetex-compare-table th,
+    .xetex-compare-table td {
+        padding: 6px 8px;
+        font-size: var(--xn-text-sm);
+    }
+}
+
+
+
+
+
+/* ── Lists → plain lines ────────────────────────────────────────── */
+.para-keypoints {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin: 6px 0 !important;
+}
+
+.para-keypoints li {
+    font-size: var(--xn-text-lg) !important;
+    margin: 2px 0 !important;
+    padding: 0 !important;
+}
+
+.para-keypoints li::before {
+    content: none !important;
+}
+
+/* ── Tables — keep readability, drop the accent fills ───────────── */
+.xetex-table thead th {
+    background: none !important;
+    color: var(--text-main) !important;
+    font-weight: 600 !important;
+}
+
+.xetex-table tbody tr:nth-child(even) {
+    background: none !important;
+}
+
+.xetex-logic-out-1 {
+    background: none !important;
+    color: var(--text-main) !important;
+    font-weight: 600 !important;
+}
+
+/* ── Logic gate label — was already small, keep ─────────────────── */
+.xetex-logic-option-btn {
+    background: none !important;
+}
+
+.xetex-answer-val {
+    margin-left: 10px;
+}
+.xetex-answer-val:first-child {
+    margin-left: 0;
+}
+.xetex-answer-label {
+    margin-right: 4px;
+}
+.xetex-branch-table {
+    margin: 14px 0;
+}
+
+.xetex-branch-table .xetex-table th {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-align: center;
+}
+
+.xetex-branch-table .xetex-table td {
+    text-align: center;
+    font-size: 15px;
+    white-space: normal;
+    padding: 10px 14px;
+}
+
+.xetex-branch-table .xetex-table tbody tr.xetex-branch-result td {
+    font-weight: 700;
+    color: var(--accent);
+    border-top: 1px solid rgba(59, 130, 246, 0.2);
+    background: rgba(59, 130, 246, 0.03);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════
+   MATH OUTPUT EMPHASIS
+   ─────────────────────────────────────────────────────────────────
+   Steps stay left-aligned at normal size. Math — the given line,
+   the working lines, and the final answer — is centred and set a
+   step larger so the derivation reads as the focus of the block.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── Step titles (prose) ──────────────────────────────────────── */
+.xetex-step {
+    margin-top: 22px !important;
+    padding: 0 !important;
+    gap: 8px !important;
+    align-items: baseline !important;
+}
+
+.xetex-step:first-child {
+    margin-top: 4px !important;
+}
+
+.xetex-step-num {
+    background: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: var(--text-main) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    flex-shrink: 0 !important;
+}
+
+.xetex-step-body {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: var(--text-main) !important;
+    text-align: left !important;
+    line-height: 1.5 !important;
+    padding-left: 2px !important;
+}
+
+/* ── Given / top equation ─────────────────────────────────────── */
+.xetex-equation {
+    text-align: center !important;
+    font-size: 22px !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+    padding: 14px 8px !important;
+    margin: 4px 0 26px 0 !important;
+    letter-spacing: 0.2px !important;
+    color: var(--text-main) !important;
+}
+
+/* ── Intermediate math lines ──────────────────────────────────── */
+.xetex-indent {
+    text-align: center !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    padding: 0 6px !important;
+    margin: 10px 0 !important;
+    line-height: 1.65 !important;
+    color: var(--text-main) !important;
+    letter-spacing: 0.2px !important;
+    word-break: break-word !important;
+    overflow-wrap: anywhere !important;
+}
+
+/* Consecutive math lines sit closer — like a derivation */
+.xetex-indent + .xetex-indent {
+    margin-top: 4px !important;
+}
+
+/* ── Notes / hints ────────────────────────────────────────────── */
+.xetex-note {
+    text-align: left !important;
+    padding: 0 6px 0 4px !important;
+    margin: 10px 0 !important;
+    font-size: 14px !important;
+    font-style: italic !important;
+    line-height: 1.5 !important;
+    color: var(--text-muted) !important;
+    opacity: 0.85 !important;
+}
+
+/* ── Final answer ─────────────────────────────────────────────── */
+.xetex-answer {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: baseline !important;
+    flex-wrap: wrap !important;
+    gap: 6px 14px !important;
+    text-align: center !important;
+    margin: 24px auto 12px auto !important;
+    padding: 14px 22px !important;
+    max-width: 100% !important;
+    border-radius: 12px !important;
+    background: rgba(59, 130, 246, 0.045) !important;
+    border: 1px solid rgba(59, 130, 246, 0.14) !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    line-height: 1.5 !important;
+}
+
+.xetex-answer-label {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 1.1px !important;
+    text-transform: uppercase !important;
+    color: var(--accent) !important;
+    background: none !important;
+    padding: 0 !important;
+    align-self: center !important;
+    margin-top: 0 !important;
+}
+
+.xetex-answer-label::after {
+    content: '' !important;
+    margin: 0 !important;
+}
+
+.xetex-answer-val {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline !important;
+    letter-spacing: 0.2px !important;
+}
+
+/* Multiple answer values (quadratic) — dot separator */
+.xetex-answer-val + .xetex-answer-val::before {
+    content: '·' !important;
+    color: var(--text-muted) !important;
+    margin-right: 12px !important;
+    font-weight: 400 !important;
+}
+
+/* ── Fractions ────────────────────────────────────────────────── */
+.xetex-equation .xetex-frac,
+.xetex-indent .xetex-frac,
+.xetex-answer .xetex-frac {
+    font-size: 0.88em !important;
+    vertical-align: middle !important;
+    margin: 0 3px !important;
+}
+
+/* ── Fractional exponents ─────────────────────────────────────── */
+.xetex-exp {
+    font-size: 0.7em !important;
+    margin-left: 2px !important;
+}
+
+/* ── Branch table (quadratic ± branches) ──────────────────────── */
+.xetex-branch-table {
+    margin: 18px auto !important;
+    max-width: 100% !important;
+}
+
+.xetex-branch-table .xetex-table th {
+    font-size: 11px !important;
+    letter-spacing: 0.6px !important;
+    text-align: center !important;
+    padding: 8px 12px !important;
+    text-transform: uppercase !important;
+}
+
+.xetex-branch-table .xetex-table td {
+    font-size: 17px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+    padding: 10px 14px !important;
+    white-space: normal !important;
+    letter-spacing: 0.2px !important;
+}
+
+.xetex-branch-table .xetex-table tbody tr.xetex-branch-result td {
+    font-weight: 600 !important;
+    color: var(--accent) !important;
+}
+
+/* ── Small screens ────────────────────────────────────────────── */
+@media (max-width: 420px) {
+    .xetex-equation {
+        font-size: 20px !important;
+        padding: 12px 4px !important;
+        margin-bottom: 22px !important;
+    }
+
+    .xetex-indent {
+        font-size: 17px !important;
+        padding: 0 2px !important;
+    }
+
+    .xetex-answer {
+        font-size: 17px !important;
+        padding: 12px 16px !important;
+    }
+
+    .xetex-answer-val {
+        font-size: 17px !important;
+    }
+
+    .xetex-branch-table .xetex-table td {
+        font-size: 15px !important;
+        padding: 8px 10px !important;
+    }
+}
+
+/* ── Reduce motion: no reveal stagger for these blocks ───────── */
+@media (prefers-reduced-motion: reduce) {
+    .xetex-equation,
+    .xetex-indent,
+    .xetex-answer {
+        transition: none !important;
+    }
+}

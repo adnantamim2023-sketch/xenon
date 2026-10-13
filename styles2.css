@@ -1,0 +1,1511 @@
+/* =====================================================
+   FULLSCREEN GRAPH ICONS
+   ===================================================== */
+
+/* Expand (enter fullscreen) icon */
+.icon-fullscreen {
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>');
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    background-color: currentColor;
+    display: inline-block;
+}
+
+/* Compress (exit fullscreen) icon */
+.icon-fullscreen-exit {
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"/></svg>');
+    mask-size: contain;
+    -webkit-mask-size: contain;
+    mask-repeat: no-repeat;
+    -webkit-mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-position: center;
+    background-color: currentColor;
+    display: inline-block;
+}
+
+
+/* =====================================================
+   FULLSCREEN GRAPH MODE
+   ===================================================== */
+
+/* When the modal has the fullscreen class, the backdrop is transparent  */
+#graphModal {
+    background: rgba(0, 0, 0, 0.0);
+    align-items: stretch;
+    justify-content: stretch;
+    padding: 0;
+}
+
+/* The card itself fills the whole viewport */
+#graphModal .modal-card {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    animation: graphFullscreenIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    overflow: hidden !important;
+}
+
+@keyframes graphFullscreenIn {
+    from {
+        opacity: 0;
+        transform: scale(1.025);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Header stays slim and fixed */
+#graphModal .chart-modal-header {
+    flex-shrink: 0;
+    border-radius: 0 !important;
+    padding: calc(var(--safe-top) + 12px) 18px 12px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Canvas area grows to fill remaining space — edge-to-edge, mirrors #tgraphModal */
+#graphModal .graph-canvas-container {
+    flex: 1 1 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 0 !important;
+    position: relative !important;
+}
+
+/* Viewport fills its container exactly, same as #tgraphModal .graph-viewport */
+#graphModal .graph-viewport {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    inset: 0 !important;
+}
+
+/* Controls become a compact horizontal bottom bar */
+#graphModal .graph-controls {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 12px 16px !important;
+    border-top: 1px solid var(--border-color) !important;
+    background: var(--bg-main) !important;
+    overflow-x: auto !important;
+}
+
+/* Chart type tabs stay in a row */
+#graphModal .chart-type-tabs {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 4px !important;
+}
+
+/* Input pills stretch evenly in the bar */
+#graphModal .graph-input-pill {
+    flex: 1 1 180px !important;
+    min-width: 140px !important;
+    max-width: 340px !important;
+    
+}
+
+/* Hide the close button at bottom (we have the X in the header) */
+#graphModal .modal-card > button.close-btn-bottom {
+    display: none !important;
+}
+
+/* On landscape desktop, give the controls a bit of breathing room
+   (canvas itself stays edge-to-edge, matching #tgraphModal) */
+@media (min-width: 768px) {
+    #graphModal .graph-controls {
+        padding: 14px 24px !important;
+        gap: 14px !important;
+    }
+}
+
+/* On very small screens, make controls scroll horizontally */
+@media (max-width: 420px) {
+    #graphModal .graph-controls {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 10px 12px !important;
+        gap: 8px !important;
+    }
+    #graphModal .graph-input-pill {
+        min-width: 130px !important;
+    }
+}
+
+/* =====================================================
+   FULLSCREEN TGRAPH (PRECISION ENGINE) MODE
+   ===================================================== */
+
+/* Backdrop becomes invisible — card fills viewport */
+#tgraphModal {
+    background: rgba(0, 0, 0, 0.0);
+    align-items: stretch;
+    justify-content: stretch;
+    padding: 0;
+}
+
+/* Card fills the whole viewport */
+#tgraphModal .modal-card {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    animation: tgraphFullscreenIn 0.32s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    overflow: hidden !important;
+}
+
+@keyframes tgraphFullscreenIn {
+    from {
+        opacity: 0;
+        transform: scale(1.025);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Header bar stays slim */
+#tgraphModal .header {
+    flex-shrink: 0 !important;
+    border-radius: 0 !important;
+    padding: calc(var(--safe-top) + 12px) 18px 12px !important;
+    margin-bottom: 0 !important;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+/* Canvas viewport grows to fill remaining space */
+#tgraphModal .graph-canvas-container {
+    flex: 1 1 auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    padding: 0 !important;
+    position: relative !important;
+}
+
+/* Viewport canvas fills its container */
+#tgraphModal .graph-viewport {
+    width: 100% !important;
+    height: 100% !important;
+    position: absolute !important;
+    inset: 0 !important;
+}
+
+/* Equation hint bar — compact horizontal */
+#tgraphModal .graph-equation-hint {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 8px 16px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    font-size: 12px !important;
+}
+
+/* Controls become a compact bottom bar */
+#tgraphModal .graph-controls {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 12px 16px !important;
+    border-top: 1px solid var(--border-color) !important;
+    background: var(--bg-main) !important;
+    overflow-x: auto !important;
+}
+
+/* Input pill stretches in the bar */
+#tgraphModal .graph-input-pill {
+    flex: 1 1 220px !important;
+    min-width: 160px !important;
+    max-width: 480px !important;
+}
+
+/* Button row sits inline */
+#tgraphModal .graph-controls > div[style*="grid"] {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 8px !important;
+    flex-shrink: 0 !important;
+}
+
+/* Desktop breathing room */
+@media (min-width: 768px) {
+    #tgraphModal .graph-equation-hint {
+        padding: 8px 24px !important;
+    }
+    #tgraphModal .graph-controls {
+        padding: 14px 24px !important;
+        gap: 14px !important;
+    }
+}
+
+/* Small screens — controls scroll horizontally */
+@media (max-width: 420px) {
+    #tgraphModal .graph-controls {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        padding: 10px 12px !important;
+        gap: 8px !important;
+    }
+    #tgraphModal .graph-input-pill {
+        min-width: 150px !important;
+        height: 64px;
+    }
+}
+
+
+/* =====================================================
+   INPUT PILL SCROLLING FIX
+   ===================================================== */
+
+.graph-input-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-input);
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    /* ADD THESE */
+    position: relative;
+    overflow: hidden;
+}
+
+.graph-input-pill input,
+.graph-input-pill select {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 13px;
+    color: var(--text-main);
+    font-family: inherit;
+
+    /* 🔥 THE FIX - Enable horizontal scrolling */
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+
+    /* Extra 10px padding on the right for breathing room after last letter */
+    padding: 4px 10px 4px 4px;
+
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+
+    /* Smooth scrolling */
+    -webkit-overflow-scrolling: touch;
+
+    /* Ensure text stays on one line */
+    text-overflow: clip;
+
+    /* Cursor behavior */
+    caret-color: var(--accent);
+
+    /* Min-width to ensure scrolling space */
+    min-width: 50px;
+}
+
+/* WebKit scrollbar styling - invisible but functional */
+.graph-input-pill input::-webkit-scrollbar,
+.graph-input-pill select::-webkit-scrollbar {
+    height: 3px;
+}
+
+.graph-input-pill input::-webkit-scrollbar-track,
+.graph-input-pill select::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.graph-input-pill input::-webkit-scrollbar-thumb,
+.graph-input-pill select::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+/* Show scrollbar on hover/focus for better UX */
+.graph-input-pill input:focus::-webkit-scrollbar-thumb,
+.graph-input-pill select:focus::-webkit-scrollbar-thumb,
+.graph-input-pill:hover input::-webkit-scrollbar-thumb,
+.graph-input-pill:hover select::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    opacity: 0.6;
+}
+
+/* Firefox scrollbar */
+.graph-input-pill input,
+.graph-input-pill select {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.graph-input-pill input:focus,
+.graph-input-pill select:focus,
+.graph-input-pill:hover input,
+.graph-input-pill:hover select {
+    scrollbar-color: var(--accent) transparent;
+}
+
+/* Prevent the input from shrinking too much */
+.graph-input-pill input {
+    flex-shrink: 1;
+    min-width: 0; /* Allows flex item to shrink below content size */
+}
+
+/* For the Xenon-graph PRO equation input specifically */
+#tgraphEquation {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    white-space: nowrap !important;
+    padding-right: 10px !important;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Fullscreen mode adjustments */
+#graphModal .graph-input-pill input,
+#tgraphModal .graph-input-pill input {
+    padding: 4px 10px 4px 4px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ═══════════════════════════════════════════════════
+   XENON GRAPH GENERATOR — Controls Row + Settings
+   ═══════════════════════════════════════════════════ */
+
+.gg-controls-row {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+}
+
+.gg-data-pill {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    overflow: hidden;
+}
+
+/* Settings button - compact icon-only, blue accent, INDEPENDENT height */
+.gg-settings-pill-btn {
+    flex: 0 0 auto !important;
+    width: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    height: 36px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 !important;
+    background: var(--accent) !important;
+    border: 1.5px solid var(--accent) !important;
+    border-radius: 999px !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+    transition: all 0.15s !important;
+    color: #ffffff !important;
+}
+
+.gg-settings-pill-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+    flex-shrink: 0 !important;
+    fill: #ffffff !important;
+    color: #ffffff !important;
+    display: block !important;
+    vertical-align: middle !important;
+}
+
+.gg-settings-pill-btn span {
+    display: none !important;
+}
+
+.gg-settings-pill-btn:hover {
+    background: #2563eb !important;
+    border-color: #2563eb !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.35) !important;
+}
+
+.gg-settings-pill-btn:active {
+    transform: scale(0.95) !important;
+    background: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
+}
+
+/* ── FULLSCREEN OVERRIDES (Chart Modal) ── */
+#graphModal .gg-controls-row {
+    align-items: center !important;
+}
+
+#graphModal .gg-settings-pill-btn {
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 40px !important;
+}
+
+#graphModal .gg-settings-pill-btn svg {
+    width: 18px !important;
+    height: 18px !important;
+}
+
+#graphModal .gg-data-pill {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+}
+
+/* ── TGRAPH MODAL (Xenon Graph Pro) ── */
+#tgraphModal .gg-controls-row {
+    align-items: center !important;
+}
+
+#tgraphModal .gg-settings-pill-btn {
+    width: 36px !important;
+    min-width: 36px !important;
+    max-width: 36px !important;
+    height: 36px !important;
+}
+
+#tgraphModal .gg-settings-pill-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+#tgraphModal .gg-data-pill {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+}
+
+/* ── LANDSCAPE SPLIT SCREEN ── */
+@media (orientation: landscape) and (max-height: 600px) {
+    .gg-controls-row {
+        align-items: center !important;
+    }
+
+    .gg-settings-pill-btn {
+        width: 32px !important;
+        min-width: 32px !important;
+        max-width: 32px !important;
+        height: 32px !important;
+    }
+
+    .gg-settings-pill-btn svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    .gg-data-pill {
+        flex: 1 1 0% !important;
+        min-width: 0 !important;
+    }
+}
+
+/* ── Graph Settings Modal ── */
+.gg-settings-modal {
+    z-index: 1100;
+}
+
+.gg-settings-card {
+    max-width: 340px;
+    width: 92vw;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.gg-settings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.gg-settings-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+.gg-settings-body {
+    padding: 14px 16px 18px;
+    overflow-y: auto;
+    max-height: 70vh;
+}
+
+/* ── Settings inner layout ── */
+.gg-settings-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Column wrappers are invisible by default (portrait): their children
+   simply flow as normal items of .gg-settings-inner, in DOM order. This
+   keeps the grouping markup from affecting the default stacked layout. */
+.gg-col-left,
+.gg-col-right {
+    display: contents;
+}
+
+.gg-setting-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gg-section-label {
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    color: var(--text-muted) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.gg-setting-row.gg-row-inline {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gg-setting-row.gg-row-inline label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.gg-divider {
+    height: 1px;
+    background: var(--border-color);
+    margin: 2px 0;
+}
+
+/* ── 6-type grid (3 cols) ── */
+.gg-type-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+}
+
+.gg-type-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px 6px;
+    background: var(--bg-input);
+    border: 1.5px solid var(--border-color);
+    border-radius: 12px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-family: inherit;
+    transition: all 0.16s;
+}
+
+.gg-type-btn.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(59,130,246,0.3);
+}
+
+.gg-type-btn:not(.active):active {
+    opacity: 0.7;
+}
+
+.gg-type-icon {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.gg-type-label {
+    font-size: 9px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* ── Number stepper ── */
+.gg-number-ctrl {
+    display: flex;
+    align-items: center;
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.gg-number-ctrl button {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    line-height: 1;
+    transition: background 0.12s;
+}
+
+.gg-number-ctrl button:active {
+    background: var(--border-color);
+}
+
+.gg-number-ctrl span {
+    min-width: 30px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+/* ── Title input ── */
+.gg-title-input {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    background: var(--bg-input);
+    outline: none;
+    font-size: 12px;
+    color: var(--text-main);
+    font-family: inherit;
+    padding: 6px 10px;
+    border-radius: 8px;
+    min-width: 0;
+}
+
+/* Bar width sliders */
+.gg-slider-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+.gg-slider-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    min-width: 60px;
+    flex-shrink: 0;
+}
+.gg-slider {
+    flex: 1;
+    accent-color: var(--accent);
+    height: 4px;
+    cursor: pointer;
+}
+.gg-slider-val {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    min-width: 34px;
+    text-align: right;
+    flex-shrink: 0;
+}
+.gg-slider-hint {
+    font-size: 10px;
+    color: var(--text-muted);
+    margin: 4px 0 0;
+    opacity: 0.75;
+}
+
+/* ── Button push / spring-release animation ── */
+.gg-type-btn,
+.gg-settings-pill-btn,
+.gg-number-ctrl button,
+.chart-close-btn,
+.modal-card button {
+    transition:
+        transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background 0.16s ease,
+        border-color 0.16s ease,
+        box-shadow 0.18s ease !important;
+    will-change: transform;
+}
+.gg-type-btn:active,
+.gg-settings-pill-btn:active,
+.gg-number-ctrl button:active,
+.chart-close-btn:active,
+.modal-card button:active {
+    transform: scale(0.88) !important;
+    transition: transform 0.05s ease-out !important;
+}
+.gg-type-btn.active {
+    box-shadow: 0 0 0 2px var(--accent), 0 2px 10px rgba(59,130,246,0.35) !important;
+}
+
+/* ── Settings modal always above everything ── */
+.gg-settings-modal {
+    z-index: 6000 !important;
+}
+
+/* ── Settings modal open animation ── */
+.gg-settings-modal .gg-settings-card {
+    animation: settingsCardIn 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes settingsCardIn {
+    from { opacity: 0; transform: scale(0.95) translateY(14px); }
+    to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+.gg-settings-pill-btn.active {
+    background: #1d4ed8 !important;
+    border-color: #1d4ed8 !important;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.3) !important;
+}
+
+/* Keeps the original stacked order in portrait now that the Bar Width
+   group lives inside the left column (wrappers are display:contents there). */
+.gg-order-first { order: -1; }
+.gg-order-last  { order: 1; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   SETTINGS MODAL — LANDSCAPE
+   Header (title + close) on top · body scrolls · two balanced columns.
+   The generic landscape ".modal-card" rules in styles.css turn every card
+   into a 2-column grid and push every <button> into column 2 — so this
+   block fully resets those (grid, button placement, padding) with higher
+   specificity instead of fighting them piecemeal.
+   ══════════════════════════════════════════════════════════════════════ */
+@media (orientation: landscape) {
+
+    .modal.gg-settings-modal {
+        padding: max(8px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+                 max(8px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left)) !important;
+    }
+
+    .modal.gg-settings-modal .modal-card.gg-settings-card {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        grid-template-rows: none !important;
+        gap: 0 !important;
+        align-items: stretch !important;
+        text-align: left !important;
+        width: 100% !important;
+        max-width: 680px !important;
+        height: auto !important;
+        max-height: 100% !important;
+        padding: 0 !important;
+        border-radius: 18px !important;
+        overflow: hidden !important;
+    }
+
+    /* Header stays visible so the close button is always reachable */
+    .modal.gg-settings-modal .gg-settings-header {
+        display: flex !important;
+        flex: 0 0 auto !important;
+        grid-column: auto !important;
+        grid-row: auto !important;
+        padding: 8px 12px !important;
+        margin: 0 !important;
+    }
+
+    /* Undo the generic ".modal-card button" grid placement */
+    .modal.gg-settings-modal .modal-card button {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        margin-top: 0 !important;
+    }
+
+    /* Body is the only scrolling region */
+    .modal.gg-settings-modal .gg-settings-body {
+        flex: 1 1 auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        padding: 12px 16px 14px !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        display: block !important;
+    }
+
+    /* Two equal columns, top-aligned, no stretched empty space */
+    .modal.gg-settings-modal .gg-settings-inner {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        align-items: start !important;
+        gap: 0 20px !important;
+        width: 100% !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .modal.gg-settings-modal .gg-settings-inner > .gg-col-divider {
+        display: none !important;
+    }
+
+    .modal.gg-settings-modal .gg-col-left,
+    .modal.gg-settings-modal .gg-col-right {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        min-width: 0 !important;
+        height: auto !important;
+    }
+
+    /* Type grid: 3 columns × 2 rows, compact */
+    .modal.gg-settings-modal .gg-type-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+    }
+    .modal.gg-settings-modal .gg-type-btn   { padding: 8px 4px !important; border-radius: 12px !important; }
+    .modal.gg-settings-modal .gg-type-icon  { font-size: 17px !important; }
+    .modal.gg-settings-modal .gg-type-label { font-size: 9px !important; }
+
+    .modal.gg-settings-modal .gg-setting-row { gap: 6px !important; }
+    .modal.gg-settings-modal .gg-divider     { margin: 0 !important; }
+
+    .modal.gg-settings-modal .gg-number-ctrl        { border-radius: 10px !important; flex-shrink: 0; }
+    .modal.gg-settings-modal .gg-number-ctrl button { width: 32px !important; height: 32px !important; font-size: 20px !important; }
+    .modal.gg-settings-modal .gg-number-ctrl span   { min-width: 28px !important; font-size: 13px !important; }
+    .modal.gg-settings-modal .gg-section-label      { font-size: 9px !important; letter-spacing: 1px !important; }
+    .modal.gg-settings-modal .gg-setting-row.gg-row-inline label { font-size: 12px !important; }
+    .modal.gg-settings-modal .gg-setting-row.gg-row-inline { gap: 10px; }
+    .modal.gg-settings-modal .gg-title-input        { font-size: 12px !important; padding: 7px 10px !important; border-radius: 10px !important; }
+}
+
+/* Very short landscape phones: tighten further */
+@media (orientation: landscape) and (max-height: 420px) {
+    .modal.gg-settings-modal .gg-settings-header { padding: 6px 12px !important; }
+    .modal.gg-settings-modal .gg-settings-body   { padding: 10px 14px 12px !important; }
+    .modal.gg-settings-modal .chart-close-btn    { height: 28px !important; }
+    .modal.gg-settings-modal .gg-type-btn        { padding: 6px 4px !important; }
+    .modal.gg-settings-modal .gg-slider-hint     { display: none; }
+}
+
+/* ── Inline Graph ─────────────────────────────────────────── */
+.inline-graph-wrap {
+    margin-top: 10px;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+.inline-graph-canvas {
+    border-radius: 10px;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto !important;
+    border: 1px solid var(--border-color, rgba(255,255,255,0.08));
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    image-rendering: crisp-edges;
+}
+.inline-graph-canvas.many-graphs {
+    aspect-ratio: 1 / 1;
+}
+
+/* Bubble that contains a graph gets a fixed comfortable width */
+.message.ai:has(.inline-graph-wrap) {
+    width: 340px;
+    max-width: min(100%, 580px);
+}
+
+/* Bubble that contains a math/logic "xetex" output (step-by-step solves,
+   truth tables, circuit diagrams, shapes) should stretch to fill the
+   full available bubble width rather than shrinking to its content —
+   .message.ai normally uses align-self:flex-start, which sizes to
+   content by default and left tables/diagrams narrower than the screen
+   in portrait mode even though max-width had plenty of room to give. */
+.message.ai:has(.xetex-output) {
+    width: 100%;
+    max-width: min(100%, 580px);
+}
+.inline-graph-analysis {
+    margin-top: 12px;
+    width: 100%;
+}
+.graph-spec-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin: 0 0 6px 0;
+    padding: 0;
+}
+.graph-spec-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.graph-spec-item {
+    font-size: 13px;
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    gap: 6px;
+}
+.graph-spec-num {
+    color: var(--text-muted);
+    min-width: 16px;
+    flex-shrink: 0;
+    font-size: 13px;
+}
+.inline-graph-tally .graph-spec-label {
+    margin-bottom: 4px;
+}
+.graph-tally-line {
+    font-size: 13px;
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+}
+.graph-tally-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 6px 0 0 0;
+}
+
+.ai-actions{
+    display:flex;
+    gap:14px;
+    margin-top:20px;
+    align-items:center;
+    color:var(--text-muted);
+}
+
+.inline-graph-wrap ~ .ai-actions {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color, rgba(255,255,255,0.06));
+}
+
+.ai-actions .icon{
+    width:20px;
+    height:20px;
+    cursor:pointer;
+    opacity:.8;
+    transition:.2s;
+}
+
+.ai-actions .icon:hover{
+    opacity:1;
+    transform:scale(1.1);
+}
+
+.icon-like {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m7-2V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14Z"/></svg>');
+}
+
+.icon-dislike {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(180 12 12)"><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m7-2V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14Z"/></g></svg>');
+}
+
+.icon-refresh {
+  mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>');
+  /* TEMP: regenerate disabled (see REGENERATE_ENABLED in chat.js). Remove this rule to restore. */
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Structured response rendering ───────────────────────── */
+
+/* Widen AI bubble for step blocks */
+.message.ai {
+    max-width: min(100%, 580px) !important;
+}
+
+/* ── Long-press menu for user messages ───────────────────────────── */
+
+/* User bubbles start with selection disabled so a long-press reliably
+   opens the custom menu instead of the OS text-selection callout.
+   "Select Text" (below) explicitly re-enables selection when chosen. */
+.message.user .text-node,
+.message.user .text-node * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+.message.user.selecting .text-node,
+.message.user.selecting .text-node * {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    -webkit-touch-callout: default;
+}
+
+.message.user.copy-flash {
+    animation: msgCopyFlash 0.4s ease;
+}
+@keyframes msgCopyFlash {
+    0%   { filter: brightness(1); }
+    30%  { filter: brightness(1.35); }
+    100% { filter: brightness(1); }
+}
+
+/* ── AI response reveal: words fade/slide in instead of popping in ── */
+.reveal-word {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(3px);
+    animation: revealWordIn 0.26s ease forwards;
+}
+@keyframes revealWordIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .reveal-word {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.icon-select {
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5a1 1 0 0 1 1-1h2M4 17v2a1 1 0 0 0 1 1h2M20 7V5a1 1 0 0 0-1-1h-2M20 17v2a1 1 0 0 1-1 1h-2"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="15" x2="13" y2="15"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V5a1 1 0 0 1 1-1h2M4 17v2a1 1 0 0 0 1 1h2M20 7V5a1 1 0 0 0-1-1h-2M20 17v2a1 1 0 0 1-1 1h-2"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="7" y1="15" x2="13" y2="15"/></svg>');
+}
+
+.icon-edit {
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>');
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg>');
+}
+
+.msg-context-menu {
+    position: fixed;
+    z-index: 5000;
+    display: flex;
+    flex-direction: column;
+    min-width: 175px;
+    max-width: 220px;
+    padding: 0;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.22);
+    overflow: hidden;
+    animation: msgMenuPop 0.14s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+body.dark-mode .msg-context-menu {
+    box-shadow: 0 12px 32px rgba(0,0,0,0.45);
+}
+@keyframes msgMenuPop {
+    0%   { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.msg-context-menu-time {
+    padding: 8px 12px 6px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.msg-context-menu button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 9px 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-main);
+    font-size: 0.86rem;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.msg-context-menu button + button {
+    border-top: 1px solid var(--border-color);
+}
+.msg-context-menu button:hover,
+.msg-context-menu button:active {
+    background: var(--bg-input);
+}
+.msg-context-menu .icon {
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+/* ── Inline edit mode for a user message ─────────────────────────── */
+
+.message.user.editing {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    cursor: default;
+}
+
+.edit-textarea {
+    width: 100%;
+    min-height: 40px;
+    max-height: 40vh;
+    resize: none;
+    overflow-y: auto;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.14);
+    color: inherit;
+    font: inherit;
+    line-height: 1.55;
+    -webkit-user-select: text;
+    user-select: text;
+}
+.edit-textarea:focus {
+    outline: 2px solid rgba(255,255,255,0.5);
+}
+
+.edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+.edit-actions button {
+    padding: 7px 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+}
+.edit-cancel-btn {
+    background: rgba(255,255,255,0.16);
+    color: #fff;
+}
+.edit-save-btn {
+    background: #fff;
+    color: #2563eb;
+}
+
+/* ── Select Text modal ───────────────────────────────────────────── */
+/* Full-screen plain-text view so a long-press here is a fresh gesture
+   (see the comment on #selectTextModal in index.html / openSelectTextModal
+   in chat2.js for why that matters for the native Copy toolbar). */
+#selectTextModal {
+    background: var(--bg-main) !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    padding: 0 !important;
+}
+#selectTextModal .select-text-card {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    text-align: left !important;
+    padding: 0 !important;
+    background: var(--bg-main);
+    color: var(--text-main);
+    border: none;
+}
+.select-text-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: calc(var(--safe-top) + 16px) 20px 14px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+.select-text-header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--text-main);
+}
+.select-text-header button {
+    margin: 0 !important;
+    width: auto !important;
+    padding: 8px 16px !important;
+    background: var(--accent) !important;
+    border-radius: 12px !important;
+    color: #fff !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: none;
+    cursor: pointer;
+}
+.select-text-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px calc(20px + var(--safe-right)) calc(20px + var(--safe-bottom)) calc(20px + var(--safe-left));
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: var(--text-main);
+    white-space: pre-wrap;
+    word-break: break-word;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    -webkit-touch-callout: default;
+}
+
+/* ── Logic Circuit modal: same full-page card as Select Text, but the
+   body is a pan/zoom viewport instead of scrollable text. ──────────── */
+#logicCircuitModal {
+    background: var(--bg-main) !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    padding: 0 !important;
+}
+#logicCircuitModal .logic-circuit-card {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100dvh !important;
+    max-height: 100dvh !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    text-align: left !important;
+    padding: 0 !important;
+    background: var(--bg-main);
+    color: var(--text-main);
+    border: none;
+}
+.logic-circuit-viewport {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+    cursor: grab;
+    background:
+        linear-gradient(90deg, rgba(127,127,127,0.06) 1px, transparent 1px) 0 0 / 24px 24px,
+        linear-gradient(0deg, rgba(127,127,127,0.06) 1px, transparent 1px) 0 0 / 24px 24px,
+        var(--bg-main);
+}
+.logic-circuit-viewport:active {
+    cursor: grabbing;
+}
+.logic-circuit-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+    will-change: transform;
+}
+.logic-circuit-inner svg.logic-circuit-full-svg {
+    display: block;
+    max-width: none;
+    background: transparent;
+}
+.logic-circuit-viewport .graph-zoom-ctrl {
+    bottom: calc(16px + var(--safe-bottom));
+    right: calc(16px + var(--safe-right));
+}
+
+/* =====================================================
+   CHART MODAL — CONTROL BAR
+   Keep all four controls equal and let landscape use a true row.
+   ===================================================== */
+#graphModal .graph-controls {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    flex-wrap: nowrap !important;
+    gap: 10px !important;
+    overflow: visible !important;
+}
+
+#graphModal .gg-controls-row {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: stretch !important;
+    justify-content: stretch !important;
+    width: 100% !important;
+    gap: 10px !important;
+    min-width: 0 !important;
+}
+
+#graphModal .gg-controls-row > .graph-z-btn,
+#graphModal .gg-controls-row > .gg-settings-pill-btn {
+    position: static !important;
+    box-sizing: border-box !important;
+    flex: 1 1 0 !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 42px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+#graphModal .gg-controls-row > .graph-z-btn svg {
+    width: 16px !important;
+    height: 16px !important;
+    flex: 0 0 auto !important;
+}
+
+#graphModal .gg-controls-row > .graph-z-btn span {
+    font-size: 20px !important;
+    line-height: 1 !important;
+}
+
+/* Use Xenon's existing, known-good masked settings icon.
+   The previous inline SVG path was malformed, which caused the broken gear. */
+#graphModal .gg-controls-row > .gg-settings-pill-btn {
+    border-radius: 12px !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    gap: 0 !important;
+    color: #fff !important;
+}
+
+#graphModal .gg-controls-row > .gg-settings-pill-btn .icon-settings {
+    display: inline-block !important;
+    width: 18px !important;
+    height: 18px !important;
+    flex: 0 0 18px !important;
+    background-color: currentColor !important;
+}
+
+#graphModal .gg-controls-row > .gg-settings-pill-btn span:not(.icon-settings) {
+    display: none !important;
+}
+
+#graphModal .gg-input-row {
+    display: flex !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 64px;
+    transform: translateY(4px);
+    padding: 2px;
+}
+
+#graphModal .gg-input-row .graph-input-pill {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+}
+
+@media (orientation: landscape) {
+    #graphModal .gg-controls-row {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: stretch !important;
+    }
+
+    #graphModal .gg-controls-row > .graph-z-btn,
+    #graphModal .gg-controls-row > .gg-settings-pill-btn {
+        flex: 1 1 0 !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        max-width: none !important;
+    }
+}
+
+
+
+
+
+/* ── Paragraph / essay / notes card ────────────────────────────── */
+/* The card should grow to fit its content — no internal scroll, no
+   clipped text. Width matches the surrounding message bubble, height
+   is driven by the paragraph itself. */
+.para-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 12px 0 !important;
+}
+
+/* Body inherits the same behaviour — content manages its own size. */
+.para-card .code-card-body {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-sizing: border-box;
+    /* Remove the code-block scroll treatment that the card shell
+       inherits from `code-card > pre` — the paragraph isn't a fixed
+       viewport. */
+    padding: 16px 18px !important;
+}
+
+/* Any <pre> inside the paragraph card (there shouldn't be any, but
+   in case a stray one slips through) also drops its max-height. */
+.para-card pre {
+    max-height: none !important;
+    overflow: visible !important;
+}
