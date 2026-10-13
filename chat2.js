@@ -1429,3 +1429,58 @@ function clearAllHistory() {
         velTrackTime = now;
     }, { passive: true });
 })();
+
+// ── Input bar: tapping empty space keeps/opens the keyboard ─────────────
+// Taps on the bar's dead space (the button row's gaps, bar padding) used to
+// blur the textarea (closing the keyboard) and never focused it. Now a tap
+// there is swallowed so focus isn't lost, and the textarea gets focused with
+// the caret at the end. Real controls (+, mode label, voice, send) keep their
+// own handlers untouched.
+(function initInputBarBlankTap() {
+    const bar = document.querySelector('.input-bar');
+    const area = document.getElementById('userInput');
+    if (!bar || !area) return;
+
+    const INTERACTIVE = 'textarea, .toggle-icon, .model-cycle-btn, .voice-btn-wrap, .send-btn-wrap';
+    const isBlank = (t) => t && t.closest && !t.closest(INTERACTIVE);
+
+    function focusArea() {
+        if (document.activeElement !== area) {
+            area.focus({ preventScroll: true });
+        }
+        const end = area.value.length;
+        try { area.setSelectionRange(end, end); } catch (e) {}
+    }
+
+    // Desktop / mouse: stop the mousedown from blurring, then focus.
+    bar.addEventListener('mousedown', (e) => {
+        if (!isBlank(e.target)) return;
+        e.preventDefault();
+        focusArea();
+    });
+
+    // Touch: block the blur + emulated mouse events, focus on a clean tap.
+    let startX = 0, startY = 0, moved = false, tracking = false;
+    bar.addEventListener('touchstart', (e) => {
+        tracking = isBlank(e.target);
+        if (!tracking) return;
+        const t = e.touches[0];
+        startX = t.clientX; startY = t.clientY; moved = false;
+        e.preventDefault();
+    }, { passive: false });
+
+    bar.addEventListener('touchmove', (e) => {
+        if (!tracking) return;
+        const t = e.touches[0];
+        if (Math.abs(t.clientX - startX) > 10 || Math.abs(t.clientY - startY) > 10) moved = true;
+    }, { passive: true });
+
+    bar.addEventListener('touchend', (e) => {
+        if (!tracking) return;
+        tracking = false;
+        e.preventDefault();
+        if (!moved) focusArea();
+    }, { passive: false });
+
+    bar.addEventListener('touchcancel', () => { tracking = false; }, { passive: true });
+})();
