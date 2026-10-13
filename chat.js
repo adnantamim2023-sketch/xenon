@@ -541,6 +541,7 @@ window.onload = () => {
     if (window.AndroidBridge) {
         window.AndroidBridge.setDarkMode(isDarkOnLoad);
     }
+    if (typeof syncSystemChrome === 'function') syncSystemChrome();
 
     // Ensure we have a valid session
     if (sessions.length === 0) {

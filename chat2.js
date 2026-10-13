@@ -751,6 +751,31 @@ function toggleTgraphModal() {
     }
 }
 
+// Pushes Xenon's current theme to the browser / OS chrome: the status bar
+// (meta theme-color), native controls & scrollbars (color-scheme), and the
+// Android shell (status bar bg + icon tint, navigation bar) when available.
+function syncSystemChrome() {
+    const isDark = document.body.classList.contains('dark-mode');
+    const cs = getComputedStyle(document.body);
+    const bg = (cs.getPropertyValue('--bg-main') || (isDark ? '#1e2023' : '#fefeff')).trim();
+    const fg = (cs.getPropertyValue('--text-main') || (isDark ? '#e6e7e9' : '#2d3139')).trim();
+
+    // Browser / PWA status bar
+    document.querySelectorAll('meta[name="theme-color"]').forEach(m => m.remove());
+    const meta = document.createElement('meta');
+    meta.name = 'theme-color';
+    meta.content = bg;
+    document.head.appendChild(meta);
+
+    // Native form controls, scrollbars, overscroll, text-selection UI
+    document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
+
+    // Android WebView shell (optional method, safe if not implemented yet)
+    if (window.AndroidBridge && typeof window.AndroidBridge.setSystemBars === 'function') {
+        window.AndroidBridge.setSystemBars(bg, fg, isDark);
+    }
+}
+
 function toggleDarkMode() {
     document.body.classList.toggle('dark-mode');
     document.documentElement.classList.toggle('dark-mode');
@@ -760,6 +785,7 @@ function toggleDarkMode() {
     if (window.AndroidBridge) {
         window.AndroidBridge.setDarkMode(isDark);
     }
+    syncSystemChrome();
 
     if (document.getElementById('graphModal').classList.contains('active')) {
         setTimeout(updateGraph, 50);
