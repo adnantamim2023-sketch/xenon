@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
-    <meta name="theme-color" content="#fefeff">
-    <meta name="color-scheme" content="light dark">
     <title>Xenon | Tools</title>
     <link rel="stylesheet" href="styles.css?v=7">
     <link rel="stylesheet" href="styles2.css?v=6">
@@ -509,20 +507,40 @@
     // "finger" tracker in chat.js watches the input bar's actual rendered
     // top edge every animation frame and moves the feed to match, however
     // that edge came to move. So this only ever sets the CSS variable.
+    let _kbRaf = 0, _kbLast = -1, _vvTopLast = -1;
     function applyKeyboardInset() {
         if (!window.visualViewport) return;
-        const inset = Math.max(0, window.innerHeight - window.visualViewport.height - window.visualViewport.offsetTop);
-        document.documentElement.style.setProperty('--keyboard-height', inset + 'px');
-        // .input-container/.chat-feed both transition 'bottom' over 0.25s
-        // in response to this — wake the finger tracker to follow that move.
-        if (typeof _fingerWake === 'function') _fingerWake(400);
-        // Flag this as a keyboard-driven move (not a real scroll gesture)
-        // so the edge-haptic/bounce detector in chat2.js ignores it.
-        if (typeof _suppressScrollHaptics === 'function') _suppressScrollHaptics(400);
+        if (_kbRaf) return;              // coalesce bursts of resize/scroll events into 1 write per frame
+        _kbRaf = requestAnimationFrame(function () {
+            _kbRaf = 0;
+            const vv = window.visualViewport;
+            const top = Math.max(0, Math.round(vv.offsetTop));
+            // Layout viewport height: use the larger of innerHeight/clientHeight so a
+            // browser that already resized the layout (resizes-content) yields inset 0
+            // instead of double-counting the keyboard.
+            const layoutH = Math.max(window.innerHeight, document.documentElement.clientHeight);
+            let inset = Math.max(0, Math.round(layoutH - vv.height - top));
+            if (inset < 40) inset = 0;   // ignore URL-bar jitter / sub-pixel noise
+            const root = document.documentElement;
+            if (inset !== _kbLast) {
+                _kbLast = inset;
+                root.style.setProperty('--keyboard-height', inset + 'px');
+                if (typeof _fingerWake === 'function') _fingerWake(400);
+                if (typeof _suppressScrollHaptics === 'function') _suppressScrollHaptics(400);
+            }
+            if (top !== _vvTopLast) {
+                _vvTopLast = top;
+                // iOS pans the visual viewport when the keyboard opens; keep header pinned to it.
+                root.style.setProperty('--vv-top', top + 'px');
+                if (top > 0 && (window.scrollY || window.scrollX)) window.scrollTo(0, 0);
+            }
+        });
     }
     if (window.visualViewport) {
         window.visualViewport.addEventListener('resize', applyKeyboardInset);
         window.visualViewport.addEventListener('scroll', applyKeyboardInset);
+        window.addEventListener('resize', applyKeyboardInset);
+        window.addEventListener('orientationchange', function () { setTimeout(applyKeyboardInset, 300); });
         applyKeyboardInset();
     } else {
         document.documentElement.style.setProperty('--keyboard-height', '0px');
@@ -591,11 +609,13 @@
 <script src="paragraph.js?v=8"></script>
 <script src="shapes.js"></script>
 <script src="tools.js?v=1"></script>
+<script src="countries-data.js?v=1"></script>   
+<script src="country-engine.js?v=1"></script>  
 <script src="converse-data.js?v=1"></script>
 <script src="xenon.js?v=2"></script>
 <script src="converse.js?v=1"></script>
 <script src="chat.js?v=2"></script>
-<script src="chat2.js?v=4"></script>
+<script src="chat2.js?v=3"></script>
 <script src="message-actions.js?v=2"></script>
 <script src="settings.js?v=4"></script>
 <script src="backup.js"></script>
