@@ -508,6 +508,13 @@
     // top edge every animation frame and moves the feed to match, however
     // that edge came to move. So this only ever sets the CSS variable.
     let _kbRaf = 0, _kbLast = -1, _vvTopLast = -1;
+    // Tracks the tallest viewport seen (keyboard closed) so we can tell open/closed
+    // even on browsers that resize the layout themselves (where inset is always 0).
+    let _baseH = 0, _kbWasOpen = false, _kbBlurTimer = 0;
+    function _blurIfTyping() {
+        const el = document.activeElement;
+        if (el && (el.tagName === 'TEXTAREA' || el.tagName === 'INPUT' || el.isContentEditable)) el.blur();
+    }
     function applyKeyboardInset() {
         if (!window.visualViewport) return;
         if (_kbRaf) return;              // coalesce bursts of resize/scroll events into 1 write per frame
@@ -528,6 +535,22 @@
                 if (typeof _fingerWake === 'function') _fingerWake(400);
                 if (typeof _suppressScrollHaptics === 'function') _suppressScrollHaptics(400);
             }
+            // Keyboard open/closed detection (independent of inset math above)
+            const curH = vv.height + top;
+            if (!_baseH || curH > _baseH) _baseH = curH;
+            const kbOpen = curH < _baseH - 120;
+            if (kbOpen) {
+                clearTimeout(_kbBlurTimer);
+            } else if (_kbWasOpen) {
+                // Keyboard was dismissed (back gesture / hide button) but the field keeps focus,
+                // leaving the input bar stuck in its active state. Release focus.
+                clearTimeout(_kbBlurTimer);
+                _kbBlurTimer = setTimeout(function () {
+                    const v = window.visualViewport;
+                    if (v && v.height + v.offsetTop >= _baseH - 120) _blurIfTyping();
+                }, 120);
+            }
+            _kbWasOpen = kbOpen;
             if (top !== _vvTopLast) {
                 _vvTopLast = top;
                 // iOS pans the visual viewport when the keyboard opens; keep header pinned to it.
@@ -540,11 +563,30 @@
         window.visualViewport.addEventListener('resize', applyKeyboardInset);
         window.visualViewport.addEventListener('scroll', applyKeyboardInset);
         window.addEventListener('resize', applyKeyboardInset);
-        window.addEventListener('orientationchange', function () { setTimeout(applyKeyboardInset, 300); });
+        window.addEventListener('orientationchange', function () { _baseH = 0; _kbWasOpen = false; setTimeout(applyKeyboardInset, 300); });
         applyKeyboardInset();
     } else {
         document.documentElement.style.setProperty('--keyboard-height', '0px');
     }
+
+    // --- Tap anywhere on the empty part of the input bar to start typing ---
+    // The textarea only covers the first row, so taps on the controls row (the empty
+    // space between the + / mode label and the voice / send buttons) or the bar's padding
+    // did nothing. Forward those taps to the textarea.
+    (function () {
+        const bar = document.querySelector('.input-bar');
+        const ta = document.getElementById('userInput');
+        if (!bar || !ta) return;
+        bar.addEventListener('pointerdown', function (e) {
+            if (e.target.closest('textarea, button, a, .icon, .toggle-icon, .model-cycle-btn, .voice-btn-wrap, .send-btn-wrap')) return;
+            e.preventDefault();               // don't let the tap blur/steal focus
+            if (document.activeElement !== ta) {
+                ta.focus({ preventScroll: true });
+                const n = ta.value.length;
+                try { ta.setSelectionRange(n, n); } catch (_) {}
+            }
+        });
+    })();
 
     // --- Input bar height tracking ---
     // Keeps --input-bar-height in sync with the actual rendered height of
