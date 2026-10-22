@@ -728,6 +728,12 @@ function toggleGraphModal() {
         // delay just gives the modal a frame to lay out before we measure the
         // canvas for updateGraph().
         setTimeout(updateGraph, 50);
+        // Desktop: the settings panel is docked open beside the chart (see desktop.css),
+        // so fill it in as soon as the Chart Generator opens.
+        if (window.matchMedia('(min-width: 1100px) and (min-height: 560px)').matches &&
+            typeof ggBuildSettingsBody === 'function') {
+            setTimeout(ggBuildSettingsBody, 60);
+        }
     }
 }
 

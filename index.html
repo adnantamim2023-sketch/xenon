@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
     <title>Xenon | Tools</title>
-    <link rel="stylesheet" href="styles.css?v=7">
-    <link rel="stylesheet" href="styles2.css?v=6">
-    <link rel="stylesheet" href="xetex.css?v=2">
+    <link rel="stylesheet" href="styles.css?v=8">
+    <link rel="stylesheet" href="styles2.css?v=7">
+    <link rel="stylesheet" href="xetex.css?v=4">
+    <link rel="stylesheet" href="desktop.css?v=12">
 
 </head>
 <body>
@@ -89,14 +90,14 @@
                         ontouchstart="event.stopPropagation(); lcStartZoomIn(event)"
                         onmouseup="lcStopZoom()" onmouseleave="lcStopZoom()"
                         ontouchend="lcStopZoom()" ontouchcancel="lcStopZoom()">
-                    <span style="font-size:20px;">+</span>
+                    <span style="font-size:1.25rem;">+</span>
                 </button>
                 <button class="graph-z-btn"
                         onmousedown="event.stopPropagation(); lcStartZoomOut(event)"
                         ontouchstart="event.stopPropagation(); lcStartZoomOut(event)"
                         onmouseup="lcStopZoom()" onmouseleave="lcStopZoom()"
                         ontouchend="lcStopZoom()" ontouchcancel="lcStopZoom()">
-                    <span style="font-size:20px;">−</span>
+                    <span style="font-size:1.25rem;">−</span>
                 </button>
             </div>
         </div>
@@ -208,8 +209,8 @@
                     <button class="graph-z-btn" data-keep-keyboard onclick="emergencyReset();" title="Refresh Xenon Graph" onmousedown="event.stopPropagation()" ontouchstart="event.stopPropagation()">
                         <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px;"><path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12h2a8 8 0 1 0 1.865-5.135L8 9H2V3l2.447 2.446A9.98 9.98 0 0 1 12 2z"/></svg>
                     </button>
-                    <button class="graph-z-btn" onmousedown="event.stopPropagation(); startZoomIn(event)" ontouchstart="event.stopPropagation(); startZoomIn(event)" onmouseup="stopZoom()" onmouseleave="stopZoom()" ontouchend="stopZoom()" ontouchcancel="stopZoom()"><span style="font-size:20px;">+</span></button>
-                    <button class="graph-z-btn" onmousedown="event.stopPropagation(); startZoomOut(event)" ontouchstart="event.stopPropagation(); startZoomOut(event)" onmouseup="stopZoom()" onmouseleave="stopZoom()" ontouchend="stopZoom()" ontouchcancel="stopZoom()"><span style="font-size:20px;">−</span></button>
+                    <button class="graph-z-btn" onmousedown="event.stopPropagation(); startZoomIn(event)" ontouchstart="event.stopPropagation(); startZoomIn(event)" onmouseup="stopZoom()" onmouseleave="stopZoom()" ontouchend="stopZoom()" ontouchcancel="stopZoom()"><span style="font-size:1.25rem;">+</span></button>
+                    <button class="graph-z-btn" onmousedown="event.stopPropagation(); startZoomOut(event)" ontouchstart="event.stopPropagation(); startZoomOut(event)" onmouseup="stopZoom()" onmouseleave="stopZoom()" ontouchend="stopZoom()" ontouchcancel="stopZoom()"><span style="font-size:1.25rem;">−</span></button>
                 </div>
             </div>
         </div>
@@ -223,8 +224,8 @@
 
         <div class="graph-controls">
             <div class="graph-input-pill">
-                <span style="color:var(--accent); font-weight:800; font-size:13px; flex-shrink:0;">f(x,y)=0</span>
-                <textarea id="tgraphEquation" rows="1" oninput="tgraphExpandPill(this);" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();compileEquations();tgraphRender();}" placeholder="x²+y²-9; (0,0) (3,0) (use ; for multiple)" style="flex:1;border:none;background:transparent;outline:none;font-size:13px;color:var(--text-main);font-family:inherit;resize:none;overflow:hidden;line-height:1.4;caret-color:var(--accent);padding:2px 0;">x²+y²-9; (0,0) (3,0)</textarea>
+                <span style="color:var(--accent); font-weight:800; font-size:0.8125rem; flex-shrink:0;">f(x,y)=0</span>
+                <textarea id="tgraphEquation" rows="1" oninput="tgraphExpandPill(this);" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();compileEquations();tgraphRender();}" placeholder="x²+y²-9; (0,0) (3,0) (use ; for multiple)" style="flex:1;border:none;background:transparent;outline:none;font-size:0.8125rem;color:var(--text-main);font-family:inherit;resize:none;overflow:hidden;line-height:1.4;caret-color:var(--accent);padding:2px 0;">x²+y²-9; (0,0) (3,0)</textarea>
             </div>
         </div>
     </div>
@@ -399,7 +400,7 @@
     <div class="modal-card" style="max-width: 320px;">
         <div class="icon icon-trash" style="width:40px; height:40px; color: var(--red-cancel); margin-bottom: 15px;"></div>
         <h3 id="confirmTitle">Delete Message?</h3>
-        <p id="confirmDesc" style="font-size: 14px; opacity: 0.8; margin-top: 8px;">This action cannot be undone.</p>
+        <p id="confirmDesc" style="font-size: 0.875rem; opacity: 0.8; margin-top: 8px;">This action cannot be undone.</p>
         <div style="display: flex; gap: 10px; margin-top: 20px;">
             <button id="confirmCancelBtn" style="background: var(--bg-input); color: var(--text-main); margin: 0;">Cancel</button>
             <button id="confirmDeleteBtn" style="background: var(--red-cancel); margin: 0;">Delete</button>
@@ -633,9 +634,9 @@
 </script>
 
 <!-- Scripts — load order matters -->
-<script src="chart-engine.js?v=3"></script>
-<script src="tgraph.js?v=3"></script>
-<script src="suggestions.js?v=2"></script>
+<script src="chart-engine.js?v=6"></script>
+<script src="tgraph.js?v=6"></script>
+<script src="suggestions.js?v=3"></script>
 <script src="math-basic.js?v=9"></script>
 <script src="math-integration.js?v=7"></script>
 <script src="math-physics.js"></script>       <!-- NEW -->
@@ -644,7 +645,7 @@
 <script src="coding.js"></script>
 <script src="base.js"></script>
 <script src="writing.js"></script>
-<script src="assist.js"></script>
+<script src="assist.js?v=2"></script>
 <script src="reasoning.js"></script>
 <script src="topics-hsc.js"></script>
 <script src="humanize.js?v=1"></script>
@@ -657,7 +658,7 @@
 <script src="xenon.js?v=2"></script>
 <script src="converse.js?v=1"></script>
 <script src="chat.js?v=2"></script>
-<script src="chat2.js?v=3"></script>
+<script src="chat2.js?v=4"></script>
 <script src="message-actions.js?v=2"></script>
 <script src="settings.js?v=4"></script>
 <script src="backup.js"></script>

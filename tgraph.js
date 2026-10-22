@@ -164,7 +164,7 @@ function buildSvgScaffold() {
     tcanvas.appendChild(tGridGroup);
 
     tAxisGroup = svgEl('g', { class: 'tgraph-axis' });
-    const lblBase = { 'font-size': '10', 'font-family': '"Segoe UI", sans-serif' };
+    const lblBase = { 'font-size': String(10 * (window.xenonChartScale ? window.xenonChartScale() : 1)), 'font-family': '"Segoe UI", sans-serif' };
     const gx = svgEl('g'), gy = svgEl('g');
     tAxisGroup.appendChild(gx);
     tAxisGroup.appendChild(gy);
@@ -187,7 +187,7 @@ function buildSvgScaffold() {
 
     tFrozenGroup = svgEl('g', { style: 'display:none' });
     const frozenRect = svgEl('rect', { x: 0, y: 0, width: '100%', height: '100%', fill: 'rgba(255,59,48,0.8)' });
-    const frozenText = svgEl('text', { x: '50%', y: '50%', fill: '#ffffff', 'font-weight': 'bold', 'font-size': '16', 'font-family': 'sans-serif', 'text-anchor': 'middle', 'dominant-baseline': 'middle' });
+    const frozenText = svgEl('text', { x: '50%', y: '50%', fill: '#ffffff', 'font-weight': 'bold', 'font-size': String(16 * (window.xenonChartScale ? window.xenonChartScale() : 1)), 'font-family': 'sans-serif', 'text-anchor': 'middle', 'dominant-baseline': 'middle' });
     frozenText.textContent = '⚠️ Auto-recovering...';
     tFrozenGroup.appendChild(frozenRect);
     tFrozenGroup.appendChild(frozenText);
@@ -826,7 +826,7 @@ function drawAxisArrows(theme, w, h) {
         const label = (txt, x, y, anchor, size) => {
             const t = svgEl('text', {
                 x: x.toFixed(2), y: y.toFixed(2), fill: theme.axisLabelColor,
-                'font-weight': 'bold', 'font-size': size || '13', 'font-family': 'sans-serif', 'text-anchor': anchor
+                'font-weight': 'bold', 'font-size': String((+size || 13) * (window.xenonChartScale ? window.xenonChartScale() : 1)), 'font-family': 'sans-serif', 'text-anchor': anchor
             });
             t.textContent = txt;
             G.appendChild(t);
@@ -845,12 +845,12 @@ function drawAxisArrows(theme, w, h) {
         if (toffsetY > lo && toffsetX > lo && toffsetX < w - lo) {
             const yt = Math.max(lo, toffsetY - 100 * tscale);
             arrow(arrowPath(toffsetX - as/2, yt + as, toffsetX, yt, toffsetX + as/2, yt + as));
-            label('y', toffsetX + 8, yt + as + 4, 'start');
+            label('y', toffsetX + 8 + 26 * (window.xenonChartScale ? window.xenonChartScale() : 1), yt + as + 4, 'start');
         }
         if (toffsetY < h - lo && toffsetX > lo && toffsetX < w - lo) {
             const yb = Math.min(h - lo, toffsetY + 100 * tscale);
             arrow(arrowPath(toffsetX - as/2, yb - as, toffsetX, yb, toffsetX + as/2, yb - as));
-            label('-y', toffsetX + 8, yb - as - 4, 'start');
+            label('-y', toffsetX + 8 + 26 * (window.xenonChartScale ? window.xenonChartScale() : 1), yb - as - 4, 'start');
         }
     } catch(e) {}
 }

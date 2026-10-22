@@ -1,3 +1,14 @@
+/* UI scale factor = current root font size / 16. On phones this is 1; on large desktop screens
+   (see desktop.css) it grows, and the chart/graph drawing scales with it. */
+function xenonUiScale() {
+    const fs = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    return (fs && isFinite(fs)) ? Math.max(1, fs / 16) : 1;
+}
+window.xenonUiScale = xenonUiScale;
+/* Canvas/SVG text is tiny by design (9-10px) — on desktop give the drawings a bit extra boost. */
+function xenonChartScale() { const s = xenonUiScale(); return s > 1 ? s * 1.3 : 1; }
+window.xenonChartScale = xenonChartScale;
+
 /* ============================================================
    XENON GRAPH GENERATOR  —  Advanced Statistical Chart Engine
    Replaces Chart.js with a fully custom canvas renderer.
@@ -406,10 +417,11 @@ function ggSetupCanvas() {
     const viewW = cont.clientWidth  || cont.offsetWidth  || 300;
     const viewH = cont.clientHeight || cont.offsetHeight || 250;
 
-    const PAD_L = 52, PAD_R = 20;
+    const UIS = xenonChartScale();
+    const PAD_L = 52 * UIS, PAD_R = 20 * UIS;
     const numSlots = GG.classes.length || 1;
     const naturalSlotW = (viewW - PAD_L - PAD_R) / numSlots;
-    const slotW = GG.barMinPx > 0 ? Math.max(naturalSlotW, GG.barMinPx) : naturalSlotW;
+    const slotW = GG.barMinPx > 0 ? Math.max(naturalSlotW, GG.barMinPx / UIS) : naturalSlotW;
     const neededW = PAD_L + PAD_R + slotW * numSlots;
 
     const cssW = Math.max(viewW, neededW);
@@ -452,12 +464,16 @@ function ggRender() {
     const {ctx, canvas} = GG;
     // Layout math below works in CSS pixels; the ctx transform scales
     // drawing up to the dpr-sized backing store automatically.
-    const W = GG.cssW;
-    const H = GG.cssH;
+    // Draw in a "virtual" space that is UIS times smaller than the panel, then scale it up with the
+    // transform — fonts, paddings and line widths all grow together on big screens.
+    const UIS = xenonChartScale();
+    GG.uis = UIS;
+    const W = GG.cssW / UIS;
+    const H = GG.cssH / UIS;
     const T = ggTheme();
 
-    ctx.setTransform(GG.dpr, 0, 0, GG.dpr, 0, 0);
-    ctx.clearRect(0, 0, W, H);
+    ctx.setTransform(GG.dpr * UIS, 0, 0, GG.dpr * UIS, 0, 0);
+    ctx.clearRect(0, 0, W + 1, H + 1);
 
     const bgGrad = ctx.createLinearGradient(0, 0, W, H);
     bgGrad.addColorStop(0, T.bgColor);
@@ -497,7 +513,7 @@ function ggRender() {
     const displayClasses = showSkip ? classes.slice(firstNonZero) : classes;
     const totalSlots = displayClasses.length + (showSkip ? 1 : 0);
     const naturalSlotW = gW / Math.max(totalSlots, 1);
-    const slotW = GG.barMinPx > 0 ? Math.max(naturalSlotW, GG.barMinPx) : naturalSlotW;
+    const slotW = GG.barMinPx > 0 ? Math.max(naturalSlotW, GG.barMinPx / UIS) : naturalSlotW;
 
     // ── Draw title ──
     if (GG.title) {
@@ -804,7 +820,7 @@ function ggBuildSettingsBody() {
               <span class="gg-slider-val" id="ggBarPctVal">${GG.barWidthPct}%</span>
             </div>
             <div class="gg-slider-row" style="margin-top:6px;">
-              <span class="gg-slider-label">Min px <span style="font-size:9px;opacity:0.6;">(expands)</span></span>
+              <span class="gg-slider-label">Min px <span style="font-size:0.5625rem;opacity:0.6;">(expands)</span></span>
               <input type="range" min="0" max="120" step="4" value="${GG.barMinPx}" class="gg-slider"
                 oninput="GG.barMinPx=+this.value; document.getElementById('ggBarMinVal').textContent=this.value>0?this.value+'px':'auto'; ggRender()">
               <span class="gg-slider-val" id="ggBarMinVal">${GG.barMinPx > 0 ? GG.barMinPx+'px' : 'auto'}</span>
@@ -940,6 +956,8 @@ function updateGraphDebounced() {
         if (!canvas || !tooltip) return;
 
         function showTip(canvasX, canvasY) {
+            const k = GG.uis || 1;
+            canvasX /= k; canvasY /= k;          // points are stored in virtual (scaled) units
             if (!GG._linePoints) { tooltip.classList.remove('visible'); return; }
             let hit=null, minD=Infinity;
             GG._linePoints.forEach(p => {
@@ -951,8 +969,8 @@ function updateGraphDebounced() {
                 // hit.x / hit.y are already in CSS pixels (the same space
                 // ggRender draws in) and the tooltip is positioned inside
                 // the same viewport, so no DPR conversion is needed.
-                tooltip.style.left = hit.x + 'px';
-                tooltip.style.top  = hit.y + 'px';
+                tooltip.style.left = (hit.x * k) + 'px';
+                tooltip.style.top  = (hit.y * k) + 'px';
                 tooltip.classList.add('visible');
             } else { tooltip.classList.remove('visible'); }
         }

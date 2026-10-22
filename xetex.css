@@ -4,7 +4,7 @@
 
 .xetex-output {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.8;
     color: var(--text-main);
     padding: 18px 0;
@@ -15,7 +15,7 @@
 }
 
 .xetex-equation {
-    font-size: 19px;
+    font-size: 1.1875rem;
     font-weight: 600;
     padding: 14px 18px;
     margin: 8px 0 20px 0;
@@ -41,7 +41,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 700;
     color: var(--accent);
     flex-shrink: 0;
@@ -50,13 +50,13 @@
 
 .xetex-step-body {
     flex: 1;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;   /* → 400 */
 }
 
 .xetex-indent {
     padding-left: 40px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;   /* → 400 */
     color: var(--text-main);
     margin: 5px 0;
@@ -74,7 +74,7 @@
 .xetex-split-right {
     flex: 1;
     padding: 10px 14px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
     line-height: 1.7;
 }
@@ -103,7 +103,7 @@
     background: rgba(59, 130, 246, 0.08);
     border: 1px solid rgba(59, 130, 246, 0.25);
     border-radius: 10px;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--accent);
     display: flex;
@@ -116,7 +116,7 @@
 }
 
 .xetex-answer-label {
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -136,12 +136,12 @@
     background: rgba(59, 130, 246, 0.06);
     border-radius: 4px;
     padding: 2px 8px;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .xetex-note {
     padding-left: 40px;
-    font-size: 14px;
+    font-size: 0.875rem;
     color: var(--text-muted);
     font-style: italic;
     margin: 6px 0;
@@ -154,7 +154,7 @@
     border-radius: 10px;
     color: var(--red-cancel);
     font-weight: 600;
-    font-size: 15px;
+    font-size: 0.9375rem;
 }
 
 /* ── Logic gate-style question card ──────────────────────────────────
@@ -166,7 +166,7 @@
     background: rgba(59, 130, 246, 0.06);
     border: 1px solid rgba(59, 130, 246, 0.2);
     border-radius: 10px;
-    font-size: 15px;
+    font-size: 0.9375rem;
     color: var(--text-main);
 }
 
@@ -187,7 +187,7 @@
     background: var(--bg-input, rgba(59, 130, 246, 0.1));
     color: var(--accent);
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.875rem;
     padding: 9px 16px;
     border-radius: 999px;
     cursor: pointer;
@@ -205,7 +205,7 @@
 
 .xetex-logic-option-sub {
     display: block;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 500;
     color: var(--text-muted);
     margin-top: 1px;
@@ -219,7 +219,7 @@
     padding: 2px 6px;
     font-weight: 600;
     color: var(--accent);
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 /* ── Inline Fraction ── */
@@ -511,7 +511,7 @@
     border: 1px solid var(--border-color);
     border-radius: 10px;
     font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
-    font-size: 13px;
+    font-size: 0.8125rem;
     line-height: 1.55;
     color: var(--text-main);
     overflow-x: auto;
@@ -555,11 +555,11 @@ body.dark-mode .cparse-code {
    ═══════════════════════════════════════════════════════════════════ */
 
 :root {
-    --xn-text-xl: 18px;
-    --xn-text-lg: 16px;
-    --xn-text-md: 14px;
-    --xn-text-sm: 13px;
-    --xn-text-xs: 11px;
+    --xn-text-xl: 1.125rem;
+    --xn-text-lg: 1rem;
+    --xn-text-md: 0.875rem;
+    --xn-text-sm: 0.8125rem;
+    --xn-text-xs: 0.6875rem;
 
     --xn-w-normal: 400;
     --xn-w-bold: 600;
@@ -810,7 +810,7 @@ body.dark-mode .cparse-code {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     font-family: 'Georgia', 'Cambria', 'Times New Roman', serif;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.65;
     color: var(--text-main);
     white-space: pre-wrap;
@@ -915,7 +915,7 @@ body.dark-mode .write-body {
 }
 .code-card-type {
     font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 700;
     letter-spacing: 0.7px;
     text-transform: lowercase;
@@ -932,7 +932,7 @@ body.dark-mode .write-body {
     border-radius: 999px;
     color: var(--text-muted);
     font-family: inherit;
-    font-size: 11px;
+    font-size: 0.6875rem;
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
@@ -1236,7 +1236,7 @@ body.dark-mode .write-body {
 }
 
 .xetex-branch-table .xetex-table th {
-    font-size: 12px;
+    font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: var(--text-muted);
@@ -1246,7 +1246,7 @@ body.dark-mode .write-body {
 
 .xetex-branch-table .xetex-table td {
     text-align: center;
-    font-size: 15px;
+    font-size: 0.9375rem;
     white-space: normal;
     padding: 10px 14px;
 }
@@ -1289,14 +1289,14 @@ body.dark-mode .write-body {
     padding: 0 !important;
     margin: 0 !important;
     color: var(--text-main) !important;
-    font-size: 16px !important;
+    font-size: 1rem !important;
     font-weight: 600 !important;
     line-height: 1.4 !important;
     flex-shrink: 0 !important;
 }
 
 .xetex-step-body {
-    font-size: 16px !important;
+    font-size: 1rem !important;
     font-weight: 500 !important;
     color: var(--text-main) !important;
     text-align: left !important;
@@ -1307,7 +1307,7 @@ body.dark-mode .write-body {
 /* ── Given / top equation ─────────────────────────────────────── */
 .xetex-equation {
     text-align: center !important;
-    font-size: 22px !important;
+    font-size: 1.375rem !important;
     font-weight: 600 !important;
     line-height: 1.5 !important;
     padding: 14px 8px !important;
@@ -1319,7 +1319,7 @@ body.dark-mode .write-body {
 /* ── Intermediate math lines ──────────────────────────────────── */
 .xetex-indent {
     text-align: center !important;
-    font-size: 18px !important;
+    font-size: 1.125rem !important;
     font-weight: 500 !important;
     padding: 0 6px !important;
     margin: 10px 0 !important;
@@ -1340,7 +1340,7 @@ body.dark-mode .write-body {
     text-align: left !important;
     padding: 0 6px 0 4px !important;
     margin: 10px 0 !important;
-    font-size: 14px !important;
+    font-size: 0.875rem !important;
     font-style: italic !important;
     line-height: 1.5 !important;
     color: var(--text-muted) !important;
@@ -1361,13 +1361,13 @@ body.dark-mode .write-body {
     border-radius: 12px !important;
     background: rgba(59, 130, 246, 0.045) !important;
     border: 1px solid rgba(59, 130, 246, 0.14) !important;
-    font-size: 18px !important;
+    font-size: 1.125rem !important;
     font-weight: 600 !important;
     line-height: 1.5 !important;
 }
 
 .xetex-answer-label {
-    font-size: 10px !important;
+    font-size: 0.625rem !important;
     font-weight: 700 !important;
     letter-spacing: 1.1px !important;
     text-transform: uppercase !important;
@@ -1384,7 +1384,7 @@ body.dark-mode .write-body {
 }
 
 .xetex-answer-val {
-    font-size: 18px !important;
+    font-size: 1.125rem !important;
     font-weight: 600 !important;
     color: var(--text-main) !important;
     background: none !important;
@@ -1424,7 +1424,7 @@ body.dark-mode .write-body {
 }
 
 .xetex-branch-table .xetex-table th {
-    font-size: 11px !important;
+    font-size: 0.6875rem !important;
     letter-spacing: 0.6px !important;
     text-align: center !important;
     padding: 8px 12px !important;
@@ -1432,7 +1432,7 @@ body.dark-mode .write-body {
 }
 
 .xetex-branch-table .xetex-table td {
-    font-size: 17px !important;
+    font-size: 1.0625rem !important;
     font-weight: 500 !important;
     text-align: center !important;
     padding: 10px 14px !important;
@@ -1448,27 +1448,27 @@ body.dark-mode .write-body {
 /* ── Small screens ────────────────────────────────────────────── */
 @media (max-width: 420px) {
     .xetex-equation {
-        font-size: 20px !important;
+        font-size: 1.25rem !important;
         padding: 12px 4px !important;
         margin-bottom: 22px !important;
     }
 
     .xetex-indent {
-        font-size: 17px !important;
+        font-size: 1.0625rem !important;
         padding: 0 2px !important;
     }
 
     .xetex-answer {
-        font-size: 17px !important;
+        font-size: 1.0625rem !important;
         padding: 12px 16px !important;
     }
 
     .xetex-answer-val {
-        font-size: 17px !important;
+        font-size: 1.0625rem !important;
     }
 
     .xetex-branch-table .xetex-table td {
-        font-size: 15px !important;
+        font-size: 0.9375rem !important;
         padding: 8px 10px !important;
     }
 }

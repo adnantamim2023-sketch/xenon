@@ -1,0 +1,479 @@
+/* ==========================================================================
+   Xenon — desktop / laptop layout
+   Only applies to wide screens with a mouse; phones & tablets are untouched.
+   ========================================================================== */
+@media (min-width: 1024px) and (min-height: 560px) {
+
+    :root {
+        --ui: 1.1;                               /* scale for px-sized controls */
+        --sidebar-w: 16rem;
+        --settings-w: 0px;                       /* becomes a docked panel on wide screens */
+        --content-w: 50rem;                      /* readable column width (scales with text) */
+        /* Side padding that centres the column. The feed and input bar are position:fixed, so a %
+           here means the whole viewport width — subtract the docked panels to centre in what's left. */
+        --gutter: max(28px, calc((100% - var(--sidebar-w) - var(--settings-w) - var(--content-w)) / 2));
+    }
+
+    /* Bigger base type: everything sized in rem scales with this */
+    html { font-size: 18px; }
+
+    /* ---- Persistent history sidebar ---- */
+    .sidebar {
+        left: 0 !important;
+        width: var(--sidebar-w);
+        transform: none !important;
+        transition: none;
+        z-index: 1500;
+    }
+    .sidebar-scroll { padding: 28px 18px 18px; }
+    .sidebar h2 { font-size: 1.15rem; }
+    .history-item { font-size: 0.9rem; padding: 12px 14px; }
+    .history-item:hover { background: rgba(59,130,246,0.07); border-color: var(--accent); }
+    .sidebar-empty-trash { margin: 0 18px 18px; }
+    .spoke-2 { display: none !important; }       /* history button is redundant now */
+    .overlay { display: none !important; }       /* sidebar never needs a backdrop */
+    body.scroll-locked .chat-feed {              /* sidebar "open" must not freeze the feed */
+        overflow-y: auto !important;
+        touch-action: auto !important;
+        pointer-events: auto !important;
+    }
+
+    /* ---- Header ---- */
+    .nav-container {
+        left: var(--sidebar-w);
+        right: var(--settings-w);
+        padding: 12px 28px 10px;
+        min-height: 64px;
+    }
+    .logo-text { font-size: 1.6rem; }
+    .btn-circle { cursor: pointer; transition: transform .15s ease; }
+    .btn-circle:hover { transform: scale(1.06); }
+    /* px-sized controls: scale them with the text */
+    .menu-wrapper, .nav-container > .btn-circle { zoom: var(--ui); }
+    .toggle-icon, .send-btn-wrap, .voice-btn-wrap, .xenon-settings-icon { zoom: var(--ui); }   /* icon-only controls */
+
+    /* ---- Chat feed: centred, readable column ---- */
+    .chat-feed {
+        left: var(--sidebar-w);
+        right: var(--settings-w);
+        padding-left: var(--gutter);
+        padding-right: var(--gutter);
+        padding-top: 96px;
+        gap: 18px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(120,120,120,.35) transparent;
+    }
+    .chat-feed::-webkit-scrollbar { display: block; width: 8px; }
+    .chat-feed::-webkit-scrollbar-thumb { background: rgba(120,120,120,.35); border-radius: 8px; }
+
+    .message { font-size: 1rem; line-height: 1.65; padding: 14px 18px; }
+    .message.user { max-width: 75%; border-radius: 20px 20px 6px 20px; }
+    .message.ai,
+    .message.ai:has(.inline-graph-wrap),
+    .message.ai:has(.xetex-output) {
+        max-width: 100% !important;
+        font-size: 1.05rem;
+    }
+    .message-container { margin: 10px 0; }
+
+    /* ---- Input bar: same column as the chat ---- */
+    .input-container {
+        left: var(--sidebar-w);
+        width: calc(100% - var(--sidebar-w) - var(--settings-w));
+        padding: 0 var(--gutter) 22px;
+    }
+    .input-bar {
+        min-height: 4.6rem;
+        border-radius: 1.5rem;
+        padding: 0.8rem 1.2rem 0.6rem;
+    }
+    #userInput { font-size: 1.05rem; line-height: 1.6; max-height: 12rem; }
+    .input-controls-left, .input-controls-right { gap: 18px; }
+    .icon-plus-circle, .send-btn-wrap, .voice-btn-wrap { cursor: pointer; }
+
+    .suggestions-container {
+        --pad: max(32px, calc((100% - var(--sidebar-w) - var(--settings-w) - var(--content-w)) / 2));
+        left: calc(var(--sidebar-w) + var(--pad));
+        right: calc(var(--settings-w) + var(--pad));
+        bottom: 120px;
+    }
+
+    /* ---- Small dialogs ---- */
+    #aboutModal .modal-card,
+    #confirmModal .modal-card { max-width: 480px; font-size: 1rem; }
+}
+
+/* Scale up with screen size. A tier applies only when BOTH width and height are large enough,
+   so ultra-wide / short screens (3440x1440, 1600x720) are sized by their height. */
+@media (min-width: 1440px) and (min-height: 800px) {
+    :root { --ui: 1.312; }
+    html { font-size: 21px; }
+}
+@media (min-width: 1800px) and (min-height: 1000px) {
+    :root { --ui: 1.562; }
+    html { font-size: 25px; }
+}
+@media (min-width: 2400px) and (min-height: 1300px) {
+    :root { --ui: 1.875; }
+    html { font-size: 30px; }
+}
+@media (min-width: 3000px) and (min-height: 1600px) {
+    :root { --ui: 2.250; }
+    html { font-size: 36px; }
+}
+@media (min-width: 3600px) and (min-height: 2000px) {
+    :root { --ui: 2.750; }
+    html { font-size: 44px; }
+}
+@media (min-width: 4400px) and (min-height: 2400px) {
+    :root { --ui: 3.500; }
+    html { font-size: 56px; }
+}
+@media (min-width: 5800px) and (min-height: 3200px) {
+    :root { --ui: 4.500; }
+    html { font-size: 72px; }
+}
+@media (min-width: 7400px) and (min-height: 4000px) {
+    :root { --ui: 6.000; }
+    html { font-size: 96px; }
+}
+
+/* Tablets (iPad portrait etc.): no sidebar, but bigger text and a centred column */
+@media (min-width: 700px) and (max-width: 1023px) and (min-height: 560px) {
+    :root {
+        --ui: 1.15;
+        --content-w: 44rem;
+        --gutter: max(24px, calc((100% - var(--content-w)) / 2));
+    }
+    html { font-size: 18px; }
+    .chat-feed { padding-left: var(--gutter); padding-right: var(--gutter); }
+    .message { font-size: 1rem; line-height: 1.65; }
+    .message.user { max-width: 80%; }
+    .message.ai,
+    .message.ai:has(.inline-graph-wrap),
+    .message.ai:has(.xetex-output) { max-width: 100% !important; font-size: 1.05rem; }
+    .input-container { padding-left: var(--gutter); padding-right: var(--gutter); }
+    .toggle-icon, .send-btn-wrap, .voice-btn-wrap, .xenon-settings-icon { zoom: var(--ui); }   /* icon-only controls */
+    #userInput { font-size: 1.05rem; }
+    .menu-wrapper, .nav-container > .btn-circle { zoom: var(--ui); }
+    .suggestions-container { left: var(--gutter); right: var(--gutter); }
+    .toggle-icon, .send-btn-wrap, .voice-btn-wrap { zoom: var(--ui); } /* tablet icon zoom */
+}
+
+/* ==========================================================================
+   Docked Settings panel (right side) — wide screens only.
+   On smaller screens Settings keeps opening as the normal full-screen page.
+   ========================================================================== */
+@media (min-width: 1440px) and (min-height: 560px) {
+    :root { --settings-w: 20rem; }
+
+    #settingsModal.xenon-settings-modal {
+        display: flex !important;               /* always visible, even without .active */
+        position: fixed !important;
+        inset: 0 0 0 auto !important;
+        width: var(--settings-w) !important;
+        padding: 0 !important;
+        z-index: 1400;                          /* above feed, below real modals (4000) */
+        background: var(--bg-main) !important;
+        border-left: 1px solid var(--border-color);
+        opacity: 1 !important;
+        animation: none !important;
+        align-items: stretch !important;
+        justify-content: stretch !important;
+    }
+    #settingsModal.xenon-settings-modal .modal-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        border: none !important;
+    }
+    #settingsModal .xenon-settings-header,
+    #settingsModal .xenon-settings-body,
+    #settingsModal .chart-modal-header { max-width: 100%; }
+    #settingsModal .xenon-settings-header { padding: 16px 16px 14px; }
+    #settingsModal .xenon-settings-body { padding: 16px 16px 24px; }
+    #settingsModal .xenon-settings-close { display: none !important; }   /* it never closes */
+}
+
+/* ==========================================================================
+   Chart Generator & Xenon Graph windows — desktop sizing
+   ========================================================================== */
+@media (min-width: 1024px) and (min-height: 560px) {
+    /* Headers span the full window instead of a narrow centred strip */
+    #graphModal .chart-modal-header,
+    #tgraphModal .graph-modal-header {
+        max-width: none !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0.75rem 1.5rem !important;
+        box-sizing: border-box;
+    }
+    #graphModal .chart-title,
+    #tgraphModal .graph-title { font-size: 1.35rem; }
+
+    /* Icon-only controls scale with the text */
+    #graphModal .chart-back-btn, #graphModal .chart-header-mark,
+    #tgraphModal .graph-back-btn, #tgraphModal .graph-header-mark,
+    #graphModal .graph-z-btn, #tgraphModal .graph-z-btn,
+    #graphModal .gg-settings-pill-btn,
+    #graphModal .graph-input-pill .icon,
+    #tgraphModal .graph-input-pill .icon { zoom: var(--ui); }
+
+    /* Bottom control rows: taller, roomier input pills */
+    #graphModal .graph-controls, #tgraphModal .graph-controls { padding: 0.9rem 1.5rem 1.1rem; gap: 0.7rem; }
+    #graphModal .graph-input-pill, #tgraphModal .graph-input-pill { padding-top: 0.6rem; padding-bottom: 0.6rem; border-radius: 1rem; }
+    #tgraphModal .graph-equation-hint { padding-left: 1.5rem; padding-right: 1.5rem; }
+}
+
+/* ==========================================================================
+   Chart Generator — settings panel docked open on the right (desktop)
+   ========================================================================== */
+@media (min-width: 1100px) and (min-height: 560px) {
+    :root { --gg-panel-w: 24rem; }
+
+    /* Chart window makes room for the panel */
+    body #graphModal .modal-card {
+        width: calc(100vw - var(--gg-panel-w)) !important;
+        max-width: calc(100vw - var(--gg-panel-w)) !important;
+    }
+
+    /* The settings panel is always visible while the Chart Generator is open */
+    body:has(#graphModal.active) #ggSettingsModal.gg-settings-modal {
+        display: flex !important;
+        position: fixed !important;
+        inset: 0 0 0 auto !important;
+        width: var(--gg-panel-w) !important;
+        padding: 0 !important;
+        z-index: 4100 !important;
+        background: var(--bg-main) !important;
+        border-left: 1px solid var(--border-color);
+        opacity: 1 !important;
+        animation: none !important;
+        align-items: stretch !important;
+        justify-content: stretch !important;
+    }
+    body #ggSettingsModal.gg-settings-modal .modal-card.gg-settings-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        max-height: 100% !important;
+        border-radius: 0 !important;
+        border: none !important;
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    body #ggSettingsModal .gg-settings-header { padding: 1rem 1.1rem !important; }
+    body #ggSettingsModal .gg-settings-body { padding: 1rem 1.1rem 1.5rem !important; }
+    /* Single column inside the panel */
+    body #ggSettingsModal.gg-settings-modal .gg-settings-inner { grid-template-columns: minmax(0, 1fr) !important; }
+    body #ggSettingsModal .gg-settings-inner > .gg-col-divider { display: block !important; margin: 0.8rem 0; }
+    /* Nothing to close / open — it's always there */
+    body #ggSettingsModal .chart-close-btn,
+    body #graphModal #ggSettingsBtn { display: none !important; }
+}
+
+/* ==========================================================================
+   Chart settings panel — clean card layout (docked panel, desktop)
+   ========================================================================== */
+@media (min-width: 1100px) and (min-height: 560px) {
+    body #ggSettingsModal .gg-settings-header {
+        border-bottom: 1px solid var(--border-color) !important;
+    }
+    body #ggSettingsModal .gg-settings-title { font-size: 1.1rem !important; gap: 0.6rem; }
+
+    /* One tidy column of cards; sections reorder via their existing order values */
+    body #ggSettingsModal.gg-settings-modal .gg-settings-inner {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.9rem !important;
+        padding: 0 !important;
+    }
+    body #ggSettingsModal.gg-settings-modal .gg-col-left,
+    body #ggSettingsModal.gg-settings-modal .gg-col-right { display: contents !important; }
+    body #ggSettingsModal .gg-divider,
+    body #ggSettingsModal .gg-settings-inner > .gg-col-divider { display: none !important; }
+
+    /* Each setting = a card */
+    body #ggSettingsModal .gg-setting-row {
+        background: var(--bg-input);
+        border: 1px solid var(--border-color);
+        border-radius: 1rem;
+        padding: 1rem 1.1rem !important;
+        margin: 0 !important;
+        gap: 0.8rem !important;
+    }
+    body #ggSettingsModal .gg-section-label {
+        display: block;
+        margin: 0 0 0.8rem !important;
+        font-size: 0.72rem !important;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+        font-weight: 700;
+    }
+
+    /* Graph type: 3 x 2 grid of roomy buttons */
+    body #ggSettingsModal .gg-type-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 0.6rem !important;
+    }
+    body #ggSettingsModal .gg-type-btn {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.4rem !important;
+        padding: 0.8rem 0.3rem !important;
+        border-radius: 0.8rem !important;
+        min-height: 4.4rem;
+    }
+    body #ggSettingsModal .gg-type-icon  { font-size: 1.3rem !important; line-height: 1; }
+    body #ggSettingsModal .gg-type-label { font-size: 0.7rem !important; text-align: center; line-height: 1.2; }
+
+    /* Label on the left, control on the right */
+    body #ggSettingsModal .gg-setting-row.gg-row-inline {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        min-height: 3.4rem;
+    }
+    body #ggSettingsModal .gg-setting-row.gg-row-inline label {
+        font-size: 0.9rem !important;
+        font-weight: 600;
+        color: var(--text-main);
+        margin: 0 !important;
+    }
+    body #ggSettingsModal .gg-number-ctrl {
+        display: flex; align-items: center; gap: 0.7rem;
+    }
+    body #ggSettingsModal .gg-number-ctrl button {
+        width: 2.2rem !important; height: 2.2rem !important;
+        border-radius: 0.65rem !important;
+        font-size: 1.15rem !important;
+        padding: 0 !important;
+        display: grid; place-items: center;
+    }
+    body #ggSettingsModal .gg-number-ctrl span {
+        min-width: 2rem; text-align: center; font-size: 0.95rem !important; font-weight: 700;
+    }
+    body #ggSettingsModal .gg-title-input {
+        width: 58% !important; min-width: 0;
+        padding: 0.55rem 0.8rem !important;
+        border-radius: 0.65rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    /* Sliders: label | slider | value */
+    body #ggSettingsModal .gg-slider-row {
+        display: grid !important;
+        grid-template-columns: 5.8rem minmax(0, 1fr) 3.2rem;
+        align-items: center;
+        gap: 0.7rem;
+        margin: 0 0 0.7rem !important;
+    }
+    body #ggSettingsModal .gg-slider-label { font-size: 0.85rem !important; font-weight: 600; line-height: 1.25; }
+    body #ggSettingsModal .gg-slider-val   { font-size: 0.85rem !important; text-align: right; font-weight: 700; }
+    body #ggSettingsModal .gg-slider-hint  {
+        margin: 0.4rem 0 0 !important;
+        font-size: 0.72rem !important;
+        line-height: 1.5;
+        color: var(--text-muted);
+    }
+}
+
+/* ---- Chart settings panel: even card widths + clear selected state ---- */
+@media (min-width: 1100px) and (min-height: 560px) {
+    body #ggSettingsModal .gg-settings-body {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        max-width: none !important;
+    }
+    body #ggSettingsModal.gg-settings-modal .gg-settings-inner {
+        align-items: stretch !important;      /* every card spans the full panel width */
+        width: 100% !important;
+    }
+    body #ggSettingsModal .gg-setting-row {
+        width: 100% !important;
+        max-width: none !important;
+        box-sizing: border-box !important;
+        align-self: stretch !important;
+    }
+
+    /* Graph type buttons: plain by default, blue only when selected */
+    body #ggSettingsModal .gg-type-btn {
+        background: var(--bg-main) !important;
+        color: var(--text-main) !important;
+        border: 1px solid var(--border-color) !important;
+        box-shadow: none !important;
+        cursor: pointer;
+        transition: background .15s ease, border-color .15s ease;
+    }
+    body #ggSettingsModal .gg-type-btn:hover { border-color: var(--accent) !important; }
+    body #ggSettingsModal .gg-type-btn.active {
+        background: var(--accent) !important;
+        color: #fff !important;
+        border-color: var(--accent) !important;
+    }
+
+    /* − / + buttons: subtle squares instead of big blue blocks */
+    body #ggSettingsModal .gg-number-ctrl button {
+        background: var(--bg-main) !important;
+        color: var(--text-main) !important;
+        border: 1px solid var(--border-color) !important;
+        box-shadow: none !important;
+        cursor: pointer;
+    }
+    body #ggSettingsModal .gg-number-ctrl button:hover { border-color: var(--accent) !important; color: var(--accent) !important; }
+
+    /* Title field fills the rest of its row */
+    body #ggSettingsModal .gg-setting-row.gg-row-inline .gg-title-input {
+        flex: 1 1 auto; width: auto !important; margin-left: 1rem;
+    }
+}
+
+/* ==========================================================================
+   Xenon Graph — desktop bottom bars, legend and controls
+   ========================================================================== */
+@media (min-width: 1024px) and (min-height: 560px) {
+    /* Equation bar: input fills the row instead of a 480px pill */
+    #tgraphModal .graph-controls { padding: 0.9rem 1.5rem 1.1rem !important; gap: 0.9rem !important; }
+    #tgraphModal .graph-input-pill {
+        flex: 1 1 auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        height: auto !important;
+        min-height: 3.4rem;
+        padding: 0.7rem 1.2rem !important;
+        border-radius: 1rem !important;
+        align-items: center;
+    }
+    #tgraphModal #tgraphEquation {
+        font-size: 1.05rem !important;
+        line-height: 1.5 !important;
+    }
+    #tgraphModal .graph-input-pill .graph-eq-label,
+    #tgraphModal .graph-input-pill > span { font-size: 0.95rem; }
+
+    /* Legend row */
+    #tgraphModal .graph-equation-hint {
+        font-size: 0.9rem !important;
+        gap: 1.4rem !important;
+        padding: 0.7rem 1.5rem !important;
+        align-items: center;
+    }
+    #tgraphModal .graph-equation-hint .function-tag { width: 0.75rem; height: 0.75rem; }
+
+    /* Coordinates badge */
+    #tgraphModal .graph-coord-tag, #graphModal .graph-coord-tag {
+        font-size: 0.85rem !important;
+        padding: 0.35rem 0.8rem !important;
+        top: 0.8rem !important; left: 0.9rem !important;
+    }
+}

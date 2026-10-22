@@ -260,7 +260,7 @@ function assistBuildChoice(text) {
 
     var html = [];
     html.push('<div class="xetex-equation">My pick</div>');
-    html.push('<div class="para-body"><p class="para-line" style="font-size:22px;text-align:center;font-weight:600;">' +
+    html.push('<div class="para-body"><p class="para-line" style="font-size:1.375rem;text-align:center;font-weight:600;">' +
         assistEsc(picked) + '</p></div>');
     html.push('<div class="para-explain">I\'d go with <b>' + assistEsc(picked) + '</b> — ' + reason + '</div>');
 
@@ -295,7 +295,7 @@ function assistBuildRangeChoice(text, range) {
 function assistRenderRangePick(value, range, pickIndex, title, closing) {
     var html = [];
     html.push('<div class="xetex-equation">' + assistEsc(title) + '</div>');
-    html.push('<div class="para-body"><p class="para-line" style="font-size:28px;text-align:center;font-weight:600;">' +
+    html.push('<div class="para-body"><p class="para-line" style="font-size:1.75rem;text-align:center;font-weight:600;">' +
         assistEsc(value) + '</p></div>');
 
     if (range.type === 'number' && range.isInt) {
@@ -348,7 +348,7 @@ function assistBuildPickAgain() {
 
         var html = [];
         html.push('<div class="xetex-equation">Another pick</div>');
-        html.push('<div class="para-body"><p class="para-line" style="font-size:22px;text-align:center;font-weight:600;">' +
+        html.push('<div class="para-body"><p class="para-line" style="font-size:1.375rem;text-align:center;font-weight:600;">' +
             assistEsc(picked) + '</p></div>');
         html.push('<div class="para-explain">This time — <b>' + assistEsc(picked) + '</b>, because ' + reason + '</div>');
 
@@ -391,7 +391,7 @@ function assistBuildPickAgain() {
 
         var html2 = [];
         html2.push('<div class="xetex-equation">Another pick</div>');
-        html2.push('<div class="para-body"><p class="para-line" style="font-size:28px;text-align:center;font-weight:600;">' +
+        html2.push('<div class="para-body"><p class="para-line" style="font-size:1.75rem;text-align:center;font-weight:600;">' +
             assistEsc(String(picked2)) + '</p></div>');
 
         if (mem.range.type === 'number' && mem.range.isInt) {
@@ -437,7 +437,7 @@ function assistBuildCount(text) {
 
     var html = [];
     html.push('<div class="xetex-equation">Counting ' + from + ' to ' + to + '</div>');
-    html.push('<div class="para-body"><p class="para-line" style="font-family:monospace;font-size:16px;line-height:1.9;">' +
+    html.push('<div class="para-body"><p class="para-line" style="font-family:monospace;font-size:1rem;line-height:1.9;">' +
         nums.join(', ') + '</p></div>');
     html.push('<div class="para-closing">Want a different range, or count by 2s or 5s?</div>');
     return html.join('');
