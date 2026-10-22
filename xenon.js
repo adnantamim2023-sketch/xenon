@@ -435,6 +435,9 @@ function routeToTool(raw) {
         .trim();
       return call('integrate', stripped || raw);
     }
+    // ✨ NEW: country engine — takes priority over algebra/math/reasoning
+    // so "is India bigger than Pakistan" hits the real country data.
+    if (typeof W.isCountryQuery === 'function' && W.isCountryQuery(raw)) return call('country', raw);
     if (typeof W.isAlgebra === 'function' && W.isAlgebra(raw)) return call('algebra', raw);
     if (typeof W.mathIsMath === 'function' && W.mathIsMath(raw)) return call('math', raw);
     if (typeof W.isReasoningRequest === 'function' && W.isReasoningRequest(raw)) return call('reasoning', raw);
@@ -446,7 +449,6 @@ function routeToTool(raw) {
   }
   return null;
 }
-
 /* ================= 4.5 MULTI-INTENT SEGMENTATION =================
    Splits one message into several independent requests. Deliberately
    conservative: it only fires (see hasMultiIntentSignal) when there's
